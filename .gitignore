@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Streamlit
+.streamlit/secrets.toml
+streamlit.log
+
+# Documentos de origen pesados (no requeridos por la app)
+*.docx
+
+# Salidas locales (se regeneran con los scripts)
+# Nota: las figuras SÍ se versionan porque el informe las usa.

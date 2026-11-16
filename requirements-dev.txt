@@ -1,0 +1,6 @@
+# Dependencias solo para desarrollo local (no necesarias en Streamlit Cloud).
+# Instalar con: pip install -r requirements-dev.txt
+-r requirements.txt
+matplotlib>=3.7      # generar_figuras.py
+python-docx>=1.1     # construir_docx.py
+scipy>=1.10          # cálculos opcionales
