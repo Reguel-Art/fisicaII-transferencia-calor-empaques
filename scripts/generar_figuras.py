@@ -1,9 +1,9 @@
 """Genera las figuras del informe en PNG de alta resolución.
 
-Ejecutar:
-    python generar_figuras.py
+Ejecutar (desde la raíz del proyecto):
+    python scripts/generar_figuras.py
 
-Crea en la carpeta figuras/:
+Crea en la carpeta salidas/figuras/:
     Figura1_curvas.png        Curvas de temperatura con barras de error
     Figura2_costo_barras.png  Costo por uso por empaque
     Figura3_costo_vs_T60.png  Costo por uso vs. T60 (dispersión)
@@ -13,7 +13,11 @@ Crea en la carpeta figuras/:
 
 from __future__ import annotations
 
+import sys
 from pathlib import Path
+
+RAIZ = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(RAIZ))
 
 import matplotlib
 matplotlib.use("Agg")
@@ -22,10 +26,9 @@ import numpy as np
 
 from core import analisis, datos, fisica
 
-RAIZ = Path(__file__).resolve().parent
-CSV = RAIZ / "Grupo_3_Datos_Termicos_Web.csv"
-DEST = RAIZ / "figuras"
-DEST.mkdir(exist_ok=True)
+CSV = RAIZ / "data" / "Grupo_3_Datos_Termicos_Web.csv"
+DEST = RAIZ / "salidas" / "figuras"
+DEST.mkdir(parents=True, exist_ok=True)
 
 # Orden y nombres cortos para las figuras.
 ORDEN = [

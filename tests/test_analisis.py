@@ -8,7 +8,7 @@ sys.path.insert(0, str(RAIZ))
 
 from core import analisis, datos
 
-CSV = RAIZ / "Grupo_3_Datos_Termicos_Web.csv"
+CSV = RAIZ / "data" / "Grupo_3_Datos_Termicos_Web.csv"
 
 
 def _resumen():

@@ -3,22 +3,25 @@
 Genera 'Informe_EC3_Grupo3_integrado.docx' con formato Times New Roman 12,
 usando los resultados reales calculados por el núcleo y las figuras PNG.
 
-Ejecutar:
-    python construir_docx.py
+Ejecutar (desde la raíz del proyecto):
+    python scripts/construir_docx.py
 """
 
 from __future__ import annotations
 
+import sys
 from pathlib import Path
+
+RAIZ = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(RAIZ))
 
 from docx import Document
 from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.shared import Pt, RGBColor, Inches
 
-RAIZ = Path(__file__).resolve().parent
-FIG = RAIZ / "figuras"
-SALIDA = RAIZ / "Informe_EC3_Grupo3_integrado.docx"
+FIG = RAIZ / "salidas" / "figuras"
+SALIDA = RAIZ / "salidas" / "Informe_EC3_Grupo3_integrado.docx"
 
 AZUL = RGBColor(0x1F, 0x3A, 0x5F)
 GRIS = RGBColor(0x59, 0x59, 0x59)

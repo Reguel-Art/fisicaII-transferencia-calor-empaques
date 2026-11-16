@@ -19,7 +19,7 @@ import streamlit as st
 from core import analisis, datos
 
 RAIZ = Path(__file__).resolve().parent
-CSV_DEFECTO = RAIZ / "Grupo_3_Datos_Termicos_Web.csv"
+CSV_DEFECTO = RAIZ / "data" / "Grupo_3_Datos_Termicos_Web.csv"
 
 COLORES = ["#E4572E", "#F3A712", "#4C9F70", "#2E86AB", "#8367C7", "#B33771"]
 

@@ -27,16 +27,19 @@ streamlit run app.py
 ## Estructura
 
 ```
-app.py                         Interfaz web (Streamlit)
-core/                          Núcleo de cálculo (verificado con 23 pruebas)
-  fisica.py                    Leyes físicas
-  costos.py                    Análisis económico
-  datos.py                     Carga y validación de CSV
-  analisis.py                  Motor que integra todo por empaque
-tests/                         Pruebas automatizadas
-Grupo_3_Datos_Termicos_Web.csv Dataset de ejemplo (simulado)
-generar_figuras.py             Genera las figuras del informe (uso local)
-construir_docx.py              Ensambla el informe .docx (uso local)
+app.py                 Interfaz web (Streamlit) — punto de entrada
+core/                  Núcleo de cálculo (verificado con 23 pruebas)
+  fisica.py            Leyes físicas
+  costos.py            Análisis económico
+  datos.py             Carga y validación de CSV
+  analisis.py          Motor que integra todo por empaque
+tests/                 Pruebas automatizadas
+data/                  Datasets de entrada (CSV)
+scripts/               Utilidades de uso local
+  generar_figuras.py   Genera las figuras del informe
+  construir_docx.py    Ensambla el informe .docx
+salidas/               Resultados generados (figuras, informe)
+documentos_fuente/     Documentos .docx originales del informe
 ```
 
 ## Formato del CSV de entrada
