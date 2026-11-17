@@ -25,7 +25,8 @@ def test_carga_y_estructura():
         "Bolsa Térmica Aluminizada",
         "Recipiente Aislante (EPS)",
     ]
-    assert datos.temperatura_ambiente(df) == 22.0
+    # Media de las 3 repeticiones del informe: (26,8 + 27,1 + 27,0) / 3
+    assert abs(datos.temperatura_ambiente(df) - 26.967) < 1e-3
 
 
 def test_params_empaque_eps():
@@ -42,11 +43,12 @@ def test_params_empaque_eps():
 def test_resumen_termico_eps():
     _, res = _resumen()
     eps = res[res["empaque"] == "Recipiente Aislante (EPS)"].iloc[0]
-    assert eps["t0_C"] == 3.0
-    assert eps["t60_C"] == 8.70
-    assert eps["delta_T"] == 5.70
-    # Q = 0.5 * 4186 * 5.70 = 11930.1 J
-    assert abs(eps["q_absorbido_J"] - 11930.1) < 1.0
+    # Valores de la tabla 8 del informe (tecnopor/EPS).
+    assert eps["t0_C"] == 5.0
+    assert eps["t60_C"] == 9.83
+    assert eps["delta_T"] == 4.83
+    # Q = 0.5 * 4186 * (9.8333 - 5.0) = 10116.2 J  (informe: 10,11 kJ)
+    assert abs(eps["q_absorbido_J"] - 10116.2) < 1.0
     assert eps["r2"] > 0.99          # ajuste muy bueno
 
 
@@ -56,8 +58,8 @@ def test_ley_conduccion_eps():
     eps = res[res["empaque"] == "Recipiente Aislante (EPS)"].iloc[0]
     assert abs(eps["r_cond_KW"] - 9.868) < 0.01
     assert abs(eps["ua_cond_WK"] - 0.1013) < 1e-3
-    # Q̇ inicial = (22-3)/9.868 = 1.925 W
-    assert abs(eps["qdot_cond_W"] - 1.925) < 0.01
+    # Q̇ inicial = (26.967 - 5)/9.868 = 2.226 W
+    assert abs(eps["qdot_cond_W"] - 2.226) < 0.01
 
 
 def test_control_calienta_mas_rapido():
