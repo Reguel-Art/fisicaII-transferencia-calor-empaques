@@ -163,6 +163,7 @@ def _inicializar(df: pd.DataFrame, ident: str):
     ss = st.session_state
     ss.ed_ident = ident
     ss.ed_params = params
+    ss.ed_params_ult = params
     ss.ed_reps = reps
     ss.ed_ancha_base = ancha
     ss.ed_ancha_ult = ancha
@@ -220,6 +221,12 @@ def render(df_partida: pd.DataFrame, ident: str):
     ss = st.session_state
     if ss.get("ed_ident") != ident:
         _inicializar(df_partida, ident)
+    # Al volver a esta página Streamlit ya borró el estado de las tablas:
+    # se parte de lo último que el usuario editó.
+    if f"ed_params_{ss.ed_ver_p}" not in ss:
+        ss.ed_params = ss.ed_params_ult
+    if f"ed_ancha_{ss.ed_ver}" not in ss:
+        ss.ed_ancha_base = ss.ed_ancha_ult
 
     st.markdown("#### ✏️ Ingresa o modifica tus mediciones")
     st.caption(
@@ -268,11 +275,17 @@ def render(df_partida: pd.DataFrame, ident: str):
             "umbral_calidad_c": st.column_config.NumberColumn("Umbral (°C)", format="%.1f", default=10.0),
         },
     )
+    ss.ed_params_ult = params
+    ss.ed_reps, ss.ed_origen = int(reps), origen
     nombres = [str(n).strip() if pd.notna(n) else "" for n in params["empaque"]]
     duplicados = sorted({n for n in nombres if n and nombres.count(n) > 1})
     if duplicados:
-        st.warning(f"Nombres repetidos (solo se usa el primero): {', '.join(duplicados)}")
-    _sincronizar_columnas(nombres, int(reps))
+        # No se sincronizan columnas con nombres repetidos (mezclaría sus datos).
+        st.error(f"Hay empaques con el mismo nombre: {', '.join(duplicados)}. "
+                 "Cámbialos para que cada uno sea único; mientras tanto se mantienen "
+                 "los últimos datos válidos.")
+    else:
+        _sincronizar_columnas(nombres, int(reps))
 
     st.markdown("**2 · Temperatura del agua (°C) por instante y repetición**")
     col_cfg = {"tiempo_min": st.column_config.NumberColumn(
@@ -284,12 +297,14 @@ def render(df_partida: pd.DataFrame, ident: str):
         hide_index=True, width="stretch", column_config=col_cfg,
     )
     ss.ed_ancha_ult = ancha
-    st.caption("Las celdas vacías se ignoran. El precio y los usos se ajustan en la barra lateral.")
+    st.caption("Las celdas vacías se ignoran. Precios y usos se ajustan en «Evaluación económica».")
 
     def exportar(precios: dict[str, float]) -> bytes:
         return editables_a_csv(params, ancha, int(reps), origen, precios).to_csv(
             index=False).encode("utf-8")
 
+    if duplicados:
+        return None, exportar
     crudo = editables_a_csv(params, ancha, int(reps), origen)
     if crudo.empty:
         st.info("Ingresa al menos un empaque con temperaturas para ver resultados.")

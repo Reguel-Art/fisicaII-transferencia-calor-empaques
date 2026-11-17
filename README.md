@@ -17,15 +17,20 @@ A partir de un CSV de mediciones de temperatura, la herramienta:
 - Compara **costos por uso**, con análisis de sensibilidad y S/ por °C evitado.
 - Muestra curvas con barras de error, gráficos de costo y un **ranking descargable**.
 
-## Tres formas de cargar datos (barra lateral → «1 · Datos»)
+## Secciones de la app (TermoPack)
 
-1. **📊 Ejemplo del Grupo 3**: el dataset simulado del informe.
-2. **📁 Subir CSV**: tu propio archivo; hay un botón para descargar la plantilla.
-3. **✏️ Ingresar / editar datos**: abre la pestaña **✏️ Datos** con dos tablas
-   editables (empaques con sus parámetros, y temperaturas por instante y
-   repetición). Puedes agregar o renombrar empaques, añadir instantes y cambiar
-   el número de repeticiones; todo se recalcula al instante y puedes descargar
-   el resultado como CSV para volver a subirlo después.
+- **Vista general:** indicadores clave, curvas de temperatura con bandas de
+  desviación, recomendación y comparativo. «Configurar experimento» fija el
+  límite de temperatura y el tiempo de entrega.
+- **Datos del experimento:** usar el ejemplo del Grupo 3, subir un CSV (con
+  plantilla descargable) o escribir/editar las mediciones en la propia app.
+- **Evaluación económica:** precio, usos, limpieza y otros costos por material;
+  pedidos, costo máximo y peso conservación/costo. Ranking con puntaje.
+- **Fundamento físico:** modelo de Newton y fórmulas (Q, k_ef, R) evaluadas en
+  el tiempo de entrega.
+
+Una alternativa es **viable** si todas sus lecturas hasta el tiempo de entrega
+quedan bajo el límite, tiene costo registrado y no supera el costo máximo.
 
 ## Ejecutar localmente
 
@@ -37,19 +42,21 @@ streamlit run app.py
 ## Estructura
 
 ```
-app.py                 Interfaz web (Streamlit) — punto de entrada
-core/                  Núcleo de cálculo (verificado con 23 pruebas)
+app.py                 Punto de entrada (estilo, barra lateral, navegación)
+paginas/               Vista general · Datos · Evaluación económica · Fundamento físico
+ui/                    Estado compartido, estilos TermoPack y gráficos
+editor.py              Editor de datos dentro de la app
+core/                  Núcleo de cálculo verificado con pruebas
   fisica.py            Leyes físicas
-  costos.py            Análisis económico
+  costos.py            Indicadores económicos
+  decision.py          Viabilidad y puntaje de alternativas
   datos.py             Carga y validación de CSV
   analisis.py          Motor que integra todo por empaque
 tests/                 Pruebas automatizadas
 data/                  Datasets de entrada (CSV)
-scripts/               Utilidades de uso local
-  generar_figuras.py   Genera las figuras del informe
-  construir_docx.py    Ensambla el informe .docx
+scripts/               Utilidades (figuras, informe, CSV de ejemplo)
 salidas/               Resultados generados (figuras, informe)
-documentos_fuente/     Documentos .docx originales del informe
+assets/                Logo de la universidad (paleta de la app)
 ```
 
 ## Formato del CSV de entrada
@@ -65,6 +72,8 @@ python tests/test_fisica.py
 python tests/test_costos_datos.py
 python tests/test_analisis.py
 python tests/test_editor.py
+python tests/test_decision.py
+python tests/test_estado.py
 ```
 
 ---
