@@ -22,6 +22,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 
+import editor
 from core import analisis, costos, datos, fisica
 
 RAIZ = Path(__file__).resolve().parent
@@ -61,25 +62,50 @@ def _cargar_defecto() -> pd.DataFrame:
     return datos.cargar_csv(CSV_DEFECTO)
 
 
+MODOS = ["📊 Ejemplo del Grupo 3", "📁 Subir CSV", "✏️ Ingresar / editar datos"]
+
+
 def obtener_datos():
-    """Devuelve (df, nombre_fuente) según lo que elija el usuario."""
+    """Origen de datos elegido en la barra lateral.
+
+    Devuelve (df_base, fuente, ident, editar):
+      df_base : DataFrame validado de partida (ejemplo o CSV subido)
+      ident   : identificador estable de esa fuente (claves de widgets)
+      editar  : True si el usuario quiere modificar los datos en la app
+    """
     st.sidebar.header("1 · Datos")
+    modo = st.sidebar.radio("¿Con qué datos trabajar?", MODOS, key="modo_datos")
+    editar = modo == MODOS[2]
+
+    if modo == MODOS[0]:
+        st.sidebar.caption("Dataset simulado del informe (156 lecturas).")
+        return _cargar_defecto(), CSV_DEFECTO.name, CSV_DEFECTO.name, False
+
+    etiqueta = ("Partir de un CSV propio (opcional)" if editar
+                else "Sube un CSV de mediciones")
     subido = st.sidebar.file_uploader(
-        "Sube un CSV de mediciones", type=["csv"],
-        help="Mismo formato que Grupo_3_Datos_Termicos_Web.csv",
+        etiqueta, type=["csv"], key=f"csv_{'ed' if editar else 'up'}",
+        help="Mismo formato que la plantilla (Grupo_3_Datos_Termicos_Web.csv).",
+    )
+    st.sidebar.download_button(
+        "⬇️ Descargar plantilla CSV", data=CSV_DEFECTO.read_bytes(),
+        file_name="plantilla_empaques.csv", mime="text/csv", width="stretch",
     )
     if subido is not None:
         try:
             df = datos.cargar_csv(subido)
-            st.sidebar.success(f"Cargado: {subido.name} ({len(df)} filas)")
-            return df, subido.name
         except datos.ErrorDatos as e:
             st.sidebar.error(f"Error en el archivo: {e}")
             st.stop()
-    if CSV_DEFECTO.exists():
-        st.sidebar.caption("Usando el dataset de ejemplo del Grupo 3.")
-        return _cargar_defecto(), CSV_DEFECTO.name
-    st.sidebar.warning("Sube un CSV para comenzar.")
+        st.sidebar.success(f"Cargado: {subido.name} ({len(df)} filas)")
+        return df, subido.name, f"{subido.name}:{subido.size}", editar
+
+    if editar:
+        st.sidebar.caption("Se parte del dataset de ejemplo; edítalo en la pestaña ✏️ Datos.")
+        return _cargar_defecto(), CSV_DEFECTO.name, CSV_DEFECTO.name, True
+
+    st.info("📁 Sube un CSV con tus mediciones en la barra lateral, o elige "
+            "**✏️ Ingresar / editar datos** para escribirlas directamente en la app.")
     st.stop()
 
 
@@ -105,24 +131,23 @@ def _usos_defecto(emp: str) -> int:
     return 1
 
 
-def panel_controles(df: pd.DataFrame):
+def panel_controles(df: pd.DataFrame, ident: str, precios_partida: dict[str, float]):
     empaques = datos.lista_empaques(df)
 
     st.sidebar.header("2 · Supuestos de uso")
     st.sidebar.caption("Costo por uso = precio ÷ usos. Todo se recalcula al instante.")
     precios, usos = {}, {}
     for emp in empaques:
-        p = datos.params_empaque(df, emp)
         st.sidebar.markdown(f"**{emp}**")
         c1, c2 = st.sidebar.columns(2)
         precios[emp] = c1.number_input(
             "Precio (S/)", min_value=0.0, max_value=10_000.0,
-            value=float(p.costo_empaque_pen), step=0.10, format="%.2f",
-            key=f"precio_{emp}",
+            value=float(precios_partida.get(emp, 0.0)), step=0.10, format="%.2f",
+            key=f"precio_{ident}_{emp}",
         )
         usos[emp] = c2.number_input(
             "Usos", min_value=1, max_value=1000,
-            value=_usos_defecto(emp), step=1, key=f"usos_{emp}",
+            value=_usos_defecto(emp), step=1, key=f"usos_{ident}_{emp}",
         )
 
     st.sidebar.header("3 · Umbral de calidad")
@@ -450,8 +475,35 @@ def main():
         "Carga mediciones de temperatura y compara desempeño térmico y costo."
     )
 
-    df, fuente = obtener_datos()
-    precios, usos, umbral, t = panel_controles(df)
+    df_base, fuente, ident, editar = obtener_datos()
+    precios_partida = {e: datos.params_empaque(df_base, e).costo_empaque_pen
+                       for e in datos.lista_empaques(df_base)}
+
+    cabecera = st.container()   # procedencia + KPIs (se llenan tras calcular)
+    nombres_tabs = ["📈 Curvas", "💰 Costos", "🏆 Ranking", "🔬 Física"]
+    if editar:
+        tab_datos, tab1, tab2, tab3, tab4 = st.tabs(
+            ["✏️ Datos"] + nombres_tabs, default="✏️ Datos", key="tabs_editar")
+        with tab_datos:
+            df, exportar = editor.render(df_base, ident)
+        fuente = f"Editado en la app (desde {fuente})"
+        if df is None:
+            st.stop()
+    else:
+        tab1, tab2, tab3, tab4 = st.tabs(nombres_tabs, key="tabs_ver")
+        df = df_base
+
+    if editar:   # un empaque renombrado conserva el precio de partida
+        precios_partida = {e: precios_partida.get(editor.nombre_original(e), 0.0)
+                           for e in datos.lista_empaques(df)}
+    precios, usos, umbral, t = panel_controles(df, ident, precios_partida)
+    if editar:
+        with tab_datos:
+            st.download_button(
+                "⬇️ Descargar estos datos (CSV)", data=exportar(precios),
+                file_name="mis_datos_empaques.csv", mime="text/csv",
+                help="Guarda tu trabajo; puedes volver a subirlo después.",
+            )
 
     # Precio editado en la barra lateral → reemplaza el del CSV (el motor no cambia).
     df_calc = df.copy()
@@ -462,10 +514,9 @@ def main():
     rk = analisis.ranking(res, por="spc_t")
     cols = nombres_columnas(t)
 
-    panel_procedencia(df, fuente)
-    fila_kpis(df, res, rk, umbral, t)
-
-    tab1, tab2, tab3, tab4 = st.tabs(["📈 Curvas", "💰 Costos", "🏆 Ranking", "🔬 Física"])
+    with cabecera:
+        panel_procedencia(df, fuente)
+        fila_kpis(df, res, rk, umbral, t)
 
     with tab1:
         st.plotly_chart(grafico_curvas(df, umbral, t), width="stretch")
