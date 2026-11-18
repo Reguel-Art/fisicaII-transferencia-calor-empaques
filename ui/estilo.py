@@ -31,13 +31,34 @@ html, body, .stApp, p, li, label, input, textarea, button, td, th, h1, h2, h3, h
 }}
 .stApp {{ background: {FONDO}; color: {TEXTO}; }}
 [data-testid="stHeader"] {{ background: transparent; height: 0; }}
-[data-testid="stToolbar"] {{ display: none; }}
+/* La barra de Streamlit se mantiene (allí vive el botón para abrir el menú lateral),
+   pero se ocultan sus acciones de desarrollo (Deploy, menú ⋮). */
+[data-testid="stToolbarActions"], [data-testid="stMainMenu"],
+[data-testid="stAppDeployButton"] {{ display: none; }}
+/* Botón «Menú»: abre la barra lateral cuando está plegada (siempre en celular). */
+[data-testid="stExpandSidebarButton"] {{
+  position: fixed; top: .7rem; left: .7rem; z-index: 1000;
+  display: inline-flex; align-items: center; gap: .3rem;
+  background: {AZUL}; color: #fff !important; border-radius: 10px;
+  padding: .35rem .7rem .35rem .5rem; box-shadow: 0 2px 8px rgba(20,47,102,.25);
+}}
+[data-testid="stExpandSidebarButton"] * {{ color: #fff !important; }}
+[data-testid="stExpandSidebarButton"]::after {{ content: "Menú"; font-size: .85rem; font-weight: 600; }}
+/* Botón para cerrar el menú, visible sobre el fondo azul (en celular el menú se cierra con él). */
+[data-testid="stSidebarCollapseButton"] button {{
+  display: inline-flex; align-items: center; gap: .25rem; color: #fff !important;
+  background: rgba(255,255,255,.10); border-radius: 8px; padding: .2rem .55rem;
+}}
+[data-testid="stSidebarCollapseButton"] button::after {{ content: "Cerrar"; font-size: .78rem; font-weight: 600; }}
+@media (max-width: 768px) {{ [data-testid="stSidebarCollapseButton"] {{ display: block !important; visibility: visible !important; }} }}
 .block-container {{ padding: 1.2rem 2.4rem 3rem; max-width: 1500px; }}
+/* Con el menú plegado, el botón «Menú» necesita su espacio arriba. */
+@media (max-width: 768px) {{ .block-container {{ padding-top: 3.6rem; }} }}
 
 /* ---------- Barra lateral ---------- */
 [data-testid="stSidebar"] {{ background: {AZUL_OSC}; border-right: none; }}
 [data-testid="stSidebar"] * {{ color: #DCE4F3; }}
-[data-testid="stSidebarHeader"] {{ height: .6rem; padding: 0; }}
+[data-testid="stSidebarHeader"] {{ height: 2.6rem; padding: .5rem .8rem 0; }}
 [data-testid="stSidebarUserContent"] {{ padding-top: .4rem; }}
 [data-testid="stSidebar"] [data-testid="stPageLink"] a {{
   border-radius: 10px; padding: .55rem .8rem; margin: .1rem 0;
