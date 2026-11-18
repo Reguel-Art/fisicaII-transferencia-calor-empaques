@@ -19,7 +19,7 @@ from paginas import datos_experimento, economia, fisica, vista_general
 from ui import controles, estado, estilo
 
 st.set_page_config(page_title="TermoPack · Análisis de empaques", page_icon="📦",
-                   layout="wide", initial_sidebar_state="expanded")
+                   layout="wide", initial_sidebar_state="auto")
 
 estilo.aplicar_css()
 estado.inicializar()

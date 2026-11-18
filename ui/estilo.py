@@ -108,7 +108,7 @@ div[class*="st-key-cardsel"] {{ border:1.5px solid #F6C08F; }}
 .tp-ico {{ width:30px; height:30px; border-radius:8px; background:{AZUL_SUAVE}; display:flex;
   align-items:center; justify-content:center; font-size:15px; }}
 .tp-card-tit {{ font-size:1.12rem; font-weight:700; color:{TEXTO}; }}
-.tp-card-sub {{ font-size:.78rem; color:#5A72A6; margin-top:.15rem; }}
+.tp-card-sub {{ font-size:.78rem; color:#4A6296; margin-top:.15rem; }}
 .tp-ceja-sec {{ font-size:.66rem; letter-spacing:.16em; color:{TENUE}; font-weight:600; }}
 .tp-ceja-sec::before {{ content:'●'; color:{AZUL}; margin-right:.5rem; font-size:.5rem; vertical-align:middle; }}
 .tp-banner {{ font-size:.8rem; color:{TENUE}; }}
@@ -139,13 +139,31 @@ div[class*="st-key-fila"] > [data-testid="stLayoutWrapper"] > [data-testid="stHo
     flex: 1 1 calc(50% - 1rem) !important; min-width: calc(50% - 1rem) !important; }}
   div.st-key-fila_graf > [data-testid="stLayoutWrapper"] > [data-testid="stHorizontalBlock"] > [data-testid="stColumn"],
   div.st-key-fila_eco > [data-testid="stLayoutWrapper"] > [data-testid="stHorizontalBlock"] > [data-testid="stColumn"],
+  div.st-key-fila_form > [data-testid="stLayoutWrapper"] > [data-testid="stHorizontalBlock"] > [data-testid="stColumn"],
   div.st-key-fila_cab > [data-testid="stLayoutWrapper"] > [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] {{
     flex: 1 1 100% !important; min-width: 100% !important; }}
 }}
-@media (max-width: 900px) {{
+@media (max-width: 560px) {{
   div.st-key-fila_kpis > [data-testid="stLayoutWrapper"] > [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] {{
     flex: 1 1 100% !important; min-width: 100% !important; }}
 }}
+
+/* ---------- Ajustes de la revisión de diseño ---------- */
+/* Textos secundarios de Streamlit (st.caption) con contraste AA sobre blanco. */
+[data-testid="stCaptionContainer"], [data-testid="stCaptionContainer"] p {{ color:{TENUE} !important;
+  opacity:1 !important; }}
+/* Rótulos en los extremos del deslizador, en una sola línea. */
+.tp-extremos {{ display:flex; justify-content:space-between; gap:1rem; font-size:.8rem;
+  color:{TENUE}; margin-top:-.4rem; }}
+/* «Guía del experimento» no se marca como página actual (ya lo hace Fundamento físico). */
+div.st-key-guia [data-testid="stPageLink"] a {{
+  background: transparent !important; border-color: transparent !important; box-shadow: none !important; }}
+div.st-key-guia [data-testid="stPageLink"] a:hover {{ background: rgba(255,255,255,.06) !important; }}
+/* Aviso que solo hace falta en pantallas angostas. */
+.tp-solo-movil {{ display:none; font-size:.78rem; color:{TENUE}; margin-top:-.3rem; }}
+@media (max-width: 700px) {{ .tp-solo-movil {{ display:block; }} }}
+/* Celular: la barra superior en una sola línea. */
+@media (max-width: 480px) {{ .tp-estado > span {{ display:none; }} }}
 
 /* ---------- Widgets ---------- */
 .stButton button[kind="primary"], .stDownloadButton button[kind="primary"],
@@ -231,7 +249,8 @@ def barra_lateral(paginas: dict, n_lecturas: int):
           <p>La física y los datos al servicio de un mejor delivery.</p></div>""",
         unsafe_allow_html=True,
     )
-    sb.page_link(paginas["fisica"], label="Guía del experimento  →")
+    with sb.container(key="guia"):
+        st.page_link(paginas["fisica"], label="Guía del experimento  →")
     sb.markdown(
         f"""<div class="tp-uni"><img src="data:image/png;base64,{LOGO_B64}"
                alt="Logo Universidad Científica del Sur">

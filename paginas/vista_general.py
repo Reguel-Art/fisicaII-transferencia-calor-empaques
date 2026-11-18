@@ -6,7 +6,7 @@ import numpy as np
 import streamlit as st
 
 from core import datos
-from ui import estado, graficos
+from ui import estado, graficos, tablas
 from ui.controles import PAGINAS, configurar_experimento
 from ui.estilo import barra_superior, e, encabezado, kpi, titulo_tarjeta
 
@@ -67,7 +67,7 @@ def render():
         st.page_link(PAGINAS["datos"], label="Ver datos →")
 
     st.write("")
-    a, b = st.columns([3, 1], vertical_alignment="center")
+    a, b = st.columns([2, 1], vertical_alignment="center")
     a.markdown('<div class="tp-ceja-sec">RESUMEN DEL EXPERIMENTO</div>', unsafe_allow_html=True)
     with b, st.container(horizontal=True, horizontal_alignment="right"):
         configurar_experimento()
@@ -117,12 +117,12 @@ def render():
                                "promedios_empaques.csv", "text/csv",
                                icon=":material/download:", type="tertiary",
                                help="Descargar promedios (CSV)")
-        c1, c2 = st.columns([3, 1], vertical_alignment="center")
+        c1, c2 = st.columns([2, 1], vertical_alignment="center")
         with c1:
             modo = st.segmented_control(
                 "Vista", ["Temperatura", "Variación térmica", "Promedios"],
                 default="Temperatura", required=True, key="graf_modo",
-                persist_state="session", label_visibility="collapsed")
+                persist_state="session", label_visibility="collapsed", wrap=True)
         with c2, st.container(horizontal=True, horizontal_alignment="right"):
             st.checkbox("Desviación estándar", key="ver_desv", persist_state="session")
         if modo == "Promedios":
@@ -130,7 +130,7 @@ def render():
         else:
             st.plotly_chart(
                 graficos.curvas(df, R.control, R.umbral, R.t, modo=modo, bandas=ss.ver_desv),
-                width="stretch", config={"displaylogo": False})
+                width="stretch", config={"displaylogo": False, "displayModeBar": False})
 
     with rc, st.container(key="reco"):
         st.markdown('<div class="tp-ceja-sec" style="letter-spacing:.14em">RECOMENDACIÓN DEL '
@@ -164,7 +164,6 @@ def render():
     with st.container(key="card_tabla"):
         titulo_tarjeta("Comparativo de alternativas",
                        f"Evaluado a los {R.t} min con límite de {R.umbral:.1f} °C")
-        vista = _tabla_resultados(R).iloc[:, :9]
-        st.dataframe(vista, hide_index=True, width="stretch", column_config={
-            c: st.column_config.NumberColumn(format="%.2f")
-            for c in vista.columns if c not in ("Puesto", "Empaque", "Estado")})
+        vista, cfg = tablas.para_mostrar(_tabla_resultados(R).iloc[:, :9])
+        st.dataframe(vista, hide_index=True, width="stretch", column_config=cfg,
+                     height=tablas.alto(len(vista)))

@@ -78,9 +78,9 @@ def curvas(df: pd.DataFrame, control: str | None, umbral: float, t_entrega: int,
     if not variacion:
         fig.add_hline(y=umbral, line_dash="dash", line_color=NARANJA, line_width=1.2,
                       annotation_text=f"Límite · {umbral:.1f} °C",
-                      annotation_position="bottom right",
+                      annotation_position="top left",
                       annotation_font=dict(color=NARANJA_OSC, size=12),
-                      annotation_bgcolor="#FEF2E7")
+                      )
     if t_entrega < t_fin:
         fig.add_vline(x=t_entrega, line_dash="dot", line_color="#9AA6BE",
                       annotation_text=f"Entrega · {t_entrega} min",
@@ -104,7 +104,7 @@ def costo_barras(res: pd.DataFrame, control: str | None) -> go.Figure:
     fig = go.Figure(go.Bar(
         y=r["empaque"], x=r["costo_uso"], orientation="h",
         marker=dict(color=[col[e] for e in r["empaque"]], cornerradius=6),
-        text=[f"S/ {v:.2f}" for v in r["costo_uso"]], textposition="outside",
+        text=[f"S/ {v:.2f}" for v in r["costo_uso"]], textposition="auto", cliponaxis=False,
         hovertemplate="%{y}: S/ %{x:.3f} por uso<extra></extra>",
     ))
     _base(fig, 340, showlegend=False, xaxis_title="S/ por uso")
@@ -130,7 +130,7 @@ def cuadrantes(res: pd.DataFrame, control: str | None, umbral: float, t: int) ->
     fig.add_hline(y=my, line_dash="dot", line_color="#B8C2D6")
     if y0 < umbral < y1:
         fig.add_hline(y=umbral, line_dash="dash", line_color=NARANJA,
-                      annotation_text=f"Límite {umbral:.1f} °C", annotation_position="bottom left",
+                      annotation_text=f"Límite {umbral:.1f} °C", annotation_position="bottom right",
                       annotation_font=dict(color=NARANJA_OSC, size=11))
     for ax_, ay_, xa, ya, txt in [(x0, y0, "left", "bottom", "Barato y frío ✓"),
                                   (x1, y1, "right", "top", "Caro y se calienta")]:
@@ -139,13 +139,15 @@ def cuadrantes(res: pd.DataFrame, control: str | None, umbral: float, t: int) ->
     for _, row in r.iterrows():
         fig.add_trace(go.Scatter(
             x=[row["costo_uso"]], y=[row["T_t"]], mode="markers+text",
-            text=[row["empaque"]], textposition="top center",
+            text=[row["empaque"]], cliponaxis=False,
+            textposition="top right" if row["costo_uso"] <= mx else "top left",
             marker=dict(size=16, color=col[row["empaque"]], line=dict(width=2, color="#fff")),
             showlegend=False,
             hovertemplate=(f"<b>{row['empaque']}</b><br>S/ %{{x:.3f}} por uso"
                            f"<br>T = %{{y:.2f}} °C<extra></extra>"),
         ))
     _base(fig, 340, xaxis_title="Costo por uso (S/)", yaxis_title=f"T a los {t} min (°C)")
+    fig.update_layout(margin=dict(t=30, b=40, l=10, r=48))   # aire para los nombres largos
     fig.update_xaxes(range=[x0, x1])
     fig.update_yaxes(range=[y0, y1])
     return fig

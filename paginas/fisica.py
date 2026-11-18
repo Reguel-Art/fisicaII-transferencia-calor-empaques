@@ -2,12 +2,11 @@
 
 from __future__ import annotations
 
-import numpy as np
 import pandas as pd
 import streamlit as st
 
 from core import datos
-from ui import estado
+from ui import estado, tablas
 from ui.controles import configurar_experimento
 from ui.estilo import barra_superior, encabezado, titulo_tarjeta
 
@@ -22,13 +21,14 @@ def _tarjetas(R):
     if ss.get("fis_emp") not in empaques:
         ss.fis_emp = defecto
     emp = st.segmented_control("Empaque", empaques, key="fis_emp", required=True,
-                               persist_state="session",
+                               persist_state="session", width="stretch",
                                label_visibility="collapsed")
     r = res[res["empaque"] == emp].iloc[0]
     p = datos.params_empaque(df, emp)
     t_amb = datos.temperatura_ambiente(df)
 
-    c1, c2, c3 = st.columns(3)
+    with st.container(key="fila_form"):
+        c1, c2, c3 = st.columns(3)
     with c1, st.container(key="card_f1"):
         titulo_tarjeta("Calor sensible absorbido", "Energía que ganó el agua")
         st.latex(r"Q = m\,c\,\Delta T")
@@ -68,7 +68,7 @@ def render():
     st.write("")
 
     with st.container(key="card_modelo"):
-        a, b = st.columns([3, 1])
+        a, b = st.columns([2, 1])
         with a:
             titulo_tarjeta("Modelo de calentamiento",
                            "Ley de enfriamiento de Newton para una bebida fría en un ambiente cálido")
@@ -76,7 +76,9 @@ def render():
             configurar_experimento()
         c1, c2 = st.columns([1.1, 1])
         with c1:
-            st.latex(r"T(t) = T_a + (T_0 - T_a)\,e^{-k t} \qquad U\!\cdot\!A = k\,m\,c")
+            # Dos ecuaciones separadas: juntas no caben en un celular.
+            st.latex(r"T(t) = T_a + (T_0 - T_a)\,e^{-k t}")
+            st.latex(r"U\!\cdot\!A = k\,m\,c")
             st.markdown(
                 "La bebida gana calor del ambiente por **conducción** a través de las paredes, "
                 "**convección** del aire y el líquido, y **radiación**. Un buen empaque reduce "
@@ -102,8 +104,11 @@ def render():
                 "r2": "R²", "ua_fit_WK": "U·A ajustado (W/K)", "r_cond_KW": "R cond. (K/W)",
                 "ua_cond_WK": "U·A cond. (W/K)", "qdot_t": "Q̇ (W)",
                 "t_umbral_min": "t hasta límite (min)"}
-        st.dataframe(R.res[list(cols)].replace([np.inf], np.nan).rename(columns=cols),
-                     hide_index=True, width="stretch")
+        precisas = {"R²": 4, "U·A ajustado (W/K)": 4, "U·A cond. (W/K)": 4, "R cond. (K/W)": 3}
+        vista, cfg = tablas.para_mostrar(R.res[list(cols)].rename(columns=cols),
+                                         decimales=precisas)
+        st.dataframe(vista, hide_index=True, width="stretch", column_config=cfg,
+                     height=tablas.alto(len(vista)))
         st.markdown(
             '<div class="tp-nota"><b>U·A ajustado vs. U·A conductivo</b>El ajustado (desde el '
             'calentamiento real, k·m·c) suele ser mayor que el conductivo (solo la pared, '

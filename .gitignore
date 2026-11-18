@@ -16,3 +16,9 @@ streamlit.log
 
 # Salidas locales (se regeneran con los scripts)
 # Nota: las figuras SÍ se versionan porque el informe las usa.
+
+# Revisión de diseño (OpenDesigner): se versiona el informe, no las capturas ni mediciones
+opendesigner/review/shots/
+opendesigner/review/probes/
+opendesigner/review/focus/
+opendesigner/review/findings.measured.prev.json

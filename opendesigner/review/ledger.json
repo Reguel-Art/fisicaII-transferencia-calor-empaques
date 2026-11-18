@@ -1,0 +1,452 @@
+{
+  "cells": {
+    "/|390x844|light": {
+      "status": "done",
+      "evidence": [
+        "opendesigner/review/probes/home-390-light.json",
+        "opendesigner/review/shots/home-390-light-carga-menu.jpg",
+        "opendesigner/review/shots/home-390-light-s00.jpg",
+        "opendesigner/review/shots/home-390-light-s01.jpg",
+        "opendesigner/review/shots/home-390-light-s02.jpg",
+        "opendesigner/review/shots/home-390-light-s03.jpg"
+      ],
+      "why": "",
+      "at": "2026-11-17T19:47:39"
+    },
+    "/|768x900|light": {
+      "status": "done",
+      "evidence": [
+        "opendesigner/review/probes/home-768-light.json",
+        "opendesigner/review/shots/home-768-light-s00.jpg",
+        "opendesigner/review/shots/home-768-light-s01.jpg",
+        "opendesigner/review/shots/home-768-light-s02.jpg"
+      ],
+      "why": "",
+      "at": "2026-11-17T19:47:39"
+    },
+    "/|1440x900|light": {
+      "status": "done",
+      "evidence": [
+        "opendesigner/review/probes/home-1440-light.json",
+        "opendesigner/review/shots/home-1440-light-s00.jpg",
+        "opendesigner/review/shots/home-1440-light-s01.jpg"
+      ],
+      "why": "",
+      "at": "2026-11-17T19:47:39"
+    },
+    "/datos|390x844|light": {
+      "status": "done",
+      "evidence": [
+        "opendesigner/review/probes/datos-390-light.json",
+        "opendesigner/review/shots/datos-390-light-s00.jpg",
+        "opendesigner/review/shots/datos-390-light-s01.jpg"
+      ],
+      "why": "",
+      "at": "2026-11-17T19:47:39"
+    },
+    "/datos|768x900|light": {
+      "status": "done",
+      "evidence": [
+        "opendesigner/review/probes/datos-768-light.json",
+        "opendesigner/review/shots/datos-768-light-s00.jpg"
+      ],
+      "why": "",
+      "at": "2026-11-17T19:47:39"
+    },
+    "/datos|1440x900|light": {
+      "status": "done",
+      "evidence": [
+        "opendesigner/review/probes/datos-1440-light.json",
+        "opendesigner/review/shots/datos-1440-light-s00.jpg"
+      ],
+      "why": "",
+      "at": "2026-11-17T19:47:39"
+    },
+    "/economia|390x844|light": {
+      "status": "done",
+      "evidence": [
+        "opendesigner/review/probes/economia-390-light.json",
+        "opendesigner/review/shots/economia-390-light-s00.jpg",
+        "opendesigner/review/shots/economia-390-light-s01.jpg",
+        "opendesigner/review/shots/economia-390-light-s02.jpg",
+        "opendesigner/review/shots/economia-390-light-s03.jpg"
+      ],
+      "why": "",
+      "at": "2026-11-17T19:47:40"
+    },
+    "/economia|768x900|light": {
+      "status": "done",
+      "evidence": [
+        "opendesigner/review/probes/economia-768-light.json",
+        "opendesigner/review/shots/economia-768-light-s00.jpg",
+        "opendesigner/review/shots/economia-768-light-s01.jpg"
+      ],
+      "why": "",
+      "at": "2026-11-17T19:47:40"
+    },
+    "/economia|1440x900|light": {
+      "status": "done",
+      "evidence": [
+        "opendesigner/review/probes/economia-1440-light.json",
+        "opendesigner/review/shots/economia-1440-light-s00.jpg",
+        "opendesigner/review/shots/economia-1440-light-s01.jpg"
+      ],
+      "why": "",
+      "at": "2026-11-17T19:47:40"
+    },
+    "/fisica|390x844|light": {
+      "status": "done",
+      "evidence": [
+        "opendesigner/review/probes/fisica-390-light.json",
+        "opendesigner/review/shots/fisica-390-light-s00.jpg",
+        "opendesigner/review/shots/fisica-390-light-s01.jpg",
+        "opendesigner/review/shots/fisica-390-light-s02.jpg"
+      ],
+      "why": "",
+      "at": "2026-11-17T19:47:40"
+    },
+    "/fisica|768x900|light": {
+      "status": "done",
+      "evidence": [
+        "opendesigner/review/probes/fisica-768-light.json",
+        "opendesigner/review/shots/fisica-768-light-s00.jpg"
+      ],
+      "why": "",
+      "at": "2026-11-17T19:47:40"
+    },
+    "/fisica|1440x900|light": {
+      "status": "done",
+      "evidence": [
+        "opendesigner/review/probes/fisica-1440-light.json",
+        "opendesigner/review/shots/fisica-1440-light-s00.jpg",
+        "opendesigner/review/shots/fisica-1440-light-s01.jpg"
+      ],
+      "why": "",
+      "at": "2026-11-17T19:47:41"
+    },
+    "task:/|scroll-walk": {
+      "status": "done",
+      "evidence": [
+        "opendesigner/review/shots"
+      ],
+      "why": "",
+      "at": "2026-11-17T19:47:41"
+    },
+    "task:/|focus-walk": {
+      "status": "done",
+      "evidence": [
+        "opendesigner/review/focus/focus-home-390.json"
+      ],
+      "why": "",
+      "at": "2026-11-17T19:47:47"
+    },
+    "task:/|hover-and-press": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "No se hizo la pasada de hover por tiempo; se revisó el foco con teclado en la Vista general",
+      "at": "2026-11-17T19:47:42"
+    },
+    "task:/|states-and-data": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "No se probaron datos vacíos, con error o muy largos en esta pasada",
+      "at": "2026-11-17T19:47:42"
+    },
+    "task:/|motion": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "Solo hay transiciones propias de Streamlit (barra lateral); no hay animaciones de la app",
+      "at": "2026-11-17T19:47:41"
+    },
+    "task:/|stress-text": {
+      "status": "done",
+      "evidence": [
+        "opendesigner/review/probes/home-1440-light-stress-translate.json"
+      ],
+      "why": "",
+      "at": "2026-11-17T19:47:47"
+    },
+    "task:/|reduced-motion": {
+      "status": "blocked",
+      "evidence": [],
+      "why": "El navegador integrado no puede simular «reducir movimiento»",
+      "at": "2026-11-17T19:47:41"
+    },
+    "task:/|forced-colors": {
+      "status": "blocked",
+      "evidence": [],
+      "why": "El navegador integrado no puede simular colores forzados",
+      "at": "2026-11-17T19:47:41"
+    },
+    "task:/|console-and-network": {
+      "status": "done",
+      "evidence": [],
+      "why": "Sin errores en la consola al cargar y recorrer las páginas",
+      "at": "2026-11-17T19:47:41"
+    },
+    "task:/|letter-reveals": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "La app no tiene textos que aparecen letra por letra",
+      "at": "2026-11-17T19:47:41"
+    },
+    "task:/|text-pixels": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "No hay texto sobre fotos ni degradados",
+      "at": "2026-11-17T19:47:42"
+    },
+    "task:/|floating-bars": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "No hay barras fijas además de la barra lateral, revisada aparte",
+      "at": "2026-11-17T19:47:42"
+    },
+    "task:/|toggles": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "Solo se operó el selector de vista en la Vista general",
+      "at": "2026-11-17T19:47:42"
+    },
+    "task:/datos|scroll-walk": {
+      "status": "done",
+      "evidence": [
+        "opendesigner/review/shots"
+      ],
+      "why": "",
+      "at": "2026-11-17T19:47:42"
+    },
+    "task:/datos|focus-walk": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "Recorrido con Tab hecho solo en la Vista general",
+      "at": "2026-11-17T19:47:47"
+    },
+    "task:/datos|hover-and-press": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "No se hizo la pasada de hover por tiempo; se revisó el foco con teclado en la Vista general",
+      "at": "2026-11-17T19:47:43"
+    },
+    "task:/datos|states-and-data": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "No se probaron datos vacíos, con error o muy largos en esta pasada",
+      "at": "2026-11-17T19:47:44"
+    },
+    "task:/datos|motion": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "Solo hay transiciones propias de Streamlit (barra lateral); no hay animaciones de la app",
+      "at": "2026-11-17T19:47:43"
+    },
+    "task:/datos|stress-text": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "Prueba de texto largo hecha solo en la Vista general",
+      "at": "2026-11-17T19:47:48"
+    },
+    "task:/datos|reduced-motion": {
+      "status": "blocked",
+      "evidence": [],
+      "why": "El navegador integrado no puede simular «reducir movimiento»",
+      "at": "2026-11-17T19:47:43"
+    },
+    "task:/datos|forced-colors": {
+      "status": "blocked",
+      "evidence": [],
+      "why": "El navegador integrado no puede simular colores forzados",
+      "at": "2026-11-17T19:47:43"
+    },
+    "task:/datos|console-and-network": {
+      "status": "done",
+      "evidence": [],
+      "why": "Sin errores en la consola al cargar y recorrer las páginas",
+      "at": "2026-11-17T19:47:42"
+    },
+    "task:/datos|letter-reveals": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "La app no tiene textos que aparecen letra por letra",
+      "at": "2026-11-17T19:47:43"
+    },
+    "task:/datos|text-pixels": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "No hay texto sobre fotos ni degradados",
+      "at": "2026-11-17T19:47:43"
+    },
+    "task:/datos|floating-bars": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "No hay barras fijas además de la barra lateral, revisada aparte",
+      "at": "2026-11-17T19:47:43"
+    },
+    "task:/datos|toggles": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "Solo se operó el selector de vista en la Vista general",
+      "at": "2026-11-17T19:47:44"
+    },
+    "task:/economia|scroll-walk": {
+      "status": "done",
+      "evidence": [
+        "opendesigner/review/shots"
+      ],
+      "why": "",
+      "at": "2026-11-17T19:47:44"
+    },
+    "task:/economia|focus-walk": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "Recorrido con Tab hecho solo en la Vista general",
+      "at": "2026-11-17T19:47:48"
+    },
+    "task:/economia|hover-and-press": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "No se hizo la pasada de hover por tiempo; se revisó el foco con teclado en la Vista general",
+      "at": "2026-11-17T19:47:45"
+    },
+    "task:/economia|states-and-data": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "No se probaron datos vacíos, con error o muy largos en esta pasada",
+      "at": "2026-11-17T19:47:45"
+    },
+    "task:/economia|motion": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "Solo hay transiciones propias de Streamlit (barra lateral); no hay animaciones de la app",
+      "at": "2026-11-17T19:47:45"
+    },
+    "task:/economia|stress-text": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "Prueba de texto largo hecha solo en la Vista general",
+      "at": "2026-11-17T19:47:48"
+    },
+    "task:/economia|reduced-motion": {
+      "status": "blocked",
+      "evidence": [],
+      "why": "El navegador integrado no puede simular «reducir movimiento»",
+      "at": "2026-11-17T19:47:44"
+    },
+    "task:/economia|forced-colors": {
+      "status": "blocked",
+      "evidence": [],
+      "why": "El navegador integrado no puede simular colores forzados",
+      "at": "2026-11-17T19:47:44"
+    },
+    "task:/economia|console-and-network": {
+      "status": "done",
+      "evidence": [],
+      "why": "Sin errores en la consola al cargar y recorrer las páginas",
+      "at": "2026-11-17T19:47:44"
+    },
+    "task:/economia|letter-reveals": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "La app no tiene textos que aparecen letra por letra",
+      "at": "2026-11-17T19:47:45"
+    },
+    "task:/economia|text-pixels": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "No hay texto sobre fotos ni degradados",
+      "at": "2026-11-17T19:47:45"
+    },
+    "task:/economia|floating-bars": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "No hay barras fijas además de la barra lateral, revisada aparte",
+      "at": "2026-11-17T19:47:45"
+    },
+    "task:/economia|toggles": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "Solo se operó el selector de vista en la Vista general",
+      "at": "2026-11-17T19:47:45"
+    },
+    "task:/fisica|scroll-walk": {
+      "status": "done",
+      "evidence": [
+        "opendesigner/review/shots"
+      ],
+      "why": "",
+      "at": "2026-11-17T19:47:46"
+    },
+    "task:/fisica|focus-walk": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "Recorrido con Tab hecho solo en la Vista general",
+      "at": "2026-11-17T19:47:48"
+    },
+    "task:/fisica|hover-and-press": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "No se hizo la pasada de hover por tiempo; se revisó el foco con teclado en la Vista general",
+      "at": "2026-11-17T19:47:47"
+    },
+    "task:/fisica|states-and-data": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "No se probaron datos vacíos, con error o muy largos en esta pasada",
+      "at": "2026-11-17T19:47:47"
+    },
+    "task:/fisica|motion": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "Solo hay transiciones propias de Streamlit (barra lateral); no hay animaciones de la app",
+      "at": "2026-11-17T19:47:46"
+    },
+    "task:/fisica|stress-text": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "Prueba de texto largo hecha solo en la Vista general",
+      "at": "2026-11-17T19:47:48"
+    },
+    "task:/fisica|reduced-motion": {
+      "status": "blocked",
+      "evidence": [],
+      "why": "El navegador integrado no puede simular «reducir movimiento»",
+      "at": "2026-11-17T19:47:46"
+    },
+    "task:/fisica|forced-colors": {
+      "status": "blocked",
+      "evidence": [],
+      "why": "El navegador integrado no puede simular colores forzados",
+      "at": "2026-11-17T19:47:46"
+    },
+    "task:/fisica|console-and-network": {
+      "status": "done",
+      "evidence": [],
+      "why": "Sin errores en la consola al cargar y recorrer las páginas",
+      "at": "2026-11-17T19:47:46"
+    },
+    "task:/fisica|letter-reveals": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "La app no tiene textos que aparecen letra por letra",
+      "at": "2026-11-17T19:47:46"
+    },
+    "task:/fisica|text-pixels": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "No hay texto sobre fotos ni degradados",
+      "at": "2026-11-17T19:47:46"
+    },
+    "task:/fisica|floating-bars": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "No hay barras fijas además de la barra lateral, revisada aparte",
+      "at": "2026-11-17T19:47:47"
+    },
+    "task:/fisica|toggles": {
+      "status": "skipped",
+      "evidence": [],
+      "why": "Solo se operó el selector de vista en la Vista general",
+      "at": "2026-11-17T19:47:47"
+    }
+  }
+}

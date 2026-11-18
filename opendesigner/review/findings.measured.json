@@ -1,0 +1,1095 @@
+{
+  "made": "2026-11-17T19:57:42",
+  "system": null,
+  "probes": 14,
+  "inputs": [
+    "datos-1440-light.json",
+    "datos-390-light.json",
+    "datos-768-light.json",
+    "economia-1440-light.json",
+    "economia-390-light.json",
+    "economia-768-light.json",
+    "fisica-1440-light.json",
+    "fisica-390-light.json",
+    "fisica-768-light.json",
+    "focus-home-390.json",
+    "home-1440-light-stress-translate.json",
+    "home-1440-light.json",
+    "home-390-light.json",
+    "home-768-light.json"
+  ],
+  "findings": [
+    {
+      "id": "M-IN02-1468",
+      "case": "IN-02",
+      "severity": "error",
+      "basis": "measured",
+      "title": "The focus ring is removed and nothing replaces it",
+      "where": [
+        "/datos · 1440x900 · dark · reduced motion",
+        "/datos · 390x844 · dark · reduced motion",
+        "/datos · 768x1024 · dark · reduced motion",
+        "/economia · 1440x900 · dark · reduced motion",
+        "/economia · 390x844 · dark · reduced motion",
+        "/economia · 768x1024 · dark · reduced motion",
+        "/fisica · 1440x900 · dark · reduced motion",
+        "/fisica · 390x844 · dark · reduced motion",
+        "/fisica · 768x1024 · dark · reduced motion",
+        "/ · 1440x900 · dark · stress: translate · reduced motion",
+        "/ · 1440x900 · dark · reduced motion",
+        "/ · 390x844 · dark · reduced motion",
+        "/ · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "5 control(s), e.g. div.stApp.stAppEmbeddingId-tooaizs7qmrf > div.stAppViewContainer.appview-container > a.st-emotion-cache-hmusyd.eksftaj1",
+      "expected": "a visible focus indicator (2 px ring, 2 px offset, not color alone)",
+      "evidence": [
+        "div.stApp.stAppEmbeddingId-tooaizs7qmrf > div.stAppViewContainer.appview-container > a.st-emotion-cache-hmusyd.eksftaj1",
+        "main#stMain",
+        "div.stButtonGroup.st-emotion-cache-68zbsl > div.st-emotion-cache-1eddh7x.e1aouyeq26 > button.st-emotion-cache-1mcz6sg.e1",
+        "div.st-emotion-cache-19exxan.e579mqo0 > div.st-emotion-cache-1k5fi8b.e579mqo1 > button.st-emotion-cache-49bqws.e579mqo2:",
+        "div.stApp.stAppEmbeddingId-tooanuy05zmo > div.stAppViewContainer.appview-container > a.st-emotion-cache-hmusyd.eksftaj1",
+        "div.stButtonGroup.st-emotion-cache-8atqhb > div.st-emotion-cache-1iw6lyw.e1aouyeq26 > button.st-emotion-cache-1b8dq7g.e1"
+      ],
+      "fix": "replace outline: none with a :focus-visible style",
+      "standard": "WCAG 2.4.7 (failure F78)",
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-MS04-3512",
+      "case": "MS-04",
+      "severity": "error",
+      "basis": "measured",
+      "title": "Text contrast 1:1 is below 4.5:1",
+      "where": [
+        "/economia · 1440x900 · dark · reduced motion",
+        "/economia · 390x844 · dark · reduced motion",
+        "/economia · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "#1d428a on #1d428a, 14 px, 1 element(s)",
+      "expected": "4.5:1 (no rounding up: 4.49 fails)",
+      "evidence": [
+        "div.st-emotion-cache-18kk8l8.e13xtgje4:nth-of-type(2) > div.st-emotion-cache-ij0v5j.e1yqkw3v0 > p"
+      ],
+      "fix": "darken the text or lighten the surface with a token pair that passes; check the same pair in dark mode",
+      "standard": "WCAG 1.4.3",
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-MS04-5739",
+      "case": "MS-04",
+      "severity": "error",
+      "basis": "measured",
+      "title": "Text contrast 2.28:1 is below 3.0:1",
+      "where": [
+        "/datos · 1440x900 · dark · reduced motion",
+        "/datos · 390x844 · dark · reduced motion",
+        "/datos · 768x1024 · dark · reduced motion",
+        "/economia · 1440x900 · dark · reduced motion",
+        "/economia · 390x844 · dark · reduced motion",
+        "/economia · 768x1024 · dark · reduced motion",
+        "/fisica · 1440x900 · dark · reduced motion",
+        "/fisica · 390x844 · dark · reduced motion",
+        "/fisica · 768x1024 · dark · reduced motion",
+        "/ · 1440x900 · dark · stress: translate · reduced motion",
+        "/ · 1440x900 · dark · reduced motion",
+        "/ · 390x844 · dark · reduced motion",
+        "/ · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "#f28c35 on #f5f7fb, 37.4 px, 1 element(s)",
+      "expected": "3.0:1 (no rounding up: 4.49 fails)",
+      "evidence": [
+        "div.st-emotion-cache-nufe5w.e1yqkw3v0 > div.tp-titulo:nth-of-type(2) > i"
+      ],
+      "fix": "darken the text or lighten the surface with a token pair that passes; check the same pair in dark mode",
+      "standard": "WCAG 1.4.3",
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-MS06-8122",
+      "case": "MS-06",
+      "severity": "error",
+      "basis": "measured",
+      "title": "Targets smaller than 24x24 px with another target close by",
+      "where": [
+        "/datos · 390x844 · dark · reduced motion",
+        "/datos · 768x1024 · dark · reduced motion",
+        "/economia · 1440x900 · dark · reduced motion",
+        "/economia · 390x844 · dark · reduced motion",
+        "/economia · 768x1024 · dark · reduced motion",
+        "/fisica · 390x844 · dark · reduced motion",
+        "/fisica · 768x1024 · dark · reduced motion",
+        "/ · 1440x900 · dark · stress: translate · reduced motion",
+        "/ · 1440x900 · dark · reduced motion",
+        "/ · 390x844 · dark · reduced motion",
+        "/ · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "1 target(s): div.stApp.stAppEmbeddingId-tooaizs7qmrf > div.stAppViewContainer.appview-container > a.st-emotion-cache-hmusyd.eksftaj1 1x1",
+      "expected": "at least 24x24 CSS px, or 24 px of clear space around each (WCAG 2.5.8)",
+      "evidence": [
+        "div.stApp.stAppEmbeddingId-tooaizs7qmrf > div.stAppViewContainer.appview-container > a.st-emotion-cache-hmusyd.eksftaj1",
+        "span.stTooltipIcon.st-emotion-cache-1iwapfg > span.stTooltipHoverTarget > button.st-emotion-cache-be9t1i.ef3bkur0",
+        "input#react-aria609684527-\\:r9g\\:-0",
+        "div.stApp.stAppEmbeddingId-tooanuy05zmo > div.stAppViewContainer.appview-container > a.st-emotion-cache-hmusyd.eksftaj1",
+        "input#react-aria609684527-\\:r6j\\:-0",
+        "span.stTooltipIcon.st-emotion-cache-1iwapfg > span.stTooltipHoverTarget > button.st-emotion-cache-vo6tiu.e1aouyeq3"
+      ],
+      "fix": "raise min-width and min-height, or add padding to the hit area",
+      "standard": "WCAG 2.5.8",
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-EN08-8945",
+      "case": "EN-08",
+      "severity": "warn",
+      "basis": "measured",
+      "title": "Fonts downloaded but not used",
+      "where": [
+        "/datos · 1440x900 · dark · reduced motion",
+        "/datos · 390x844 · dark · reduced motion",
+        "/datos · 768x1024 · dark · reduced motion",
+        "/economia · 1440x900 · dark · reduced motion",
+        "/economia · 390x844 · dark · reduced motion",
+        "/economia · 768x1024 · dark · reduced motion",
+        "/fisica · 1440x900 · dark · reduced motion",
+        "/fisica · 390x844 · dark · reduced motion",
+        "/fisica · 768x1024 · dark · reduced motion",
+        "/ · 1440x900 · dark · reduced motion",
+        "/ · 390x844 · dark · reduced motion",
+        "/ · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "1 of 3 loaded families draw no visible text: Source Sans (1 face(s))",
+      "expected": "load only the families and weights the page draws (one or two families, preflight 10)",
+      "evidence": [],
+      "fix": "remove the @font-face, preload or font link for these; text drawn only by ::before or ::after is not counted, so check an icon font first",
+      "standard": "preflight 10",
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-IN02-8964",
+      "case": "IN-02",
+      "severity": "warn",
+      "basis": "operated",
+      "title": "Focus ring thinner than 2 px",
+      "where": [
+        "/ · 390x844 · dark · reduced motion"
+      ],
+      "measured": "9 stops: label.st-emotion-cache-s4rnaq.e1hn2pbo4 > span > input (Tab 2); div#modebar-26ba71 > div.modebar-group:nth-of-type(1) > button.modebar-btn (Tab 3); div#modebar-26ba71 > div.modebar-group:nth-of-type(2) > button.modebar-btn.active:nth-of-type(1) (Tab 4); div#modebar-26ba71 > div.modebar-group:nth-of-type(2) > button.modebar-btn:nth-of-type(2) (Tab 5)",
+      "expected": "2 px ring at a 2 px offset",
+      "evidence": [
+        "label.st-emotion-cache-s4rnaq.e1hn2pbo4 > span > input",
+        "div#modebar-26ba71 > div.modebar-group:nth-of-type(1) > button.modebar-btn",
+        "div#modebar-26ba71 > div.modebar-group:nth-of-type(2) > button.modebar-btn.active:nth-of-type(1)",
+        "div#modebar-26ba71 > div.modebar-group:nth-of-type(2) > button.modebar-btn:nth-of-type(2)"
+      ],
+      "fix": null,
+      "standard": "guardrails 4",
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-IN03-9619",
+      "case": "IN-03",
+      "severity": "warn",
+      "basis": "measured",
+      "title": "Duplicate ids",
+      "where": [
+        "/economia · 1440x900 · dark · reduced motion",
+        "/economia · 390x844 · dark · reduced motion",
+        "/economia · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "glide-cell-0-0, glide-cell-1-0, glide-cell-2-0, glide-cell-3-0, glide-cell-4-0",
+      "expected": "each id once (labels and aria-labelledby point at ids)",
+      "evidence": [
+        "#glide-cell-0-0"
+      ],
+      "fix": null,
+      "standard": "HTML",
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-IN04-9748",
+      "case": "IN-04",
+      "severity": "warn",
+      "basis": "measured",
+      "title": "Touch targets under 44 px",
+      "where": [
+        "/datos · 390x844 · dark · reduced motion",
+        "/economia · 390x844 · dark · reduced motion",
+        "/fisica · 390x844 · dark · reduced motion",
+        "/ · 390x844 · dark · reduced motion"
+      ],
+      "measured": "1 target(s), e.g. div.stApp.stAppEmbeddingId-tooaizs7qmrf > div.stAppViewContainer.appview-container > a.st-emotion-cache-hmusyd.eksftaj1 at 1x1",
+      "expected": "Apple's default control size is 44 pt (minimum 28 pt); Android recommends 48 dp",
+      "evidence": [
+        "div.stApp.stAppEmbeddingId-tooaizs7qmrf > div.stAppViewContainer.appview-container > a.st-emotion-cache-hmusyd.eksftaj1",
+        "div.stApp.stAppEmbeddingId-tooanuy05zmo > div.stAppViewContainer.appview-container > a.st-emotion-cache-hmusyd.eksftaj1",
+        "span.stTooltipIcon.st-emotion-cache-1iwapfg > span.stTooltipHoverTarget > button.st-emotion-cache-be9t1i.ef3bkur0",
+        "input#react-aria474335561-\\:rq\\:-0",
+        "div.stDownloadButton > div.st-emotion-cache-ngypfu.e1aouyeq19:nth-of-type(2) > button.st-emotion-cache-vo6tiu.e1aouyeq3",
+        "label.st-emotion-cache-s4rnaq.e1hn2pbo4 > span > input"
+      ],
+      "fix": "enlarge the hit area on touch (padding, or an ::after inset)",
+      "standard": "Apple HIG, Android accessibility guide",
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-IN08-7821",
+      "case": "IN-08",
+      "severity": "warn",
+      "basis": "measured",
+      "title": "Controls a keyboard can reach but nobody can see",
+      "where": [
+        "/datos · 1440x900 · dark · reduced motion",
+        "/datos · 768x1024 · dark · reduced motion",
+        "/economia · 1440x900 · dark · reduced motion",
+        "/economia · 768x1024 · dark · reduced motion",
+        "/fisica · 1440x900 · dark · reduced motion",
+        "/fisica · 768x1024 · dark · reduced motion",
+        "/ · 1440x900 · dark · stress: translate · reduced motion",
+        "/ · 1440x900 · dark · reduced motion",
+        "/ · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "4: div > span.stTooltipHoverTarget > button.st-emotion-cache-fl5cs5.e1aouyeq20 (opacity 0); div:nth-of-type(2) > span.stTooltipHoverTarget > button.st-emotion-cache-fl5cs5.e1aouyeq20 (opacity 0); div:nth-of-type(3) > span.stTooltipHoverTarget > button.st-emotion-cache-fl5cs5.e1aouyeq20 (opacity 0)",
+      "expected": "focusable things are visible when focused",
+      "evidence": [
+        "div > span.stTooltipHoverTarget > button.st-emotion-cache-fl5cs5.e1aouyeq20",
+        "div:nth-of-type(2) > span.stTooltipHoverTarget > button.st-emotion-cache-fl5cs5.e1aouyeq20",
+        "div:nth-of-type(3) > span.stTooltipHoverTarget > button.st-emotion-cache-fl5cs5.e1aouyeq20",
+        "div#modebar-44e5a3 > div.modebar-group:nth-of-type(1) > button.modebar-btn",
+        "div#modebar-44e5a3 > div.modebar-group:nth-of-type(2) > button.modebar-btn.active:nth-of-type(1)",
+        "div#modebar-44e5a3 > div.modebar-group:nth-of-type(2) > button.modebar-btn:nth-of-type(2)"
+      ],
+      "fix": "hide with display: none or inert until they are meant to appear",
+      "standard": "WCAG 2.4.7 / 1.3.2",
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-MS01-7182",
+      "case": "MS-01",
+      "severity": "warn",
+      "basis": "measured",
+      "title": "Spacing off the 4 px grid (22 value(s), 83 of 163 uses)",
+      "where": [
+        "/datos · 1440x900 · dark · reduced motion",
+        "/datos · 390x844 · dark · reduced motion",
+        "/datos · 768x1024 · dark · reduced motion",
+        "/economia · 1440x900 · dark · reduced motion",
+        "/economia · 390x844 · dark · reduced motion",
+        "/economia · 768x1024 · dark · reduced motion",
+        "/fisica · 1440x900 · dark · reduced motion",
+        "/fisica · 390x844 · dark · reduced motion",
+        "/fisica · 768x1024 · dark · reduced motion",
+        "/ · 1440x900 · dark · reduced motion",
+        "/ · 390x844 · dark · reduced motion",
+        "/ · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "8.8px x10; 12.8px x10; 1.6px x10; 6px x8; 11.2px x6; 3.2px x4",
+      "expected": "multiples of 4 px",
+      "evidence": [
+        "div.stPageLink > div.st-emotion-cache-1ofqig9.evng2kd0 > a.st-emotion-cache-1ew5you.evng2kd1",
+        "div > span.stTooltipHoverTarget > button.st-emotion-cache-fl5cs5.e1aouyeq20",
+        "div.st-emotion-cache-k2h9z6.ef3bkur2 > div.st-emotion-cache-rhumdg.e1yqkw3v0 > div.tp-logo:nth-of-type(1)",
+        "div.stVerticalBlock.st-emotion-cache-1a7fwqm > div.st-emotion-cache-1vfi2s9.e399r295:nth-of-type(4) > div.stVerticalBloc",
+        "div.stVerticalBlock.st-emotion-cache-1p8n0nm > div.st-emotion-cache-1vfi2s9.e399r295 > div.stVerticalBlock.st-key-card_c",
+        "span.katex-html:nth-of-type(2) > span.base:nth-of-type(1) > span.mord.mathnormal:nth-of-type(2)"
+      ],
+      "fix": "use the spacing tokens; 1-2 px values are usually borders or browser defaults",
+      "standard": "tokens",
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-MS02-1035",
+      "case": "MS-02",
+      "severity": "warn",
+      "basis": "measured",
+      "title": "15 font sizes",
+      "where": [
+        "/datos · 1440x900 · dark · reduced motion",
+        "/datos · 390x844 · dark · reduced motion",
+        "/datos · 768x1024 · dark · reduced motion",
+        "/economia · 1440x900 · dark · reduced motion",
+        "/economia · 390x844 · dark · reduced motion",
+        "/economia · 768x1024 · dark · reduced motion",
+        "/fisica · 1440x900 · dark · reduced motion",
+        "/fisica · 390x844 · dark · reduced motion",
+        "/fisica · 768x1024 · dark · reduced motion",
+        "/ · 1440x900 · dark · reduced motion",
+        "/ · 390x844 · dark · reduced motion",
+        "/ · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 14, 14.5, 16, 18, 23, 37.5; within 10% of each other: 9/9.5, 9.5/10, 10/10.5, 10.5/11",
+      "expected": "about 8 sizes at most, all from one scale, none within 10% of another (preflight 7)",
+      "evidence": [],
+      "fix": "map each size to the nearest step of one scale",
+      "standard": "preflight 7",
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-MS02-1236",
+      "case": "MS-02",
+      "severity": "warn",
+      "basis": "measured",
+      "title": "4 typefaces on one page",
+      "where": [
+        "/fisica · 1440x900 · dark · reduced motion",
+        "/fisica · 390x844 · dark · reduced motion",
+        "/fisica · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "Manrope on 62 element(s); math on 100 element(s); KaTeX_Main on 76 element(s); KaTeX_Math on 41 element(s)",
+      "expected": "one family for the interface, plus a mono for code; a second text face only with a named job, such as display headings on a marketing page (DC-L02-03; quality.md Q3: one or two typefaces)",
+      "evidence": [
+        "div.stApp.stAppEmbeddingId-tooaizs7qmrf > div.stAppViewContainer.appview-container > a.st-emotion-cache-hmusyd.eksftaj1",
+        "semantics > mrow > mi:nth-of-type(1)",
+        "span.katex-html:nth-of-type(2) > span.base:nth-of-type(1) > span.mopen:nth-of-type(3)",
+        "span.katex-html:nth-of-type(2) > span.base:nth-of-type(1) > span.mord.mathnormal:nth-of-type(2)"
+      ],
+      "fix": "move the text set in the extra faces to the main family; a face used on a handful of elements is usually a leftover",
+      "standard": "DC-L02-03",
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-MS02-5059",
+      "case": "MS-02",
+      "severity": "warn",
+      "basis": "measured",
+      "title": "5 font weights on one page",
+      "where": [
+        "/datos · 1440x900 · dark · reduced motion",
+        "/datos · 390x844 · dark · reduced motion",
+        "/datos · 768x1024 · dark · reduced motion",
+        "/economia · 1440x900 · dark · reduced motion",
+        "/economia · 390x844 · dark · reduced motion",
+        "/economia · 768x1024 · dark · reduced motion",
+        "/fisica · 1440x900 · dark · reduced motion",
+        "/fisica · 390x844 · dark · reduced motion",
+        "/fisica · 768x1024 · dark · reduced motion",
+        "/ · 1440x900 · dark · reduced motion",
+        "/ · 390x844 · dark · reduced motion",
+        "/ · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "400 on 24 element(s), 500 on 6 element(s), 600 on 5 element(s), 700 on 3 element(s), 800 on 3 element(s); 400 and 500 are one step apart, which can read as a mistake rather than a level; 500 and 600 are one step apart, which can read as a mistake rather than a level",
+      "expected": "three weights at most in a system, and two in any one view, clearly apart, such as 400 and 600 (DC-L19-24; it marks two neighbouring weights reading as a mistake as inferred)",
+      "evidence": [
+        "div.stApp.stAppEmbeddingId-tooaizs7qmrf > div.stAppViewContainer.appview-container > a.st-emotion-cache-hmusyd.eksftaj1",
+        "span.st-emotion-cache-1ylwq8i.evng2kd2:nth-of-type(2) > div.st-emotion-cache-1f2ydu4.e1yqkw3v0 > p",
+        "div.tp-lab:nth-of-type(2) > div:nth-of-type(2) > b",
+        "div.tp-top > div.tp-estado:nth-of-type(2) > div.tp-avatar",
+        "div.tp-top > div.tp-miga:nth-of-type(1) > b",
+        "div.stApp.stAppEmbeddingId-tooanuy05zmo > div.stAppViewContainer.appview-container > a.st-emotion-cache-hmusyd.eksftaj1"
+      ],
+      "fix": "give each weight a job (body, labels, headings) and merge the near ones; try size or space before a third weight",
+      "standard": "DC-L19-24",
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-MS02-5955",
+      "case": "MS-02",
+      "severity": "warn",
+      "basis": "measured",
+      "title": "Font sizes between whole pixels",
+      "where": [
+        "/datos · 1440x900 · dark · reduced motion",
+        "/datos · 390x844 · dark · reduced motion",
+        "/datos · 768x1024 · dark · reduced motion",
+        "/economia · 1440x900 · dark · reduced motion",
+        "/economia · 390x844 · dark · reduced motion",
+        "/economia · 768x1024 · dark · reduced motion",
+        "/fisica · 1440x900 · dark · reduced motion",
+        "/fisica · 390x844 · dark · reduced motion",
+        "/fisica · 768x1024 · dark · reduced motion",
+        "/ · 1440x900 · dark · reduced motion",
+        "/ · 390x844 · dark · reduced motion",
+        "/ · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "9.3 px x1; 9.9 px x2; 10.2 px x1; 10.6 px x1; 10.9 px x1; 11.5 px x2",
+      "expected": "whole-pixel sizes from the scale: a fluid size (clamp, vw) or an rem step that does not land on a pixel gives a different size at every width, so nothing matches (preflight 7)",
+      "evidence": [
+        "span.st-emotion-cache-1ylwq8i.evng2kd2:nth-of-type(2) > div.st-emotion-cache-1f2ydu4.e1yqkw3v0 > p",
+        "div.st-emotion-cache-k2h9z6.ef3bkur2 > div.st-emotion-cache-rhumdg.e1yqkw3v0 > div.tp-seccion:nth-of-type(3)",
+        "div.st-emotion-cache-rhumdg.e1yqkw3v0 > div.tp-tip > b",
+        "div.tp-uni:nth-of-type(1) > div > b",
+        "div.st-emotion-cache-nufe5w.e1yqkw3v0 > div.tp-top > div.tp-miga:nth-of-type(1)",
+        "div.st-emotion-cache-k2h9z6.ef3bkur2 > div.st-emotion-cache-nufe5w.e1yqkw3v0 > div.tp-titulo:nth-of-type(2)"
+      ],
+      "fix": "step the size at breakpoints instead of a fluid clamp, or round the scale to whole pixels; 13.33 px on a button is the browser default",
+      "standard": "preflight 7",
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-MS02-1083",
+      "case": "MS-02",
+      "severity": "warn",
+      "basis": "measured",
+      "title": "Text smaller than 12 px",
+      "where": [
+        "/datos · 1440x900 · dark · reduced motion",
+        "/datos · 390x844 · dark · reduced motion",
+        "/datos · 768x1024 · dark · reduced motion",
+        "/economia · 1440x900 · dark · reduced motion",
+        "/economia · 390x844 · dark · reduced motion",
+        "/economia · 768x1024 · dark · reduced motion",
+        "/fisica · 1440x900 · dark · reduced motion",
+        "/fisica · 390x844 · dark · reduced motion",
+        "/fisica · 768x1024 · dark · reduced motion",
+        "/ · 1440x900 · dark · stress: translate · reduced motion",
+        "/ · 1440x900 · dark · reduced motion",
+        "/ · 390x844 · dark · reduced motion",
+        "/ · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "9 px: 'EXPERIMENTO 01' in div.st-emotion-cache-nufe5w.e1yqkw3v0 > div.tp-ceja:nth-of-type(1) > span",
+      "expected": "at least 12 px",
+      "evidence": [
+        "div.st-emotion-cache-nufe5w.e1yqkw3v0 > div.tp-ceja:nth-of-type(1) > span",
+        "span.vlist-t.vlist-t2 > span.vlist-r:nth-of-type(1) > span.vlist-s:nth-of-type(2)"
+      ],
+      "fix": "raise it to a text style",
+      "standard": null,
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-MS07-0256",
+      "case": "MS-07",
+      "severity": "warn",
+      "basis": "measured",
+      "title": "Body text outside 45-75 characters a line",
+      "where": [
+        "/economia · 1440x900 · dark · reduced motion",
+        "/fisica · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "div.st-emotion-cache-k2h9z6.ef3bkur2 > div.st-emotion-cache-vickrq.e1yqkw3v0 > p: about 27 characters a line",
+      "expected": "45 to 75 characters for body text",
+      "evidence": [
+        "div.st-emotion-cache-k2h9z6.ef3bkur2 > div.st-emotion-cache-vickrq.e1yqkw3v0 > p",
+        "div.st-emotion-cache-k2h9z6.ef3bkur2 > div.st-emotion-cache-nufe5w.e1yqkw3v0 > p"
+      ],
+      "fix": "max-width: 65ch on the text block, or a wider column",
+      "standard": "WCAG 1.4.8 (AAA)",
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-MS07-8266",
+      "case": "MS-07",
+      "severity": "warn",
+      "basis": "measured",
+      "title": "Lines longer than 80 characters",
+      "where": [
+        "/economia · 1440x900 · dark · reduced motion",
+        "/economia · 768x1024 · dark · reduced motion",
+        "/fisica · 1440x900 · dark · reduced motion",
+        "/fisica · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "div.st-emotion-cache-k2h9z6.ef3bkur2 > div.st-emotion-cache-nufe5w.e1yqkw3v0 > div.tp-nota is about 136 characters wide",
+      "expected": "at most 80 (WCAG 1.4.8, AAA); 45-75 is the usual target",
+      "evidence": [
+        "div.st-emotion-cache-k2h9z6.ef3bkur2 > div.st-emotion-cache-nufe5w.e1yqkw3v0 > div.tp-nota"
+      ],
+      "fix": "set max-width: 65ch on the text block",
+      "standard": "WCAG 1.4.8 (AAA)",
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-MS08-7497",
+      "case": "MS-08",
+      "severity": "warn",
+      "basis": "measured",
+      "title": "Colors that look the same but are typed differently (1 group)",
+      "where": [
+        "/datos · 1440x900 · dark · reduced motion",
+        "/datos · 390x844 · dark · reduced motion",
+        "/datos · 768x1024 · dark · reduced motion",
+        "/economia · 1440x900 · dark · reduced motion",
+        "/economia · 390x844 · dark · reduced motion",
+        "/economia · 768x1024 · dark · reduced motion",
+        "/fisica · 1440x900 · dark · reduced motion",
+        "/fisica · 390x844 · dark · reduced motion",
+        "/fisica · 768x1024 · dark · reduced motion",
+        "/ · 1440x900 · dark · reduced motion",
+        "/ · 390x844 · dark · reduced motion",
+        "/ · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "#dce4f3 x11 = #e2e7f0 x3 (15 opaque colors in all)",
+      "expected": "one value per color, named once and reused (STD-visual-details-26: never a parallel set; preflight 2: count the values that do not come from one system)",
+      "evidence": [
+        "div.tp-top > div.tp-estado:nth-of-type(2) > div.tp-avatar",
+        "div.st-emotion-cache-k2h9z6.ef3bkur2 > div.st-emotion-cache-nufe5w.e1yqkw3v0 > div.tp-nota",
+        "div.st-emotion-cache-rhumdg.e1yqkw3v0 > div.tp-lab:nth-of-type(2) > div.ico:nth-of-type(1)"
+      ],
+      "fix": "keep the most used value in each group and replace the others with it: the first step towards a palette",
+      "standard": "STD-visual-details-26",
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-MS17-1983",
+      "case": "MS-17",
+      "severity": "warn",
+      "basis": "measured",
+      "title": "7 letter-spacing values",
+      "where": [
+        "/datos · 1440x900 · dark · reduced motion",
+        "/datos · 390x844 · dark · reduced motion",
+        "/datos · 768x1024 · dark · reduced motion",
+        "/economia · 1440x900 · dark · reduced motion",
+        "/economia · 390x844 · dark · reduced motion",
+        "/economia · 768x1024 · dark · reduced motion",
+        "/fisica · 1440x900 · dark · reduced motion",
+        "/fisica · 390x844 · dark · reduced motion",
+        "/fisica · 768x1024 · dark · reduced motion",
+        "/ · 1440x900 · dark · reduced motion",
+        "/ · 390x844 · dark · reduced motion",
+        "/ · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "-0.035em, -0.02em, 0.16em, 0.181em, 0.2em, 0.205em, 0.22em",
+      "expected": "about 4: one for body, one or two for display sizes, one for capitals; each comes with its text style [inferred]",
+      "evidence": [],
+      "fix": "fold letter-spacing into the type tokens and remove the per-element values",
+      "standard": "preflight 5",
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-MS17-7795",
+      "case": "MS-17",
+      "severity": "warn",
+      "basis": "measured",
+      "title": "Capitals with no tracking",
+      "where": [
+        "/economia · 1440x900 · dark · reduced motion",
+        "/economia · 390x844 · dark · reduced motion",
+        "/economia · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "10.9 px at 0em, e.g. div.st-emotion-cache-nufe5w.e1yqkw3v0 > div > span.tp-chip",
+      "expected": "capitals tracked open, about 0.06em",
+      "evidence": [
+        "div.st-emotion-cache-nufe5w.e1yqkw3v0 > div > span.tp-chip"
+      ],
+      "fix": "letter-spacing: 0.06em",
+      "standard": "kerning.md",
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-MS17-9550",
+      "case": "MS-17",
+      "severity": "warn",
+      "basis": "measured",
+      "title": "Display text not tightened",
+      "where": [
+        "/economia · 1440x900 · dark · reduced motion",
+        "/economia · 390x844 · dark · reduced motion",
+        "/economia · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "36.8 px at 0em, e.g. div.tp-pesos > div:nth-of-type(1) > div.n:nth-of-type(2)",
+      "expected": "-0.01em or tighter at display sizes (about -0.01 to -0.02em, unless the face has a display cut)",
+      "evidence": [
+        "div.tp-pesos > div:nth-of-type(1) > div.n:nth-of-type(2)"
+      ],
+      "fix": "letter-spacing: -0.01em",
+      "standard": "kerning.md",
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-MS17-7580",
+      "case": "MS-17",
+      "severity": "warn",
+      "basis": "measured",
+      "title": "Tracking gets looser as text gets bigger",
+      "where": [
+        "/ · 1440x900 · dark · reduced motion",
+        "/ · 390x844 · dark · reduced motion",
+        "/ · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "28.8 px is tracked -0.02em but 21.6 px is tracked -0.027em (2 pair(s) like this)",
+      "expected": "tracking tightens as size grows: body near 0, display text slightly negative, only capitals and tiny labels open (preflight 5; the system's tracking per size)",
+      "evidence": [
+        "div.st-emotion-cache-k2h9z6.ef3bkur2 > div.st-emotion-cache-nufe5w.e1yqkw3v0 > div.tp-kpi-val:nth-of-type(2)",
+        "div.st-emotion-cache-nufe5w.e1yqkw3v0 > div.tp-kpi-val:nth-of-type(2) > span.tp-kpi-nombre",
+        "div.tp-logo:nth-of-type(1) > div > div.marca:nth-of-type(1)"
+      ],
+      "fix": "give the large sizes the tighter value; set tracking with each text style, not per element",
+      "standard": "preflight 5",
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-MS22-0010",
+      "case": "MS-22",
+      "severity": "warn",
+      "basis": "measured",
+      "title": "Padding smaller than the space between the items inside",
+      "where": [
+        "/datos · 1440x900 · dark · reduced motion",
+        "/datos · 390x844 · dark · reduced motion",
+        "/datos · 768x1024 · dark · reduced motion",
+        "/economia · 1440x900 · dark · reduced motion",
+        "/economia · 390x844 · dark · reduced motion",
+        "/economia · 768x1024 · dark · reduced motion",
+        "/fisica · 1440x900 · dark · reduced motion",
+        "/fisica · 390x844 · dark · reduced motion",
+        "/fisica · 768x1024 · dark · reduced motion",
+        "/ · 1440x900 · dark · reduced motion",
+        "/ · 390x844 · dark · reduced motion",
+        "/ · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "div.stVerticalBlock.st-emotion-cache-1a7fwqm > div.st-emotion-cache-1vfi2s9.e399r295:nth-of-type(5) > div.stVerticalBloc: 19.59 px padding around items 24.19 px apart; div.stVerticalBlock.st-emotion-cache-1a7fwqm > div.st-emotion-cache-1vfi2s9.e399r295:nth-of-type(7) > div.stVerticalBloc: 19.59 px padding around items 204.77 px apart",
+      "expected": "the space inside a group at most the space around it (HOW-IT-WORKS section 7: inner spacing smaller than outer)",
+      "evidence": [
+        "div.stVerticalBlock.st-emotion-cache-1a7fwqm > div.st-emotion-cache-1vfi2s9.e399r295:nth-of-type(5) > div.stVerticalBloc",
+        "div.stVerticalBlock.st-emotion-cache-1a7fwqm > div.st-emotion-cache-1vfi2s9.e399r295:nth-of-type(7) > div.stVerticalBloc",
+        "div.stVerticalBlock.st-emotion-cache-1p8n0nm > div.st-emotion-cache-1vfi2s9.e399r295 > div.stVerticalBlock.st-key-card_c",
+        "div.stVerticalBlock.st-emotion-cache-1a7fwqm > div.st-emotion-cache-1vfi2s9.e399r295:nth-of-type(8) > div.stVerticalBloc",
+        "div.stVerticalBlock.st-emotion-cache-1p8n0nm > div.st-emotion-cache-1vfi2s9.e399r295 > div.stVerticalBlock.st-key-card_b",
+        "div.stVerticalBlock.st-emotion-cache-1p8n0nm > div.st-emotion-cache-1vfi2s9.e399r295 > div.stVerticalBlock.st-key-card_f"
+      ],
+      "fix": "raise the padding to 28 px (a step of your spacing scale) or lower the gap to 20 px (a step of your spacing scale)",
+      "standard": "tokens",
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-MS22-1194",
+      "case": "MS-22",
+      "severity": "warn",
+      "basis": "measured",
+      "title": "Text blocks closer than 4 px to each other",
+      "where": [
+        "/datos · 1440x900 · dark · reduced motion",
+        "/datos · 390x844 · dark · reduced motion",
+        "/datos · 768x1024 · dark · reduced motion",
+        "/economia · 1440x900 · dark · reduced motion",
+        "/economia · 390x844 · dark · reduced motion",
+        "/economia · 768x1024 · dark · reduced motion",
+        "/fisica · 1440x900 · dark · reduced motion",
+        "/fisica · 390x844 · dark · reduced motion",
+        "/fisica · 768x1024 · dark · reduced motion",
+        "/ · 1440x900 · dark · reduced motion",
+        "/ · 390x844 · dark · reduced motion",
+        "/ · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "div.tp-logo:nth-of-type(1) > div > div.lema:nth-of-type(2) sits 0.2 px from the text of div.tp-logo:nth-of-type(1) > div > div.marca:nth-of-type(1) (vertical; the boxes are 4 px apart); div.st-emotion-cache-k2h9z6.ef3bkur2 > div.st-emotion-cache-nufe5w.e1yqkw3v0 > div.tp-titulo:nth-of-type(2) sits 1.97 px from the text of div.st-emotion-cache-k2h9z6.ef3bkur2 > div.st-emotion-cache-nufe5w.e1yqkw3v0 > div.tp-ceja:nth-of-type(1) (vertical; the boxes are 5.59 px apart); div.st-emotion-cache-k2h9z6.ef3bkur2 > div.st-emotion-cache-nufe5w.e1yqkw3v0 > div.tp-sub:nth-of-type(3) sits 0.97 px from the text of div.st-emotion-cache-k2h9z6.ef3bkur2 > div.st-emotion-cache-nufe5w.e1yqkw3v0 > div.tp-titulo:nth-of-type(2) (vertical; the boxes are 4.8 px apart)",
+      "expected": "at least 4 px of visible space between neighbouring text, counting half the line height; usually a step of the scale",
+      "evidence": [
+        "div.tp-logo:nth-of-type(1) > div > div.lema:nth-of-type(2)",
+        "div.st-emotion-cache-k2h9z6.ef3bkur2 > div.st-emotion-cache-nufe5w.e1yqkw3v0 > div.tp-titulo:nth-of-type(2)",
+        "div.st-emotion-cache-k2h9z6.ef3bkur2 > div.st-emotion-cache-nufe5w.e1yqkw3v0 > div.tp-sub:nth-of-type(3)",
+        "button.st-emotion-cache-vo6tiu.e1aouyeq3 > div.st-emotion-cache-hqqroh.ev2q1el1 > div.st-emotion-cache-kbmnb4.ev2q1el2:n",
+        "button.st-emotion-cache-1hmnkzn.e1aouyeq2 > div.st-emotion-cache-hqqroh.ev2q1el1 > div.st-emotion-cache-kbmnb4.ev2q1el2:"
+      ],
+      "fix": "add a gap from the scale between them: gap or margin-block-start of 8 px (a step of your spacing scale)",
+      "standard": "tokens",
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-MS24-2739",
+      "case": "MS-24",
+      "severity": "warn",
+      "basis": "measured",
+      "title": "Uneven space between sections",
+      "where": [
+        "/datos · 1440x900 · dark · reduced motion",
+        "/datos · 390x844 · dark · reduced motion",
+        "/datos · 768x1024 · dark · reduced motion",
+        "/economia · 1440x900 · dark · reduced motion",
+        "/economia · 390x844 · dark · reduced motion",
+        "/economia · 768x1024 · dark · reduced motion",
+        "/fisica · 1440x900 · dark · reduced motion",
+        "/fisica · 390x844 · dark · reduced motion",
+        "/fisica · 768x1024 · dark · reduced motion",
+        "/ · 1440x900 · dark · reduced motion",
+        "/ · 390x844 · dark · reduced motion",
+        "/ · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "41.98 px before div.stMainBlockContainer.block-container:nth-of-type(1) > div.stVerticalBlock.st-emotion-cache-1a7fwqm > div.stElementCo; 24.94 px before div.stMainBlockContainer.block-container:nth-of-type(1) > div.stVerticalBlock.st-emotion-cache-1a7fwqm > div.st-emotion-; 32 px before div.stMainBlockContainer.block-container:nth-of-type(1) > div.stVerticalBlock.st-emotion-cache-1a7fwqm > div.st-emotion-",
+      "expected": "the same space between sections down the page, or a bigger one only where a new part starts, on purpose",
+      "evidence": [
+        "div.stMainBlockContainer.block-container:nth-of-type(1) > div.stVerticalBlock.st-emotion-cache-1a7fwqm > div.stElementCo",
+        "div.stMainBlockContainer.block-container:nth-of-type(1) > div.stVerticalBlock.st-emotion-cache-1a7fwqm > div.st-emotion-"
+      ],
+      "fix": "one section spacing token, for example padding-block: 32 px (a step of your spacing scale); check each larger break is meant",
+      "standard": "tokens",
+      "status": "confirmed",
+      "decided": "judgment"
+    },
+    {
+      "id": "M-MS25-2080",
+      "case": "MS-25",
+      "severity": "warn",
+      "basis": "measured",
+      "title": "Boxes side by side with different corner radii",
+      "where": [
+        "/datos · 1440x900 · dark · reduced motion",
+        "/datos · 390x844 · dark · reduced motion",
+        "/datos · 768x1024 · dark · reduced motion",
+        "/ · 1440x900 · dark · reduced motion",
+        "/ · 390x844 · dark · reduced motion",
+        "/ · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "div.stElementContainer.element-container:nth-of-type(2) > div.stButtonGroup.st-emotion-cache-68zbsl > div.st-emotion-cac: button.st-emotion-cache-1mcz6sg.e1 8 px, button.st-emotion-cache-1mcz6sg.e1 0 px, button.st-emotion-cache-1mcz6sg.e1 0 px",
+      "expected": "one radius for boxes that sit together as a set",
+      "evidence": [
+        "div.stButtonGroup.st-emotion-cache-68zbsl > div.st-emotion-cache-1eddh7x.e1aouyeq26 > button.st-emotion-cache-1mcz6sg.e1"
+      ],
+      "fix": "use one radius token for the set",
+      "standard": "preflight 45",
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-ST12-4939",
+      "case": "ST-12",
+      "severity": "warn",
+      "basis": "measured",
+      "title": "Text runs out of its box",
+      "where": [
+        "/fisica · 1440x900 · dark · reduced motion",
+        "/fisica · 390x844 · dark · reduced motion",
+        "/fisica · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "semantics > mrow > mo:nth-of-type(6) (text): \"−\" goes 10 px below a 1 px tall box; msup > mrow > mo (text): \"−\" goes 7 px below a 1 px tall box; semantics > mrow > mo:nth-of-type(1) (text): \"⋅\" goes 11 px below a 2 px tall box; semantics > mrow > mo:nth-of-type(2) (text): \"⋅\" goes 11 px below a 2 px tall box",
+      "expected": "every line of text inside its own box, at 320 px, at 200% text and with longer words",
+      "evidence": [
+        "semantics > mrow > mo:nth-of-type(6)",
+        "msup > mrow > mo",
+        "semantics > mrow > mo:nth-of-type(1)",
+        "semantics > mrow > mo:nth-of-type(2)"
+      ],
+      "fix": "let the text wrap: remove the fixed width or height and white-space: nowrap, set min-width: 0 on flex and grid children, and overflow-wrap: anywhere for long words",
+      "standard": null,
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-ST14-7615",
+      "case": "ST-14",
+      "severity": "warn",
+      "basis": "measured",
+      "title": "Text cut off by the box around it when every word is 30% longer (a German stand-in)",
+      "where": [
+        "/ · 1440x900 · dark · stress: translate · reduced motion"
+      ],
+      "measured": "span > div.stMarkdownEllipsis.st-emotion-cache-1bja2d5 > p (label): \"Desviaciónung estándarung\" loses 32.97 px inside div.st-emotion-cache-3ye0ev.e1hn2pbo3 > span > div.stMarkdownEllipsis.st-emotion-cache-1bja2d5 (overflow: hidden); g > g:nth-of-type(4) > text (text): \"Controlung (Sinu empaqueung)\" loses 17.89 px inside div.plot-container.plotly > div.user-select-none.svg-container > svg:nth-of-type(2) (overflow: hidden)",
+      "expected": "no text cut by a parent's overflow: hidden; nobody can scroll to it",
+      "evidence": [
+        "span > div.stMarkdownEllipsis.st-emotion-cache-1bja2d5 > p",
+        "g > g:nth-of-type(4) > text"
+      ],
+      "fix": "remove the fixed height or overflow: hidden on the parent, or let it grow (min-height instead of height)",
+      "standard": null,
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-ST14-4059",
+      "case": "ST-14",
+      "severity": "warn",
+      "basis": "measured",
+      "title": "Text runs out of its box when every word is 30% longer (a German stand-in)",
+      "where": [
+        "/ · 1440x900 · dark · stress: translate · reduced motion"
+      ],
+      "measured": "span.st-emotion-cache-1ylwq8i.evng2kd2:nth-of-type(2) > div.st-emotion-cache-1f2ydu4.e1yqkw3v0 > p (text): \"Datosun delu experimentoungsun · 156\" goes 45.22 px past a 210.41 px wide box; span.st-emotion-cache-1ylwq8i.evng2kd2 > div.st-emotion-cache-116j2w.e1yqkw3v0 > p (text): \"Explorarung lau evaluaciónungu →\" goes 6.67 px past a 213.27 px wide box",
+      "expected": "every line of text inside its own box, at 320 px, at 200% text and with longer words",
+      "evidence": [
+        "span.st-emotion-cache-1ylwq8i.evng2kd2:nth-of-type(2) > div.st-emotion-cache-1f2ydu4.e1yqkw3v0 > p",
+        "span.st-emotion-cache-1ylwq8i.evng2kd2 > div.st-emotion-cache-116j2w.e1yqkw3v0 > p"
+      ],
+      "fix": "let the text wrap: remove the fixed width or height and white-space: nowrap, set min-width: 0 on flex and grid children, and overflow-wrap: anywhere for long words",
+      "standard": null,
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-ST15-2625",
+      "case": "ST-15",
+      "severity": "warn",
+      "basis": "measured",
+      "title": "One block lacks a control its twins have",
+      "where": [
+        "/economia · 1440x900 · dark · reduced motion",
+        "/economia · 390x844 · dark · reduced motion",
+        "/economia · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "2 of 4 block divs have \"download as csv\"; missing on div.stVerticalBlock.st-key-card_cuad > div.stElementContainer.element-container:nth-of-type(2) > div.st-emotion-cache-uw, div.stVerticalBlock.st-key-card_barras > div.stElementContainer.element-container:nth-of-type(2) > div.st-emotion-cache-",
+      "expected": "blocks of one kind offer the same controls",
+      "evidence": [
+        "div.stVerticalBlock.st-key-card_cuad > div.stElementContainer.element-container:nth-of-type(2) > div.st-emotion-cache-uw"
+      ],
+      "fix": "render the control from the block's component, not per page; or say why this one differs",
+      "standard": null,
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-TM09-6116",
+      "case": "TM-09",
+      "severity": "warn",
+      "basis": "measured",
+      "title": "A transition animates layout",
+      "where": [
+        "/datos · 1440x900 · dark · reduced motion",
+        "/datos · 390x844 · dark · reduced motion",
+        "/datos · 768x1024 · dark · reduced motion",
+        "/economia · 1440x900 · dark · reduced motion",
+        "/economia · 390x844 · dark · reduced motion",
+        "/economia · 768x1024 · dark · reduced motion",
+        "/fisica · 1440x900 · dark · reduced motion",
+        "/fisica · 390x844 · dark · reduced motion",
+        "/fisica · 768x1024 · dark · reduced motion",
+        "/ · 1440x900 · dark · stress: translate · reduced motion",
+        "/ · 1440x900 · dark · reduced motion",
+        "/ · 390x844 · dark · reduced motion",
+        "/ · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "section#stSidebar: max-width over 300 ms",
+      "expected": "animate transform and opacity; layout properties cause reflow and jank",
+      "evidence": [
+        "section#stSidebar"
+      ],
+      "fix": "animate transform: scale/translate, or measure and animate to a fixed height",
+      "standard": "STD-enter-exit-origin-24",
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-TM09-6116",
+      "case": "TM-09",
+      "severity": "warn",
+      "basis": "measured",
+      "title": "A transition animates layout",
+      "where": [
+        "/datos · 1440x900 · dark · reduced motion",
+        "/economia · 1440x900 · dark · reduced motion",
+        "/fisica · 1440x900 · dark · reduced motion",
+        "/ · 1440x900 · dark · stress: translate · reduced motion",
+        "/ · 1440x900 · dark · reduced motion"
+      ],
+      "measured": "div.st-emotion-cache-1e2j9e0.e1ccv4an2:nth-of-type(1) > div.st-emotion-cache-10p9htt.e1ccv4an4:nth-of-type(1) > div.st-e: left over 300 ms",
+      "expected": "animate transform and opacity; layout properties cause reflow and jank",
+      "evidence": [
+        "div.st-emotion-cache-1e2j9e0.e1ccv4an2:nth-of-type(1) > div.st-emotion-cache-10p9htt.e1ccv4an4:nth-of-type(1) > div.st-e"
+      ],
+      "fix": "animate transform: scale/translate, or measure and animate to a fixed height",
+      "standard": "STD-enter-exit-origin-24",
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-CP02-2529",
+      "case": "CP-02",
+      "severity": "info",
+      "basis": "measured",
+      "title": "Button labels that do not start with a verb",
+      "where": [
+        "/economia · 1440x900 · dark · reduced motion",
+        "/economia · 390x844 · dark · reduced motion",
+        "/economia · 768x1024 · dark · reduced motion",
+        "/ · 1440x900 · dark · reduced motion",
+        "/ · 390x844 · dark · reduced motion",
+        "/ · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "div.stElementContainer.element-container:nth-of-type(7) > div.stButton.st-emotion-cache-8atqhb > button.st-emotion-cache: \"play_arrowAnalizar alternativas\"",
+      "expected": "a button says what it does: a verb first (\"Compare prices\", not \"Pricing details\")",
+      "evidence": [
+        "div.stElementContainer.element-container:nth-of-type(7) > div.stButton.st-emotion-cache-8atqhb > button.st-emotion-cache",
+        "div.stElementContainer.element-container:nth-of-type(2) > div.stButton.st-emotion-cache-8atqhb > button.st-emotion-cache"
+      ],
+      "fix": "start with the action; a word list decided this, so read each one",
+      "standard": "DC-L06-22",
+      "status": "confirmed",
+      "decided": "judgment"
+    },
+    {
+      "id": "M-EN09-0433",
+      "case": "EN-09",
+      "severity": "info",
+      "basis": "measured",
+      "title": "Before launch: share image, favicon or indexing",
+      "where": [
+        "/datos · 1440x900 · dark · reduced motion",
+        "/datos · 390x844 · dark · reduced motion",
+        "/datos · 768x1024 · dark · reduced motion",
+        "/economia · 1440x900 · dark · reduced motion",
+        "/economia · 390x844 · dark · reduced motion",
+        "/economia · 768x1024 · dark · reduced motion",
+        "/fisica · 1440x900 · dark · reduced motion",
+        "/fisica · 390x844 · dark · reduced motion",
+        "/fisica · 768x1024 · dark · reduced motion",
+        "/ · 1440x900 · dark · reduced motion",
+        "/ · 390x844 · dark · reduced motion",
+        "/ · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "missing a share image (og:image), a meta description",
+      "expected": "a public page has a share image, a favicon and a description; noindex only on drafts",
+      "evidence": [],
+      "fix": null,
+      "standard": null,
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-IN08-2014",
+      "case": "IN-08",
+      "severity": "info",
+      "basis": "measured",
+      "title": "Controls placed outside the page box",
+      "where": [
+        "/datos · 1440x900 · dark · reduced motion",
+        "/datos · 390x844 · dark · reduced motion",
+        "/datos · 768x1024 · dark · reduced motion",
+        "/economia · 1440x900 · dark · reduced motion",
+        "/economia · 390x844 · dark · reduced motion",
+        "/economia · 768x1024 · dark · reduced motion",
+        "/fisica · 1440x900 · dark · reduced motion",
+        "/fisica · 390x844 · dark · reduced motion",
+        "/fisica · 768x1024 · dark · reduced motion",
+        "/ · 1440x900 · dark · stress: translate · reduced motion",
+        "/ · 1440x900 · dark · reduced motion",
+        "/ · 390x844 · dark · reduced motion",
+        "/ · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "div.stApp.stAppEmbeddingId-tooaizs7qmrf > div.stAppViewContainer.appview-container > a.st-emotion-cache-hmusyd.eksftaj1",
+      "expected": "a skip link that appears on focus is fine; anything else is off-canvas content",
+      "evidence": [
+        "div.stApp.stAppEmbeddingId-tooaizs7qmrf > div.stAppViewContainer.appview-container > a.st-emotion-cache-hmusyd.eksftaj1",
+        "div.stPageLink > div.st-emotion-cache-1ofqig9.evng2kd0 > a.st-emotion-cache-1ew5you.evng2kd1",
+        "div.stPageLink > div.st-emotion-cache-1ofqig9.evng2kd0 > a.st-emotion-cache-1cfcdwv.evng2kd1",
+        "div.stApp.stAppEmbeddingId-tooanuy05zmo > div.stAppViewContainer.appview-container > a.st-emotion-cache-hmusyd.eksftaj1",
+        "div.stApp.stAppEmbeddingId-tooa2utonokk > div.stAppViewContainer.appview-container > a.st-emotion-cache-hmusyd.eksftaj1",
+        "div.stPopover.st-emotion-cache-8atqhb > div > button.st-emotion-cache-1hmnkzn.e1aouyeq2"
+      ],
+      "fix": "Tab to it and confirm it appears",
+      "standard": null,
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-MS08-1758",
+      "case": "MS-08",
+      "severity": "info",
+      "basis": "measured",
+      "title": "3 color families on one page",
+      "where": [
+        "/datos · 1440x900 · dark · reduced motion",
+        "/datos · 768x1024 · dark · reduced motion",
+        "/economia · 1440x900 · dark · reduced motion",
+        "/economia · 768x1024 · dark · reduced motion",
+        "/fisica · 1440x900 · dark · reduced motion",
+        "/fisica · 768x1024 · dark · reduced motion",
+        "/ · 1440x900 · dark · reduced motion",
+        "/ · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "blue (#18233f, #a9b8d6, #1d428a) x22; orange (#f28c35) x3; green (#3baa6a) x1",
+      "expected": "grays, one accent with one job, and status colors (DC-L01-08), with the danger color only on the part that is going wrong (making.md section 12: \"More visual\" means more information, not more colour)",
+      "evidence": [
+        "div.tp-top > div.tp-miga:nth-of-type(1) > b",
+        "div.tp-logo:nth-of-type(1) > div > div.lema:nth-of-type(2)",
+        "div.tp-estado:nth-of-type(2) > span > span.dot"
+      ],
+      "fix": "pick the one accent; turn decorative colors gray; keep status colors for status, and red only on the part that is going wrong",
+      "standard": "DC-L01-08",
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-MS11-5224",
+      "case": "MS-11",
+      "severity": "info",
+      "basis": "measured",
+      "title": "Negative margins in use",
+      "where": [
+        "/datos · 1440x900 · dark · reduced motion",
+        "/datos · 390x844 · dark · reduced motion",
+        "/datos · 768x1024 · dark · reduced motion",
+        "/economia · 1440x900 · dark · reduced motion",
+        "/economia · 390x844 · dark · reduced motion",
+        "/economia · 768x1024 · dark · reduced motion",
+        "/fisica · 1440x900 · dark · reduced motion",
+        "/fisica · 390x844 · dark · reduced motion",
+        "/fisica · 768x1024 · dark · reduced motion",
+        "/ · 1440x900 · dark · stress: translate · reduced motion",
+        "/ · 1440x900 · dark · reduced motion",
+        "/ · 390x844 · dark · reduced motion",
+        "/ · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "div.stApp.stAppEmbeddingId-tooaizs7qmrf > div.stAppViewContainer.appview-container > a.st-emotion-cache-hmusyd.eksftaj1 marginTop -1 px",
+      "expected": "usually a workaround that overlaps neighbours",
+      "evidence": [
+        "div.stApp.stAppEmbeddingId-tooaizs7qmrf > div.stAppViewContainer.appview-container > a.st-emotion-cache-hmusyd.eksftaj1",
+        "div.stApp.stAppEmbeddingId-tooanuy05zmo > div.stAppViewContainer.appview-container > a.st-emotion-cache-hmusyd.eksftaj1",
+        "div.stApp.stAppEmbeddingId-tooa2utonokk > div.stAppViewContainer.appview-container > a.st-emotion-cache-hmusyd.eksftaj1"
+      ],
+      "fix": null,
+      "standard": null,
+      "status": "confirmed",
+      "decided": "rule"
+    },
+    {
+      "id": "M-MS23-8003",
+      "case": "MS-23",
+      "severity": "info",
+      "basis": "measured",
+      "title": "Siblings of one kind with two different gaps",
+      "where": [
+        "/ · 1440x900 · dark · reduced motion",
+        "/ · 390x844 · dark · reduced motion",
+        "/ · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "main#stMain > div.stMainBlockContainer.block-container:nth-of-type(1) > div.stVerticalBlock.st-emotion-cache-1a7fwqm: div items 16, 32, 16, 32, 32 px apart",
+      "expected": "one gap, or a larger one only where a new group starts",
+      "evidence": [
+        "main#stMain > div.stMainBlockContainer.block-container:nth-of-type(1) > div.stVerticalBlock.st-emotion-cache-1a7fwqm"
+      ],
+      "fix": "if it is not a group break, one gap on the parent (32 px (a step of your spacing scale))",
+      "standard": "tokens",
+      "status": "confirmed",
+      "decided": "judgment"
+    },
+    {
+      "id": "M-TM05-3836",
+      "case": "TM-05",
+      "severity": "info",
+      "basis": "measured",
+      "title": "canvas on the page: its motion is not in the animation list",
+      "where": [
+        "/datos · 1440x900 · dark · reduced motion",
+        "/datos · 390x844 · dark · reduced motion",
+        "/datos · 768x1024 · dark · reduced motion",
+        "/economia · 1440x900 · dark · reduced motion",
+        "/economia · 390x844 · dark · reduced motion",
+        "/economia · 768x1024 · dark · reduced motion",
+        "/fisica · 1440x900 · dark · reduced motion",
+        "/fisica · 390x844 · dark · reduced motion",
+        "/fisica · 768x1024 · dark · reduced motion",
+        "/ · 1440x900 · dark · stress: translate · reduced motion",
+        "/ · 1440x900 · dark · reduced motion",
+        "/ · 390x844 · dark · reduced motion",
+        "/ · 768x1024 · dark · reduced motion"
+      ],
+      "measured": "6 found",
+      "expected": "sample frames over time and look at them; the probe cannot read this motion",
+      "evidence": [],
+      "fix": null,
+      "standard": null,
+      "status": "confirmed",
+      "decided": "rule"
+    }
+  ]
+}

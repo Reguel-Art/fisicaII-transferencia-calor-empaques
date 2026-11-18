@@ -1,0 +1,259 @@
+{
+  "findings": [
+    {
+      "id": "H-001",
+      "case": "MS-12",
+      "severity": "error",
+      "basis": "operated",
+      "title": "En celular el menú lateral se abre desplegado y tapa 300 de los 390 px de ancho al entrar",
+      "where": [
+        "/, 390, light"
+      ],
+      "measured": null,
+      "expected": "En celular el contenido se ve al cargar; el menú se abre solo al pulsarlo",
+      "evidence": [
+        "opendesigner/review/shots/home-390-light-carga-menu.jpg"
+      ],
+      "fix": "app.py: st.set_page_config(initial_sidebar_state='auto') (se despliega en escritorio y se pliega en celular)",
+      "standard": null,
+      "status": "confirmed",
+      "at": "2026-11-17T19:47:26"
+    },
+    {
+      "id": "H-002",
+      "case": "MS-12",
+      "severity": "error",
+      "basis": "operated",
+      "title": "La opción «Promedios» del selector de vista queda fuera de la tarjeta en celular: el botón va de 320 a 423 px y el contenedor termina en 330 px (93 px ocultos)",
+      "where": [
+        "/, 390, light"
+      ],
+      "measured": null,
+      "expected": "Las tres opciones visibles sin desplazamiento lateral",
+      "evidence": [
+        "opendesigner/review/shots/home-390-light-s01.jpg",
+        "opendesigner/review/shots/focus-home-390-s01.jpg"
+      ],
+      "fix": "Etiquetas más cortas en celular (Temp. · Variación · Promedios) o permitir que el grupo pase a dos líneas (flex-wrap)",
+      "standard": null,
+      "status": "confirmed",
+      "at": "2026-11-17T19:47:26"
+    },
+    {
+      "id": "H-003",
+      "case": "MS-12",
+      "severity": "error",
+      "basis": "operated",
+      "title": "Fórmulas cortadas en Fundamento físico: en 390 px la ecuación del modelo mide 363 px en un espacio de 270 px (se pierde U·A = k m c); en 768 px las tres tarjetas cortan Q, k_ef y R",
+      "where": [
+        "/fisica, 390 y 768, light"
+      ],
+      "measured": null,
+      "expected": "Cada fórmula completa dentro de su tarjeta",
+      "evidence": [
+        "opendesigner/review/shots/fisica-390-light-s00.jpg",
+        "opendesigner/review/shots/fisica-768-light-s00.jpg"
+      ],
+      "fix": "Apilar las tarjetas de fórmulas en una columna por debajo de ~1100 px y separar la ecuación del modelo en dos líneas",
+      "standard": null,
+      "status": "confirmed",
+      "at": "2026-11-17T19:47:26"
+    },
+    {
+      "id": "H-004",
+      "case": "MS-12",
+      "severity": "warn",
+      "basis": "seen",
+      "title": "La etiqueta «Límite · 10.0 °C» tapa la curva del EPS entre 55 y 60 min (su fondo cubre la línea)",
+      "where": [
+        "/, todos los tamaños, light"
+      ],
+      "measured": null,
+      "expected": "Ningún rótulo encima de los datos",
+      "evidence": [
+        "opendesigner/review/shots/home-768-light-s01.jpg",
+        "opendesigner/review/shots/home-1440-light-s01.jpg"
+      ],
+      "fix": "ui/graficos.py: mover la anotación a 'top left' o quitar annotation_bgcolor",
+      "standard": null,
+      "status": "confirmed",
+      "at": "2026-11-17T19:47:26"
+    },
+    {
+      "id": "H-005",
+      "case": "MS-12",
+      "severity": "warn",
+      "basis": "seen",
+      "title": "Rótulos cortados en los gráficos de Evaluación económica: nombres en el cuadrante (Térmica Aluminizada, cipiente Aislante) y el valor S/ 1.80 de la barra",
+      "where": [
+        "/economia, 390 y 768, light"
+      ],
+      "measured": null,
+      "expected": "Nombres y valores completos",
+      "evidence": [
+        "opendesigner/review/shots/economia-390-light-s03.jpg",
+        "opendesigner/review/shots/economia-768-light-s01.jpg"
+      ],
+      "fix": "Más margen lateral en los ejes (range con holgura) y textposition 'inside' en la barra más larga; nombres cortos en pantallas angostas",
+      "standard": null,
+      "status": "confirmed",
+      "at": "2026-11-17T19:47:27"
+    },
+    {
+      "id": "H-006",
+      "case": "MS-12",
+      "severity": "warn",
+      "basis": "seen",
+      "title": "Las tablas muestran la palabra None en celdas vacías (Puntaje y S/ por °C evitado del control; R cond. y U·A cond. del control)",
+      "where": [
+        "/ y /fisica, 1440, light"
+      ],
+      "measured": null,
+      "expected": "Celda vacía o un guion",
+      "evidence": [
+        "opendesigner/review/shots/home-1440-light-s01.jpg",
+        "opendesigner/review/shots/fisica-1440-light-s01.jpg"
+      ],
+      "fix": "Convertir None a NaN antes de st.dataframe (pd.to_numeric) o usar column_config con format y None→'—'",
+      "standard": null,
+      "status": "confirmed",
+      "at": "2026-11-17T19:47:27"
+    },
+    {
+      "id": "H-007",
+      "case": "MS-12",
+      "severity": "warn",
+      "basis": "seen",
+      "title": "En Fundamento físico aparecen dos elementos activos en la barra lateral: Fundamento físico y Guía del experimento",
+      "where": [
+        "/fisica, 1440, light"
+      ],
+      "measured": null,
+      "expected": "Un solo elemento marcado como página actual",
+      "evidence": [
+        "opendesigner/review/shots/fisica-1440-light-s00.jpg"
+      ],
+      "fix": "Quitar el resaltado de página activa al enlace «Guía del experimento» o apuntarlo a una sección propia",
+      "standard": null,
+      "status": "confirmed",
+      "at": "2026-11-17T19:47:27"
+    },
+    {
+      "id": "H-008",
+      "case": "MS-12",
+      "severity": "warn",
+      "basis": "seen",
+      "title": "En celular la tabla de costos solo muestra Material y Precio; Usos, Limpieza, Otros y Control quedan fuera y hay que desplazar la tabla de lado",
+      "where": [
+        "/economia, 390, light"
+      ],
+      "measured": null,
+      "expected": "Poder editar todos los costos sin desplazamiento lateral escondido",
+      "evidence": [
+        "opendesigner/review/shots/economia-390-light-s00.jpg"
+      ],
+      "fix": "En pantallas angostas, editar un material a la vez (selector + 5 campos) o columnas más estrechas con nombres cortos",
+      "standard": null,
+      "status": "confirmed",
+      "at": "2026-11-17T19:47:27"
+    },
+    {
+      "id": "H-009",
+      "case": "MS-12",
+      "severity": "warn",
+      "basis": "seen",
+      "title": "La última fila (Control) de las tablas de ranking y de resultados físicos queda cortada por la altura de la tabla",
+      "where": [
+        "/economia y /fisica, 1440, light"
+      ],
+      "measured": null,
+      "expected": "Todas las filas visibles",
+      "evidence": [
+        "opendesigner/review/shots/economia-1440-light-s01.jpg",
+        "opendesigner/review/shots/fisica-1440-light-s01.jpg"
+      ],
+      "fix": "Dar a st.dataframe una altura que quepa todas las filas (height=(n+1)*35+3)",
+      "standard": null,
+      "status": "confirmed",
+      "at": "2026-11-17T19:47:27"
+    },
+    {
+      "id": "H-010",
+      "case": "MS-12",
+      "severity": "info",
+      "basis": "seen",
+      "title": "«Priorizar costo» y «Priorizar temperatura» no quedan alineados: en celular van en líneas distintas y en escritorio con distinta altura",
+      "where": [
+        "/economia, 390 y 1440, light"
+      ],
+      "measured": null,
+      "expected": "Ambos rótulos en una línea bajo los extremos del deslizador",
+      "evidence": [
+        "opendesigner/review/shots/economia-390-light-s01.jpg",
+        "opendesigner/review/shots/economia-1440-light-s00.jpg"
+      ],
+      "fix": "Un solo bloque HTML con display:flex; justify-content:space-between",
+      "standard": null,
+      "status": "confirmed",
+      "at": "2026-11-17T19:47:27"
+    },
+    {
+      "id": "H-011",
+      "case": "MS-12",
+      "severity": "info",
+      "basis": "seen",
+      "title": "En pantallas táctiles las barras de herramientas de Plotly y de las tablas quedan siempre visibles y se montan sobre el gráfico y los títulos",
+      "where": [
+        "todas las páginas, 390, light"
+      ],
+      "measured": null,
+      "expected": "Herramientas que no tapen títulos",
+      "evidence": [
+        "opendesigner/review/shots/home-390-light-s03.jpg",
+        "opendesigner/review/shots/datos-390-light-s00.jpg"
+      ],
+      "fix": "config={'displayModeBar': False} en celular o margen superior en las tarjetas",
+      "standard": null,
+      "status": "confirmed",
+      "at": "2026-11-17T19:47:27"
+    },
+    {
+      "id": "H-012",
+      "case": "MS-12",
+      "severity": "info",
+      "basis": "seen",
+      "title": "En tablet (768 px) los cuatro indicadores van uno debajo de otro y ocupan casi una pantalla",
+      "where": [
+        "/, 768, light"
+      ],
+      "measured": null,
+      "expected": "2 x 2 en tablet",
+      "evidence": [
+        "opendesigner/review/shots/home-768-light-s00.jpg"
+      ],
+      "fix": "ui/estilo.py: bajar el corte de una columna de 900 px a 560 px",
+      "standard": null,
+      "status": "confirmed",
+      "at": "2026-11-17T19:47:28"
+    },
+    {
+      "id": "H-013",
+      "case": "MS-12",
+      "severity": "info",
+      "basis": "seen",
+      "title": "La barra superior se parte en dos líneas en celular (migas de pan y Motor Python activo)",
+      "where": [
+        "todas las páginas, 390, light"
+      ],
+      "measured": null,
+      "expected": "Una línea",
+      "evidence": [
+        "opendesigner/review/shots/home-390-light-s00.jpg"
+      ],
+      "fix": "Ocultar «Motor Python activo» por debajo de 480 px",
+      "standard": null,
+      "status": "confirmed",
+      "at": "2026-11-17T19:47:28"
+    }
+  ]
+}
