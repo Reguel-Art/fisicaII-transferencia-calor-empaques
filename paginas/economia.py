@@ -46,10 +46,6 @@ def render():
     barra_superior("Evaluación económica")
     encabezado("Conservar también es decidir",
                "Encuentra el equilibrio entre desempeño térmico y costo por entrega.")
-    with st.container(key="banner_eco"):
-        st.markdown('<div class="tp-banner">🪙 <b>Una decisión que también cuida tus costos</b>'
-                    "Los precios iniciales son supuestos didácticos. Reemplázalos con "
-                    "cotizaciones y usos verificables.</div>", unsafe_allow_html=True)
     st.write("")
 
     with st.container(key="fila_eco"):

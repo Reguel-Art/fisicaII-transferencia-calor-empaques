@@ -53,19 +53,6 @@ def render():
                 ss.src_modo = "Subir CSV"
                 st.switch_page(PAGINAS["datos"])
 
-    # Aviso de procedencia de los datos.
-    estado_d = estado.estado_datos(df)
-    with st.container(key="banner_vg", horizontal=True, vertical_alignment="center"):
-        if estado_d == "Simulado":
-            st.markdown('<div class="tp-banner">⚗️ <b>Explora con datos simulados</b>'
-                        "Un escenario de ejemplo. Carga tus mediciones para obtener resultados "
-                        "propios.</div>", unsafe_allow_html=True)
-        else:
-            st.markdown(f'<div class="tp-banner">✅ <b>Datos {e(estado_d.lower())}</b>'
-                        f"Fuente: {e(ss.fuente_nombre)} · {len(df)} lecturas.</div>",
-                        unsafe_allow_html=True)
-        st.page_link(PAGINAS["datos"], label="Ver datos →")
-
     st.write("")
     a, b = st.columns([2, 1], vertical_alignment="center")
     a.markdown('<div class="tp-ceja-sec">RESUMEN DEL EXPERIMENTO</div>', unsafe_allow_html=True)
