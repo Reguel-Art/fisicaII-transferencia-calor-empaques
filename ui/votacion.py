@@ -26,6 +26,8 @@ class Ronda:
     votos: dict[str, int] = field(default_factory=dict)
     votantes: set[str] = field(default_factory=set)
     revelada: bool = False
+    ganador: str = ""          # resultado real del simulador para esta ronda
+    detalle: str = ""          # frase corta con el porqué (temperatura, minutos)
 
 
 class Urna:
@@ -50,6 +52,17 @@ class Urna:
             r.votantes.add(votante)
             return True
 
+    def limpiar(self):
+        """Borra la ronda y sus votos. El id sigue creciendo para que ningún celular
+        crea que ya votó en la ronda siguiente."""
+        with self._lock:
+            self.ronda = Ronda(id=self.ronda.id + 1)
+
+    def fijar_ganador(self, nombre: str, detalle: str = ""):
+        """El presentador informa el resultado real del escenario actual."""
+        with self._lock:
+            self.ronda.ganador, self.ronda.detalle = nombre, detalle
+
     def revelar(self, si: bool = True):
         with self._lock:
             self.ronda.revelada = si
@@ -59,7 +72,7 @@ class Urna:
         with self._lock:
             r = self.ronda
             return Ronda(r.id, r.pregunta, list(r.opciones), dict(r.votos), set(r.votantes),
-                         r.revelada)
+                         r.revelada, r.ganador, r.detalle)
 
 
 @st.cache_resource
@@ -102,8 +115,34 @@ def barras_html(r: Ronda, colores: dict[str, str]) -> str:
         n = r.votos.get(o, 0)
         pct = 100 * n / total if total else 0
         c = colores.get(o, "#5F6B85")
+        trofeo = " 🏆" if r.ganador and o == r.ganador else ""
         filas.append(
-            f'<div class="tp-voto"><div class="tp-voto-nom"><span>{html.escape(o)}</span>'
+            f'<div class="tp-voto"><div class="tp-voto-nom"><span>{html.escape(o)}{trofeo}</span>'
             f'<b>{n} · {pct:.0f}%</b></div>'
             f'<div class="tp-voto-barra"><i style="width:{pct:.1f}%;background:{c}"></i></div></div>')
     return "".join(filas) + f'<div class="tp-voto-total">{total} voto(s)</div>'
+
+
+def veredicto_html(r: Ronda) -> str:
+    """Compara el ganador real con la opción más votada por el público."""
+    if not r.ganador:
+        return ""
+    total = sum(r.votos.values())
+    gan = html.escape(r.ganador)
+    det = f'<span>{html.escape(r.detalle)}</span>' if r.detalle else ""
+    if total == 0:
+        publico = "Todavía no hay votos."
+    else:
+        top = max(r.votos.values())
+        mas_votadas = [o for o, n in r.votos.items() if n == top]
+        pct = 100 * r.votos.get(r.ganador, 0) / total
+        if r.ganador in mas_votadas and len(mas_votadas) == 1:
+            publico = f"¡El público acertó! El {pct:.0f}% eligió el ganador."
+        elif r.ganador in mas_votadas:
+            publico = f"Empate en la votación; el {pct:.0f}% eligió el ganador."
+        else:
+            elegida = html.escape(mas_votadas[0])
+            publico = (f"El público eligió {elegida}; nadie acertó." if pct == 0
+                       else f"El público eligió {elegida}; solo el {pct:.0f}% acertó.")
+    return (f'<div class="tp-ganador"><div class="tp-ganador-tit">🏆 Ganador real: <b>{gan}</b></div>'
+            f'{det}<div class="tp-ganador-pub">{publico}</div></div>')

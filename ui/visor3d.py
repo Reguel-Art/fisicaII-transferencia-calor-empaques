@@ -77,6 +77,15 @@ _PLANTILLA = r"""<!doctype html>
   .flujo { text-align:right; font-size:.85rem; }
   .flujo small { display:block; font-size:.72rem; color:var(--tenue); margin-top:.2rem; }
   .flujo input { accent-color:var(--azul); width:16px; height:16px; vertical-align:-3px; margin-right:.35rem; }
+  .ganador { display:none; margin:0 0 .9rem; padding:.85rem 1.1rem; border-radius:12px;
+             background:linear-gradient(135deg, #FFF6E0, #FDE9C2); border:1px solid #F0C673;
+             color:#5A3A06; animation: aparecer .5s ease; }
+  .ganador.visible { display:flex; gap:.8rem; align-items:center; }
+  .ganador .copa { font-size:1.9rem; line-height:1; }
+  .ganador b { font-size:1.05rem; color:#3F2904; }
+  .ganador small { display:block; font-size:.8rem; margin-top:.15rem; }
+  .tarjeta.gana { border:2px solid #E8B04A; box-shadow:0 0 0 4px rgba(232,176,74,.18); }
+  @keyframes aparecer { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:none; } }
   .aviso { padding:1rem; border:1px dashed var(--borde); border-radius:10px; color:var(--tenue);
            font-size:.85rem; display:none; }
   :focus-visible { outline:2px solid var(--azul); outline-offset:2px; }
@@ -101,6 +110,9 @@ _PLANTILLA = r"""<!doctype html>
   </div>
   <div class="aviso" id="aviso">No se pudo cargar el visor 3D (se necesita conexión a internet para
     descargar plotly.js). Los resultados por minuto siguen disponibles en las demás secciones.</div>
+  <div class="ganador" id="ganador" role="status" aria-live="polite">
+    <div class="copa">🏆</div><div><b id="ganador-tit"></b><small id="ganador-det"></small></div>
+  </div>
   <div class="grid" id="grid"></div>
   <div class="leyenda">
     <div class="escala"><div class="tit"><b>Temperatura del agua</b><span>Escala común · °C</span></div>
@@ -179,6 +191,16 @@ function irA(m) {
   document.getElementById('minuto').value = minuto;
   document.getElementById('lbl-min').textContent = minuto + ' min';
   D.muestras.forEach((_, i) => aplicar(i));
+  mostrarGanador(minuto >= D.tmax);
+}
+function mostrarGanador(si) {
+  if (!D.ganador) return;
+  const caja = document.getElementById('ganador');
+  caja.classList.toggle('visible', si);
+  document.getElementById('ganador-tit').textContent = D.ganador.titulo;
+  document.getElementById('ganador-det').textContent = D.ganador.detalle;
+  D.muestras.forEach((m, i) =>
+    document.getElementById('p' + i).parentElement.classList.toggle('gana', si && m.nombre === D.ganador.nombre));
 }
 
 // ---- Controles ----
@@ -220,7 +242,8 @@ cargar(0);
 
 def html_visor(muestras: list[dict], tmax: int, lo: float, hi: float, qmax: float,
                t0: int = 0, ms_por_minuto: int = 250,
-               sin_lectura: str = "Interpolado entre lecturas") -> str:
+               sin_lectura: str = "Interpolado entre lecturas",
+               ganador: dict | None = None) -> str:
     """HTML autocontenido del visor.
 
     Cada muestra: nombre, costo (texto), amb (°C), temps[min], qdot[min], n[min]
@@ -228,7 +251,9 @@ def html_visor(muestras: list[dict], tmax: int, lo: float, hi: float, qmax: floa
     """
     datos = {"muestras": muestras, "tmax": int(tmax), "lo": lo, "hi": hi, "qmax": qmax,
              "t0": int(t0), "ms": int(ms_por_minuto), "escala": [[f, c] for f, c in ESCALA],
-             "sin_lectura": sin_lectura}
+             "sin_lectura": sin_lectura,
+             # {"nombre", "titulo", "detalle"}: se anuncia al terminar la simulación.
+             "ganador": ganador}
     gradiente = "linear-gradient(90deg, " + ", ".join(f"{c} {f * 100:.0f}%" for f, c in ESCALA) + ")"
     reemplazos = {
         "__AZUL__": AZUL, "__AZUL_SUAVE__": AZUL_SUAVE, "__BORDE__": BORDE, "__FONDO__": FONDO,

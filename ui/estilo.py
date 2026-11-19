@@ -184,6 +184,11 @@ div[class*="st-key-fila"] > [data-testid="stLayoutWrapper"] > [data-testid="stHo
 .tp-voto-barra {{ height:12px; background:{AZUL_SUAVE}; border-radius:7px; overflow:hidden; margin-top:.25rem; }}
 .tp-voto-barra i {{ display:block; height:100%; border-radius:7px; transition:width .6s ease; }}
 .tp-voto-total {{ font-size:.78rem; color:{TENUE}; margin-top:.5rem; }}
+.tp-ganador {{ margin-top:.8rem; padding:.75rem .95rem; border-radius:12px; color:#5A3A06;
+  background:linear-gradient(135deg, #FFF6E0, #FDE9C2); border:1px solid #F0C673; font-size:.82rem; }}
+.tp-ganador-tit {{ font-size:.95rem; margin-bottom:.2rem; }}
+.tp-ganador-tit b {{ color:#3F2904; }}
+.tp-ganador-pub {{ margin-top:.35rem; font-weight:700; color:#3F2904; }}
 div[class*="st-key-fila_sim"] > [data-testid="stLayoutWrapper"] > [data-testid="stHorizontalBlock"] {{
   flex-wrap: wrap; }}
 @media (max-width: 1100px) {{

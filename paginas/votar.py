@@ -40,6 +40,7 @@ def render():
         if r.revelada:
             st.markdown("**Resultados**")
             st.markdown(votacion.barras_html(r, {}), unsafe_allow_html=True)
+            st.markdown(votacion.veredicto_html(r), unsafe_allow_html=True)
         else:
             st.caption(f"{sum(r.votos.values())} voto(s) hasta ahora · los resultados se muestran "
                        "en la pantalla del presentador.")

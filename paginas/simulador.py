@@ -110,8 +110,34 @@ def _mapa(cs: pd.DataFrame, k: float, t0: float, lim: float, factor: float, t_en
 # --------------------------------------------------------------------------- #
 # Votación
 # --------------------------------------------------------------------------- #
-def _bloque_votacion(opciones: list[str], ciudad: str, colores: dict[str, str]):
+def _ganador(res: pd.DataFrame, ciudad: str, lim: float, t_ent: int) -> dict | None:
+    """Empaque que mantiene la bebida bajo el límite por más tiempo (sin el control).
+
+    Gana quien pasa el límite más tarde (o nunca); si empatan, el que llega más frío.
+    """
+    alt = res[~res["es_control"]]
+    if alt.empty:
+        return None
+    # «Nunca pasa el límite» llega como None o NaN (pandas): cuenta como infinito.
+    clave = alt.apply(lambda r: (-(float("inf") if pd.isna(r["minuto_limite"])
+                                   else r["minuto_limite"]), r["t_entrega_c"]), axis=1)
+    g = alt.loc[clave.sort_values().index[0]]
+    m = g["minuto_limite"]
+    cuando = (f"nunca pasa {lim:.1f} °C" if pd.isna(m)
+              else "ya sale por encima del límite" if m == 0
+              else f"pasa {lim:.1f} °C recién al minuto {m:.0f}")
+    return {"nombre": g["empaque"],
+            "titulo": f"Ganador en {ciudad}: {g['empaque']}",
+            "detalle": f"Llega a {g['t_entrega_c']:.1f} °C a los {t_ent} min y {cuando}."}
+
+
+def _bloque_votacion(opciones: list[str], ciudad: str, colores: dict[str, str],
+                     ganador: dict | None):
     u = votacion.urna()
+    # El resultado real se asocia a la ronda de esta ciudad (para revelarlo luego).
+    r0 = u.foto()
+    if ganador and r0.opciones and f"En {ciudad}," in r0.pregunta and r0.ganador != ganador["nombre"]:
+        u.fijar_ganador(ganador["nombre"], ganador["detalle"])
     base = st.text_input(
         "Dirección de la app para el público", value=votacion.url_base(), key="sim_url",
         persist_state="session",
@@ -127,15 +153,23 @@ def _bloque_votacion(opciones: list[str], ciudad: str, colores: dict[str, str]):
                        "dirección de red para que el código sirva en los celulares.")
     with c2:
         pregunta = f"En {ciudad}, ¿qué empaque mantiene la bebida bajo el límite por más tiempo?"
-        a, b = st.columns(2)
+        a, b, c = st.columns(3)
         if a.button("Nueva votación", icon=":material/how_to_vote:", type="primary",
                     width="stretch", help="Empieza una ronda con la ciudad elegida"):
             u.nueva(pregunta, opciones)
+            if ganador:
+                u.fijar_ganador(ganador["nombre"], ganador["detalle"])
         r = u.foto()
         if b.button("Ocultar resultados" if r.revelada else "Mostrar resultados",
                     icon=":material/visibility:", width="stretch", disabled=not r.opciones):
             u.revelar(not r.revelada)
             st.rerun()   # para que el botón muestre su nuevo texto
+        if c.button("Limpiar votación", icon=":material/delete_sweep:", width="stretch",
+                    disabled=not r.opciones,
+                    help="Borra la ronda y todos sus votos; los celulares vuelven a esperar"):
+            u.limpiar()
+            st.toast("Votación limpiada", icon=":material/delete_sweep:")
+            st.rerun()
 
         @st.fragment(run_every=2)
         def _en_vivo():
@@ -146,6 +180,7 @@ def _bloque_votacion(opciones: list[str], ciudad: str, colores: dict[str, str]):
             st.markdown(f"**Ronda {r.id}:** {e(r.pregunta)}")
             if r.revelada:
                 st.markdown(votacion.barras_html(r, colores), unsafe_allow_html=True)
+                st.markdown(votacion.veredicto_html(r), unsafe_allow_html=True)
             else:
                 st.markdown(f'<div class="tp-voto-total">{sum(r.votos.values())} voto(s) '
                             f'recibidos · resultados ocultos</div>', unsafe_allow_html=True)
@@ -211,6 +246,7 @@ def render():
 
     ta, t0, lim, t_ent = float(ss.sim_ta), float(ss.sim_t0), float(ss.sim_lim), int(ss.sim_t)
     res = _escenario(emp, ta, t0, lim, t_ent, f)
+    ganador = _ganador(res, ss.sim_ciudad, lim, t_ent)
 
     with der, st.container(key="card_sim_mapa"):
         nombres = res.loc[~res["es_control"], "empaque"].tolist() or res["empaque"].tolist()
@@ -246,7 +282,7 @@ def render():
             "Llega a (°C)": res["t_entrega_c"].round(2),
             "Calor absorbido (kJ)": res["q_kj"].round(2),
             f"Pasa {lim:.1f} °C en (min)": [
-                ("ya parte por encima" if (m == 0) else "nunca" if m is None else f"{m:.0f}")
+                ("nunca" if pd.isna(m) else "ya parte por encima" if m == 0 else f"{m:.0f}")
                 for m in res["minuto_limite"]],
             "¿Llega bajo el límite?": ["✓ Sí" if c else "✗ No" for c in res["cumple"]],
             "S/ por uso": [("referencia" if ctrl else f"{c:.2f}")
@@ -282,7 +318,8 @@ def render():
                 escenas={"corte": lab3d.escena(r["empaque"], r["es_control"], corte=True),
                          "completo": lab3d.escena(r["empaque"], r["es_control"], corte=False)}))
         st.iframe(visor3d.html_visor(muestras, t_ent, ESCALA_LO, ESCALA_HI, qmax,
-                                     sin_lectura=f"Predicción en {ss.sim_ciudad}"),
+                                     sin_lectura=f"Predicción en {ss.sim_ciudad}",
+                                     ganador=ganador),
                   height="content",
                   alt=f"Predicción 3D de las botellas en {ss.sim_ciudad}, minuto a minuto")
 
@@ -291,4 +328,5 @@ def render():
     with st.container(key="card_sim_voto"):
         titulo_tarjeta("Votación del público",
                        "Antes de revelar el resultado, el público vota desde su celular.")
-        _bloque_votacion(res.loc[~res["es_control"], "empaque"].tolist(), ss.sim_ciudad, col)
+        _bloque_votacion(res.loc[~res["es_control"], "empaque"].tolist(), ss.sim_ciudad, col,
+                         ganador)
