@@ -60,6 +60,7 @@ def inicializar():
     ss.setdefault("eco_peso", 60)
     ss.setdefault("eco_ver", 0)
     ss.setdefault("ver_desv", True)
+    ss.setdefault("ver_modelo", False)
 
 
 def fijar_base(df: pd.DataFrame, nombre: str, modo: str, ident: str):

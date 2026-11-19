@@ -117,19 +117,23 @@ def render():
                                "promedios_empaques.csv", "text/csv",
                                icon=":material/download:", type="tertiary",
                                help="Descargar promedios (CSV)")
-        c1, c2 = st.columns([2, 1], vertical_alignment="center")
-        with c1:
+        # Selector y casillas en una fila que se reparte en dos líneas si no cabe.
+        with st.container(horizontal=True, vertical_alignment="center", gap="medium"):
             modo = st.segmented_control(
                 "Vista", ["Temperatura", "Variación térmica", "Promedios"],
                 default="Temperatura", required=True, key="graf_modo",
                 persist_state="session", label_visibility="collapsed", wrap=True)
-        with c2, st.container(horizontal=True, horizontal_alignment="right"):
+            st.space("stretch")
             st.checkbox("Desviación estándar", key="ver_desv", persist_state="session")
+            st.checkbox("Modelo de Newton", key="ver_modelo", persist_state="session",
+                        help="Curva punteada del modelo ajustado T(t) = Tₐ + (T₀ − Tₐ)·e^(−k·t)")
         if modo == "Promedios":
             st.dataframe(_promedios_anchos(df), hide_index=True, width="stretch", height=430)
         else:
             st.plotly_chart(
-                graficos.curvas(df, R.control, R.umbral, R.t, modo=modo, bandas=ss.ver_desv),
+                graficos.curvas(df, R.control, R.umbral, R.t, modo=modo, bandas=ss.ver_desv,
+                                reco=R.reco["empaque"] if R.reco is not None else None,
+                                res=R.res, modelo=ss.ver_modelo),
                 width="stretch", config={"displaylogo": False, "displayModeBar": False})
 
     with rc, st.container(key="reco"):

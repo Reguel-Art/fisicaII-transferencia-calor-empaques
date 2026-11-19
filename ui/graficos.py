@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 
@@ -11,7 +12,10 @@ from ui.estilo import AZUL, BORDE, NARANJA, NARANJA_OSC, TENUE, TEXTO
 # Colores de serie con contraste ≥ 3:1 sobre blanco (WCAG 1.4.11): el naranja de la
 # serie es una versión más profunda del naranja de marca.
 GRIS_CTRL = "#868C93"
-PALETA = ["#D06A16", "#5B8DEF", AZUL, "#8E6CC2", "#D2667A", "#2E8C99"]
+# Validada con la guía de visualización (validate_palette.js): banda de luminosidad,
+# croma y separación para daltonismo (ΔE ≥ 18.7 entre vecinos). El gris del control
+# es intencional: es la referencia y va siempre con línea discontinua.
+PALETA = ["#D2691E", "#2E9FB5", "#3B5BC4", "#8E6CC2", "#D2667A", "#5E9E4A"]
 
 
 def colores(empaques: list[str], control: str | None) -> dict[str, str]:
@@ -46,50 +50,126 @@ def _base(fig: go.Figure, height: int, **kw) -> go.Figure:
     return fig
 
 
+def _cruce(x: np.ndarray, y: np.ndarray, umbral: float) -> float | None:
+    """Primer instante en que la curva supera el umbral (interpolación lineal)."""
+    for k in range(1, len(x)):
+        if y[k - 1] <= umbral < y[k]:
+            return float(x[k - 1] + (umbral - y[k - 1]) * (x[k] - x[k - 1]) / (y[k] - y[k - 1]))
+    return None
+
+
 def curvas(df: pd.DataFrame, control: str | None, umbral: float, t_entrega: int,
-           modo: str = "Temperatura", bandas: bool = True) -> go.Figure:
-    """modo: 'Temperatura' (T media) o 'Variación térmica' (T − T₀)."""
+           modo: str = "Temperatura", bandas: bool = True, reco: str | None = None,
+           res: pd.DataFrame | None = None, modelo: bool = False) -> go.Figure:
+    """Evolución de la temperatura (o de ΔT = T − T₀) por empaque.
+
+    - Zonas: por debajo del límite (azul muy suave) y por encima (naranja muy suave).
+    - Un rombo marca el minuto en que cada empaque cruza el límite.
+    - Etiqueta directa con el valor final al extremo de cada curva.
+    - La alternativa recomendada se dibuja más gruesa; el control, gris y discontinuo.
+    - Opcional: la curva del modelo de Newton ajustado, T(t) = Tₐ + (T₀ − Tₐ)·e^(−k·t).
+    """
     ag = datos.agregar(df)
     empaques = datos.lista_empaques(df)
     col = colores(empaques, control)
-    fig = go.Figure()
     variacion = modo != "Temperatura"
-    t_fin = ag["tiempo_min"].max()
+    t_fin = float(ag["tiempo_min"].max())
+    t_amb = datos.temperatura_ambiente(df)
+    fig = go.Figure()
 
+    y_todos = (ag["temp_media"] - ag.groupby("empaque")["temp_media"].transform("first")
+               if variacion else ag["temp_media"])
+    y_lo = float((y_todos - ag["temp_std"]).min())
+    y_hi = float((y_todos + ag["temp_std"]).max())
+    if not variacion:
+        y_lo, y_hi = min(y_lo, umbral), max(y_hi, umbral)
+    pad = (y_hi - y_lo) * 0.08
+    y0, y1 = y_lo - pad, y_hi + pad
+
+    # Zonas respecto del límite (solo en temperatura).
+    if not variacion:
+        fig.add_hrect(y0=y0, y1=umbral, fillcolor=AZUL, opacity=0.045, line_width=0, layer="below")
+        fig.add_hrect(y0=umbral, y1=y1, fillcolor=NARANJA, opacity=0.06, line_width=0, layer="below")
+        fig.add_annotation(xref="paper", x=0.005, y=umbral, yanchor="bottom", xanchor="left",
+                           text=f"<b>Límite · {umbral:.1f} °C</b>", showarrow=False,
+                           font=dict(color=NARANJA_OSC, size=11))
+        fig.add_annotation(xref="paper", x=0.005, y=y1, yanchor="top", xanchor="left",
+                           text="Sobre el límite", showarrow=False, font=dict(color=TENUE, size=10))
+        fig.add_annotation(xref="paper", x=0.005, y=y0, yanchor="bottom", xanchor="left",
+                           text="Dentro del límite", showarrow=False, font=dict(color=TENUE, size=10))
+
+    finales = []
     for emp in empaques:
         sub = ag[ag["empaque"] == emp].sort_values("tiempo_min")
-        y = sub["temp_media"] - (sub["temp_media"].iloc[0] if variacion else 0)
+        x = sub["tiempo_min"].to_numpy(float)
+        base = float(sub["temp_media"].iloc[0]) if variacion else 0.0
+        y = sub["temp_media"].to_numpy(float) - base
+        sd = sub["temp_std"].to_numpy(float)
         c = col[emp]
+        es_ctrl, destacado = emp == control, emp == reco
         if bandas:
-            fig.add_trace(go.Scatter(x=sub["tiempo_min"], y=y + sub["temp_std"], mode="lines",
-                                     line=dict(width=0, shape="spline"), showlegend=False,
-                                     hoverinfo="skip"))
-            fig.add_trace(go.Scatter(x=sub["tiempo_min"], y=y - sub["temp_std"], mode="lines",
-                                     line=dict(width=0, shape="spline"), fill="tonexty",
-                                     fillcolor=_rgba(c, 0.15), showlegend=False, hoverinfo="skip"))
+            fig.add_trace(go.Scatter(x=x, y=y + sd, mode="lines", line=dict(width=0, shape="spline"),
+                                     showlegend=False, hoverinfo="skip", legendgroup=emp))
+            fig.add_trace(go.Scatter(x=x, y=y - sd, mode="lines", line=dict(width=0, shape="spline"),
+                                     fill="tonexty", fillcolor=_rgba(c, 0.13), showlegend=False,
+                                     hoverinfo="skip", legendgroup=emp))
+        if modelo and res is not None and not variacion:
+            r = res.set_index("empaque")
+            if emp in r.index and pd.notna(r.loc[emp, "k_fit_min"]):
+                tt = np.linspace(0, t_fin, 121)
+                T0 = float(r.loc[emp, "t0_C"])
+                ym = t_amb + (T0 - t_amb) * np.exp(-float(r.loc[emp, "k_fit_min"]) * tt)
+                fig.add_trace(go.Scatter(x=tt, y=ym, mode="lines", legendgroup=emp,
+                                         line=dict(color=c, width=1.4, dash="dot"),
+                                         opacity=0.85, showlegend=False, hoverinfo="skip"))
+        nombre = emp + (" · recomendado" if destacado else "")
         fig.add_trace(go.Scatter(
-            x=sub["tiempo_min"], y=y, name=emp, mode="lines+markers",
-            line=dict(color=c, width=2.6, shape="spline", smoothing=0.7,
-                      dash="dash" if emp == control else "solid"),
-            marker=dict(size=7, color="#fff", line=dict(color=c, width=2)),
-            hovertemplate="%{y:.2f} °C",
+            x=x, y=y, name=nombre, legendgroup=emp, mode="lines+markers",
+            line=dict(color=c, width=3.2 if destacado else 2.2, shape="spline", smoothing=0.6,
+                      dash="dash" if es_ctrl else "solid"),
+            marker=dict(size=9 if destacado else 8, color="#fff", line=dict(color=c, width=2)),
+            customdata=np.stack([sd, sub["temp_media"].to_numpy(float)], axis=1),
+            hovertemplate=(f"{emp}: <b>%{{y:.2f}} °C</b> ± %{{customdata[0]:.2f}}<extra></extra>"
+                           if not variacion else
+                           f"{emp}: <b>+%{{y:.2f}} °C</b> (T = %{{customdata[1]:.2f}} °C)<extra></extra>"),
         ))
+        finales.append((y[-1], c, emp))
 
-    if not variacion:
-        fig.add_hline(y=umbral, line_dash="dash", line_color=NARANJA, line_width=1.2,
-                      annotation_text=f"Límite · {umbral:.1f} °C",
-                      annotation_position="top left",
-                      annotation_font=dict(color=NARANJA_OSC, size=12),
-                      )
+        # Minuto en que cruza el límite.
+        if not variacion:
+            tc = _cruce(x, y, umbral)
+            if tc is not None:
+                fig.add_trace(go.Scatter(
+                    x=[tc], y=[umbral], mode="markers", legendgroup=emp, showlegend=False,
+                    marker=dict(symbol="diamond", size=11, color=c, line=dict(color="#fff", width=2)),
+                    hovertemplate=f"{emp} supera {umbral:.1f} °C a los <b>{tc:.0f} min</b><extra></extra>"))
+
+    # Etiquetas directas con el valor final; se separan si quedan muy juntas.
+    finales.sort()
+    min_sep = (y1 - y0) * 0.055
+    ult = -1e9
+    for yv, c, emp in finales:
+        ypos = max(yv, ult + min_sep)
+        ult = ypos
+        fig.add_annotation(x=t_fin, y=ypos, xanchor="left", xshift=7, showarrow=False,
+                           text=f"<b>{'+' if variacion else ''}{yv:.1f}°</b>",
+                           font=dict(color=TEXTO, size=11), bgcolor="rgba(255,255,255,0.9)",
+                           bordercolor=c, borderwidth=1.5, borderpad=2)
+
     if t_entrega < t_fin:
         fig.add_vline(x=t_entrega, line_dash="dot", line_color="#9AA6BE",
-                      annotation_text=f"Entrega · {t_entrega} min",
-                      annotation_position="top", annotation_font=dict(size=11, color=TENUE))
+                      annotation_text=f"Entrega · {t_entrega} min", annotation_position="top",
+                      annotation_font=dict(size=11, color=TENUE))
 
-    _base(fig, 460, hovermode="x unified",
+    _base(fig, 470, hovermode="x unified",
           xaxis_title="Tiempo (min)",
-          yaxis_title="Variación ΔT (°C)" if variacion else "Temperatura (°C)")
-    fig.update_xaxes(dtick=5, range=[-1, t_fin + 1])
+          yaxis_title="Variación ΔT (°C)" if variacion else "Temperatura del agua (°C)")
+    fig.update_layout(margin=dict(t=24, b=40, l=6, r=56),
+                      legend=dict(orientation="h", y=-0.16, x=0, yanchor="top", font=dict(size=11)),
+                      hoverlabel=dict(bgcolor="#fff", bordercolor=BORDE, font_size=12))
+    fig.update_xaxes(dtick=10, range=[-1, t_fin + 1], showspikes=True,
+                     spikemode="across", spikethickness=1, spikedash="dot", spikecolor="#9AA6BE")
+    fig.update_yaxes(range=[y0, y1])
     return fig
 
 
