@@ -176,35 +176,6 @@ div[class*="st-key-fila"] > [data-testid="stLayoutWrapper"] > [data-testid="stHo
 /* Celular: la barra superior en una sola línea. */
 @media (max-width: 480px) {{ .tp-estado > span {{ display:none; }} }}
 
-/* ---------- Laboratorio 3D ---------- */
-div[class*="st-key-cardlab"] {{ padding: .6rem .7rem 1rem; }}
-div[class*="st-key-cardlab"] [data-testid="stPlotlyChart"] {{ border-radius: 10px; overflow: hidden; }}
-.tp-lab-nom {{ display:flex; align-items:center; gap:.45rem; font-weight:700; font-size:.95rem;
-  color:{TEXTO}; margin:.3rem .3rem 0; }}
-.tp-lab-nom span {{ width:9px; height:9px; border-radius:50%; flex-shrink:0; }}
-.tp-lab-temp {{ font-size:2rem; font-weight:800; letter-spacing:-.02em; color:{TEXTO};
-  margin:.2rem .3rem 0; line-height:1.15; }}
-.tp-lab-temp small {{ font-size:.95rem; font-weight:500; color:{TENUE}; }}
-.tp-lab-sub {{ font-size:.74rem; color:{TENUE}; margin:0 .3rem .7rem; }}
-.tp-lab-pie {{ border-top:1px solid {BORDE}; padding-top:.65rem; margin:0 .3rem;
-  display:flex; flex-direction:column; gap:.15rem; font-size:.76rem; color:{TENUE}; }}
-.tp-lab-pie b {{ color:{TEXTO}; font-size:.82rem; margin-bottom:.15rem; }}
-.tp-escala {{ max-width:360px; }}
-.tp-escala-tit {{ display:flex; justify-content:space-between; font-size:.82rem; color:{TEXTO}; }}
-.tp-escala-tit span {{ font-size:.72rem; color:{TENUE}; }}
-.tp-escala-barra {{ height:8px; border-radius:6px; margin:.45rem 0 .3rem; }}
-.tp-escala-num {{ display:flex; justify-content:space-between; font-size:.72rem; color:{TENUE}; }}
-div[class*="st-key-fila_lab"] > [data-testid="stLayoutWrapper"] > [data-testid="stHorizontalBlock"] {{
-  flex-wrap: wrap; }}
-@media (max-width: 1350px) {{
-  div[class*="st-key-fila_lab"] > [data-testid="stLayoutWrapper"] > [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] {{
-    flex: 1 1 calc(50% - 1rem) !important; min-width: calc(50% - 1rem) !important; }}
-}}
-@media (max-width: 560px) {{
-  div[class*="st-key-fila_lab"] > [data-testid="stLayoutWrapper"] > [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] {{
-    flex: 1 1 100% !important; min-width: 100% !important; }}
-}}
-
 /* ---------- Widgets ---------- */
 .stButton button[kind="primary"], .stDownloadButton button[kind="primary"],
 [data-testid="stPopover"] button[kind="primary"] {{

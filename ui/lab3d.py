@@ -182,34 +182,36 @@ def flechas(escala: float, z: float = 0.75) -> list:
     return tr
 
 
-def figura_muestra(nombre: str, es_control: bool, T: float, lo: float, hi: float,
-                   corte: bool, ver_flujo: bool, flujo_rel: float, zoom: float,
-                   revision: int) -> go.Figure:
-    """Escena 3D de una muestra a escala común."""
+def escena(nombre: str, es_control: bool, corte: bool) -> dict:
+    """Escena 3D de una muestra a escala común, lista para el visor del navegador.
+
+    Devuelve {"data", "layout", "agua", "flechas"}: los índices de los trazos del
+    agua (se recolorean con la temperatura) y de las flechas (se acortan con el flujo).
+    El visor crea cada escena una sola vez y solo actualiza esos trazos, así la
+    animación no abre contextos WebGL nuevos en cada minuto.
+    """
     tipo = tipo_empaque(nombre, es_control)
     trazos = [cilindro(1.25, 0.0, 0.1, "#D3DBE8")]                    # base
-    trazos += botella(color_temperatura(T, lo, hi))
+    i_agua = [len(trazos), len(trazos) + 1]                            # cuerpo y hombro
+    trazos += botella("#2F6FD6")
     trazos += empaque(tipo, corte)
-    if ver_flujo:
-        trazos += flechas(flujo_rel)
+    i_flechas = list(range(len(trazos), len(trazos) + 4))              # línea, cono × 2
+    trazos += flechas(1.0)
 
     fig = go.Figure(trazos)
-    d = 1.55 / max(zoom, 0.3)
     fig.update_layout(
-        height=290, margin=dict(l=0, r=0, t=0, b=0),
-        paper_bgcolor="rgba(0,0,0,0)", showlegend=False,
-        # uirevision conserva el giro del usuario entre actualizaciones (minuto, corte).
-        uirevision=f"lab-{revision}-{zoom}",
+        margin=dict(l=0, r=0, t=0, b=0), paper_bgcolor="rgba(0,0,0,0)", showlegend=False,
+        uirevision="lab",
         scene=dict(
             xaxis=dict(visible=False, range=list(RX)), yaxis=dict(visible=False, range=list(RY)),
             zaxis=dict(visible=False, range=list(RZ)),
             aspectmode="manual", aspectratio=dict(x=1, y=1, z=0.78),
             bgcolor=FONDO_ESCENA, dragmode="turntable",
-            camera=dict(eye=dict(x=0.0, y=-d, z=0.32 * d),
-                        center=dict(x=0, y=0, z=-0.08)),
+            camera=dict(eye=dict(x=0.0, y=-1.55, z=0.5), center=dict(x=0, y=0, z=-0.08)),
         ),
     )
-    return fig
+    js = fig.to_plotly_json()
+    return {"data": js["data"], "layout": js["layout"], "agua": i_agua, "flechas": i_flechas}
 
 
-__all__ = ["color_temperatura", "gradiente_css", "figura_muestra", "tipo_empaque", "AZUL"]
+__all__ = ["color_temperatura", "gradiente_css", "escena", "tipo_empaque", "ESCALA"]
