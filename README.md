@@ -22,6 +22,10 @@ A partir de un CSV de mediciones de temperatura, la herramienta:
 - **Vista general:** indicadores clave, curvas de temperatura con bandas de
   desviación, recomendación y comparativo. «Configurar experimento» fija el
   límite de temperatura y el tiempo de entrega.
+- **Laboratorio 3D:** las cuatro botellas de 500 mL dentro de sus empaques, en 3D y a
+  la misma escala. El agua cambia de color con su temperatura minuto a minuto
+  (control deslizante o «Reproducir»), y unas flechas muestran el calor que entra
+  (largo proporcional a Q̇ = U·A·(T ambiente − T agua)). Vista en corte o completa.
 - **Datos del experimento:** usar el ejemplo del Grupo 3, subir un CSV (con
   plantilla descargable) o escribir/editar las mediciones en la propia app.
 - **Evaluación económica:** precio, usos, limpieza y otros costos por material;

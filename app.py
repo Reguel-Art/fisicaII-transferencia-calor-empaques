@@ -15,7 +15,7 @@ from __future__ import annotations
 
 import streamlit as st
 
-from paginas import datos_experimento, economia, fisica, vista_general
+from paginas import datos_experimento, economia, fisica, laboratorio, vista_general
 from ui import controles, estado, estilo
 
 st.set_page_config(page_title="TermoPack · Análisis de empaques", page_icon="📦",
@@ -27,6 +27,7 @@ estado.inicializar()
 paginas = {
     "vista": st.Page(vista_general.render, title="Vista general", url_path="vista-general",
                      default=True),
+    "lab": st.Page(laboratorio.render, title="Laboratorio 3D", url_path="laboratorio"),
     "datos": st.Page(datos_experimento.render, title="Datos del experimento", url_path="datos"),
     "economia": st.Page(economia.render, title="Evaluación económica", url_path="economia"),
     "fisica": st.Page(fisica.render, title="Fundamento físico", url_path="fisica"),

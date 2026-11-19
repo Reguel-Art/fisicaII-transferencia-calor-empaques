@@ -81,11 +81,7 @@ html, body, .stApp, p, li, label, input, textarea, button, td, th, h1, h2, h3, h
 .tp-lab small {{ font-size:.68rem; color:#A9B8D6; }}
 .tp-lab .punto {{ margin-left:auto; width:7px; height:7px; border-radius:50%; background:{NARANJA}; }}
 .tp-seccion {{ font-size:.62rem; letter-spacing:.2em; color:#8FA3CB !important; margin:.2rem 0 .5rem .2rem; }}
-.tp-tip {{ border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04);
-  border-radius:12px; padding:1rem; margin-top:2.2rem; }}
-.tp-tip b {{ color:#fff; font-size:.92rem; display:block; margin:.5rem 0 .6rem; }}
-.tp-tip p {{ font-size:.75rem; color:#B5C3DE; margin:0; line-height:1.5; }}
-.tp-uni {{ display:flex; gap:.7rem; align-items:center; margin-top:1.4rem; }}
+.tp-uni {{ display:flex; gap:.7rem; align-items:center; margin-top:2.4rem; }}
 .tp-uni img {{ width:40px; height:40px; border-radius:9px; flex-shrink:0;
   box-shadow: 0 0 0 1px rgba(255,255,255,.18); }}
 .tp-uni b {{ font-size:.72rem; color:#fff; display:block; }}
@@ -100,8 +96,6 @@ html, body, .stApp, p, li, label, input, textarea, button, td, th, h1, h2, h3, h
 .tp-miga b {{ color:{TEXTO}; font-weight:500; }}
 .tp-estado {{ display:flex; align-items:center; gap:1rem; font-size:.74rem; color:{AZUL}; }}
 .tp-estado .dot {{ width:7px; height:7px; border-radius:50%; background:#3BAA6A; display:inline-block; margin-right:.35rem; }}
-.tp-avatar {{ width:32px; height:32px; border-radius:50%; border:1px solid {BORDE}; display:flex;
-  align-items:center; justify-content:center; font-size:.72rem; font-weight:700; color:{TEXTO}; background:#fff; }}
 .tp-ceja {{ font-size:.64rem; letter-spacing:.18em; color:{AZUL}; font-weight:600; }}
 .tp-ceja span {{ color:{TENUE}; margin-left:.9rem; padding-left:.9rem; border-left:1px solid {BORDE};
   font-size:.56rem; }}
@@ -176,15 +170,40 @@ div[class*="st-key-fila"] > [data-testid="stLayoutWrapper"] > [data-testid="stHo
 /* Rótulos en los extremos del deslizador, en una sola línea. */
 .tp-extremos {{ display:flex; justify-content:space-between; gap:1rem; font-size:.8rem;
   color:{TENUE}; margin-top:-.4rem; }}
-/* «Guía del experimento» no se marca como página actual (ya lo hace Fundamento físico). */
-div.st-key-guia [data-testid="stPageLink"] a {{
-  background: transparent !important; border-color: transparent !important; box-shadow: none !important; }}
-div.st-key-guia [data-testid="stPageLink"] a:hover {{ background: rgba(255,255,255,.06) !important; }}
 /* Aviso que solo hace falta en pantallas angostas. */
 .tp-solo-movil {{ display:none; font-size:.78rem; color:{TENUE}; margin-top:-.3rem; }}
 @media (max-width: 700px) {{ .tp-solo-movil {{ display:block; }} }}
 /* Celular: la barra superior en una sola línea. */
 @media (max-width: 480px) {{ .tp-estado > span {{ display:none; }} }}
+
+/* ---------- Laboratorio 3D ---------- */
+div[class*="st-key-cardlab"] {{ padding: .6rem .7rem 1rem; }}
+div[class*="st-key-cardlab"] [data-testid="stPlotlyChart"] {{ border-radius: 10px; overflow: hidden; }}
+.tp-lab-nom {{ display:flex; align-items:center; gap:.45rem; font-weight:700; font-size:.95rem;
+  color:{TEXTO}; margin:.3rem .3rem 0; }}
+.tp-lab-nom span {{ width:9px; height:9px; border-radius:50%; flex-shrink:0; }}
+.tp-lab-temp {{ font-size:2rem; font-weight:800; letter-spacing:-.02em; color:{TEXTO};
+  margin:.2rem .3rem 0; line-height:1.15; }}
+.tp-lab-temp small {{ font-size:.95rem; font-weight:500; color:{TENUE}; }}
+.tp-lab-sub {{ font-size:.74rem; color:{TENUE}; margin:0 .3rem .7rem; }}
+.tp-lab-pie {{ border-top:1px solid {BORDE}; padding-top:.65rem; margin:0 .3rem;
+  display:flex; flex-direction:column; gap:.15rem; font-size:.76rem; color:{TENUE}; }}
+.tp-lab-pie b {{ color:{TEXTO}; font-size:.82rem; margin-bottom:.15rem; }}
+.tp-escala {{ max-width:360px; }}
+.tp-escala-tit {{ display:flex; justify-content:space-between; font-size:.82rem; color:{TEXTO}; }}
+.tp-escala-tit span {{ font-size:.72rem; color:{TENUE}; }}
+.tp-escala-barra {{ height:8px; border-radius:6px; margin:.45rem 0 .3rem; }}
+.tp-escala-num {{ display:flex; justify-content:space-between; font-size:.72rem; color:{TENUE}; }}
+div[class*="st-key-fila_lab"] > [data-testid="stLayoutWrapper"] > [data-testid="stHorizontalBlock"] {{
+  flex-wrap: wrap; }}
+@media (max-width: 1350px) {{
+  div[class*="st-key-fila_lab"] > [data-testid="stLayoutWrapper"] > [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] {{
+    flex: 1 1 calc(50% - 1rem) !important; min-width: calc(50% - 1rem) !important; }}
+}}
+@media (max-width: 560px) {{
+  div[class*="st-key-fila_lab"] > [data-testid="stLayoutWrapper"] > [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] {{
+    flex: 1 1 100% !important; min-width: 100% !important; }}
+}}
 
 /* ---------- Widgets ---------- */
 .stButton button[kind="primary"], .stDownloadButton button[kind="primary"],
@@ -210,8 +229,7 @@ def barra_superior(miga: str):
     st.markdown(
         f"""<div class="tp-top">
           <div class="tp-miga">Laboratorio &nbsp;/&nbsp; <b>{e(miga)}</b></div>
-          <div class="tp-estado"><span><span class="dot"></span>Motor Python activo</span>
-            <div class="tp-avatar">G3</div></div>
+          <div class="tp-estado"><span><span class="dot"></span>Motor Python activo</span></div>
         </div>""",
         unsafe_allow_html=True,
     )
@@ -261,17 +279,11 @@ def barra_lateral(paginas: dict, n_lecturas: int):
         unsafe_allow_html=True,
     )
     sb.page_link(paginas["vista"], label="Vista general", icon=":material/grid_view:")
+    sb.page_link(paginas["lab"], label="Laboratorio 3D", icon=":material/view_in_ar:")
     sb.page_link(paginas["datos"], label=f"Datos del experimento · {n_lecturas}",
                  icon=":material/table_chart:")
     sb.page_link(paginas["economia"], label="Evaluación económica", icon=":material/payments:")
     sb.page_link(paginas["fisica"], label="Fundamento físico", icon=":material/science:")
-    sb.markdown(
-        """<div class="tp-tip"><div>💡</div><b>De la medición a la decisión.</b>
-          <p>La física y los datos al servicio de un mejor delivery.</p></div>""",
-        unsafe_allow_html=True,
-    )
-    with sb.container(key="guia"):
-        st.page_link(paginas["fisica"], label="Guía del experimento  →")
     sb.markdown(
         f"""<div class="tp-uni"><img src="data:image/png;base64,{LOGO_B64}"
                alt="Logo Universidad Científica del Sur">
