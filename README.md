@@ -26,6 +26,14 @@ A partir de un CSV de mediciones de temperatura, la herramienta:
   la misma escala. El agua cambia de color con su temperatura minuto a minuto
   (control deslizante o «Reproducir»), y unas flechas muestran el calor que entra
   (largo proporcional a Q̇ = U·A·(T ambiente − T agua)). Vista en corte o completa.
+- **Simulador por ciudad:** ¿cómo le iría a cada empaque en otro departamento? Con la k
+  medida de cada empaque y la ley de Newton, predice la temperatura de entrega, el calor
+  absorbido (Q = m·c·ΔT) y el minuto en que se pasa el límite, para la temperatura de la
+  capital elegida (normales climáticas en `data/ciudades_peru.csv`, con su fuente).
+  Incluye un mapa del Perú, un factor de viento («en moto», ilustrativo) y una
+  **votación en vivo**: el público escanea un código QR y vota desde su celular
+  (página `/votar`). Para que el QR sirva, abre la app con la dirección de red
+  (la «Network URL» que muestra Streamlit) y conecta los celulares a la misma WiFi.
 - **Datos del experimento:** usar el ejemplo del Grupo 3, subir un CSV (con
   plantilla descargable) o escribir/editar las mediciones en la propia app.
 - **Evaluación económica:** precio, usos, limpieza y otros costos por material;
@@ -78,6 +86,7 @@ python tests/test_analisis.py
 python tests/test_editor.py
 python tests/test_decision.py
 python tests/test_estado.py
+python tests/test_escenarios.py
 ```
 
 ---

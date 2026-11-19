@@ -171,7 +171,7 @@ function aplicar(i) {
   const n = m.n[minuto];
   document.getElementById('s' + i).textContent = (T === null) ? 'Sin lecturas en este minuto'
     : (n > 0 ? `Media de lecturas · n = ${n} · minuto ${minuto}`
-             : `Interpolado entre lecturas · minuto ${minuto}`);
+             : `${D.sin_lectura} · minuto ${minuto}`);
   document.getElementById('q' + i).textContent = 'Calor hacia el agua · ' + (q === null ? '—' : q.toFixed(2) + ' W');
 }
 function irA(m) {
@@ -219,14 +219,16 @@ cargar(0);
 
 
 def html_visor(muestras: list[dict], tmax: int, lo: float, hi: float, qmax: float,
-               t0: int = 0, ms_por_minuto: int = 250) -> str:
+               t0: int = 0, ms_por_minuto: int = 250,
+               sin_lectura: str = "Interpolado entre lecturas") -> str:
     """HTML autocontenido del visor.
 
     Cada muestra: nombre, costo (texto), amb (°C), temps[min], qdot[min], n[min]
     y escenas {"corte": ..., "completo": ...} (de ui.lab3d.escena).
     """
     datos = {"muestras": muestras, "tmax": int(tmax), "lo": lo, "hi": hi, "qmax": qmax,
-             "t0": int(t0), "ms": int(ms_por_minuto), "escala": [[f, c] for f, c in ESCALA]}
+             "t0": int(t0), "ms": int(ms_por_minuto), "escala": [[f, c] for f, c in ESCALA],
+             "sin_lectura": sin_lectura}
     gradiente = "linear-gradient(90deg, " + ", ".join(f"{c} {f * 100:.0f}%" for f, c in ESCALA) + ")"
     reemplazos = {
         "__AZUL__": AZUL, "__AZUL_SUAVE__": AZUL_SUAVE, "__BORDE__": BORDE, "__FONDO__": FONDO,

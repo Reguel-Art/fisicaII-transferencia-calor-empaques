@@ -1,0 +1,26 @@
+departamento,capital,lat,lon,altitud_m,tmax_verano_c,tmedia_anual_c,fuente,nota
+Amazonas,Chachapoyas,-6.2167,-77.85,2335,21.1,15.2,https://www.nodc.noaa.gov/archive/arc0216/0253808/2.2/data/0-data/Region-3-WMO-Normals-9120/Peru/CSV/Chachapoyas_84201.csv,"Normales OMM/SENAMHI 1991-2020, estación Chachapoyas; mes más cálido: noviembre"
+Áncash,Huaraz,-9.5333,-77.5333,3052,24.3,14.8,https://en.wikipedia.org/wiki/Huaraz#Climate,"SENAMHI 1991-2020 (vía Wikipedia), estación Santiago Antúnez de Mayolo; mes más cálido: septiembre"
+Apurímac,Abancay,-13.6333,-72.8833,2377,25.8,17.4,https://en.wikipedia.org/wiki/Abancay#Climate,Fuente débil: estudio hidrológico municipal citado en Wikipedia (no SENAMHI); mes más cálido: octubre
+Arequipa,Arequipa,-16.3989,-71.5369,2328,22.6,14.4,https://worldweather.wmo.int/en/city.html?cityId=109,OMM WWIS (datos de SENAMHI); mes más cálido: octubre
+Ayacucho,Ayacucho,-13.1631,-74.2244,2761,25.5,16.6,https://web.archive.org/web/20231105213120/https://www.senamhi.gob.pe/main.php?p=pronostico-detalle&dp=05&localidad=0017,Temperatura normal de SENAMHI (archivo web); mes más cálido: noviembre
+Cajamarca,Cajamarca,-7.1575,-78.5175,2750,22.2,14.9,https://www.nodc.noaa.gov/archive/arc0216/0253808/2.2/data/0-data/Region-3-WMO-Normals-9120/Peru/CSV/AugustoWeberbauer_65201.csv,"Normales OMM/SENAMHI 1991-2020, estación Augusto Weberbauer; meses más cálidos: septiembre y noviembre"
+Callao,Callao,-12.0522,-77.1392,5,26.5,19.4,https://worldweather.wmo.int/en/city.html?cityId=108,"OMM WWIS, estación del aeropuerto Jorge Chávez (ficha Lima); mes más cálido: febrero"
+Cusco,Cusco,-13.5169,-71.9786,3399,20.9,11.9,https://worldweather.wmo.int/en/city.html?cityId=110,OMM WWIS (SENAMHI); mes más cálido: octubre. Otras estaciones dan unos 22.2 °C en noviembre
+Huancavelica,Huancavelica,-12.7864,-74.9756,3676,19.0,9.6,https://en.wikipedia.org/wiki/Huancavelica#Climate,"SENAMHI 1991-2020 (vía Wikipedia); mes más cálido: noviembre (alto frente al resto del año, unos 17 °C)"
+Huánuco,Huánuco,-9.9295,-76.2397,1880,27.1,20.4,https://www.nodc.noaa.gov/archive/arc0216/0253808/2.2/data/0-data/Region-3-WMO-Normals-9120/Peru/CSV/Huanuco_12501.csv,"Normales OMM/SENAMHI 1991-2020, estación Huánuco; mes más cálido: mayo"
+Ica,Ica,-14.0667,-75.7333,406,33.4,21.7,https://www.nodc.noaa.gov/archive/arc0216/0253808/2.2/data/0-data/Region-3-WMO-Normals-9120/Peru/CSV/SanCamilo_22003.csv,"Normales OMM/SENAMHI 1991-2020, estación San Camilo; mes más cálido: marzo"
+Junín,Huancayo,-12.0667,-75.2167,3259,21.4,12.1,https://www.nodc.noaa.gov/archive/arc0216/0253808/2.2/data/0-data/Region-3-WMO-Normals-9120/Peru/CSV/SantaAna_62007.csv,"Normales OMM/SENAMHI 1991-2020, estación Santa Ana; mes más cálido: noviembre"
+La Libertad,Trujillo,-8.112,-79.0288,34,28.2,20.7,"https://en.wikipedia.org/wiki/Trujillo,_Peru#Climate",SENAMHI 1991-2020 (vía Wikipedia); mes más cálido: febrero
+Lambayeque,Chiclayo,-6.7717,-79.8383,27,31.4,21.8,https://en.wikipedia.org/wiki/Chiclayo#Climate,Normales 1991-2020 del aeropuerto (NOAA/DWD vía Wikipedia); mes más cálido: febrero
+Lima,Lima,-12.06,-77.0375,123,27.1,19.6,https://en.wikipedia.org/wiki/Lima#Climate,"SENAMHI 1991-2020 (vía Wikipedia), estación Campo de Marte; mes más cálido: febrero"
+Loreto,Iquitos,-3.75,-73.25,104,32.7,27.0,https://en.wikipedia.org/wiki/Iquitos#Climate,Normales 1991-2020 (SENAMHI vía Wikipedia); mes más cálido: octubre. OMM WWIS da 31.7 °C
+Madre de Dios,Puerto Maldonado,-12.6,-69.1833,183,32.0,25.2,https://en.wikipedia.org/wiki/Puerto_Maldonado#Climate,Normales antiguas NOAA/OMM 1961-1990 (vía Wikipedia); meses más cálidos: septiembre y octubre
+Moquegua,Moquegua,-17.2,-70.9333,1410,27.4,19.2,https://en.wikipedia.org/wiki/Moquegua#Climate,SENAMHI 1991-2020 (vía Wikipedia); meses más cálidos: marzo y octubre. Datos antiguos dan 25.8 °C
+Pasco,Cerro de Pasco,-10.6864,-76.2625,4330,11.5,5.6,https://en.wikipedia.org/wiki/Cerro_de_Pasco#Climate,SENAMHI 1991-2020 (vía Wikipedia); mes más cálido: noviembre
+Piura,Piura,-5.2,-80.6333,55,34.6,25.5,https://en.wikipedia.org/wiki/Piura#Climate,Normales 1991-2020 del aeropuerto (vía Wikipedia); mes más cálido: febrero. OMM WWIS da 34.5 °C
+Puno,Puno,-15.8433,-70.0236,3830,17.7,9.6,https://en.wikipedia.org/wiki/Puno#Climate,SENAMHI 1991-2020 (vía Wikipedia); mes más cálido: noviembre
+San Martín,Moyobamba,-6.0333,-76.9667,860,29.4,23.6,https://www.nodc.noaa.gov/archive/arc0216/0253808/2.2/data/0-data/Region-3-WMO-Normals-9120/Peru/CSV/Moyobamba_95001.csv,"Normales OMM/SENAMHI 1991-2020, estación Moyobamba; mes más cálido: septiembre"
+Tacna,Tacna,-18.0556,-70.2483,552,28.5,18.7,https://en.wikipedia.org/wiki/Tacna#Climate,"SENAMHI 1991-2020 (vía Wikipedia), estación Jorge Basadre; mes más cálido: febrero"
+Tumbes,Tumbes,-3.5708,-80.4597,6,31.3,25.2,"https://en.wikipedia.org/wiki/Tumbes,_Peru#Climate",Normales antiguas DWD 1961-1990 (vía Wikipedia); meses más cálidos: marzo y abril
+Ucayali,Pucallpa,-8.3833,-74.5167,154,32.3,26.3,https://en.wikipedia.org/wiki/Pucallpa#Climate,Normales antiguas DWD 1961-1990 (vía Wikipedia); mes más cálido: septiembre

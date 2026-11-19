@@ -176,6 +176,21 @@ div[class*="st-key-fila"] > [data-testid="stLayoutWrapper"] > [data-testid="stHo
 /* Celular: la barra superior en una sola línea. */
 @media (max-width: 480px) {{ .tp-estado > span {{ display:none; }} }}
 
+/* ---------- Simulador y votación ---------- */
+.tp-qr svg {{ width:100%; max-width:220px; height:auto; display:block; border-radius:10px;
+  border:1px solid {BORDE}; background:#fff; padding:6px; }}
+.tp-voto {{ margin:.55rem 0; }}
+.tp-voto-nom {{ display:flex; justify-content:space-between; font-size:.86rem; color:{TEXTO}; }}
+.tp-voto-barra {{ height:12px; background:{AZUL_SUAVE}; border-radius:7px; overflow:hidden; margin-top:.25rem; }}
+.tp-voto-barra i {{ display:block; height:100%; border-radius:7px; transition:width .6s ease; }}
+.tp-voto-total {{ font-size:.78rem; color:{TENUE}; margin-top:.5rem; }}
+div[class*="st-key-fila_sim"] > [data-testid="stLayoutWrapper"] > [data-testid="stHorizontalBlock"] {{
+  flex-wrap: wrap; }}
+@media (max-width: 1100px) {{
+  div[class*="st-key-fila_sim"] > [data-testid="stLayoutWrapper"] > [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] {{
+    flex: 1 1 100% !important; min-width: 100% !important; }}
+}}
+
 /* ---------- Widgets ---------- */
 .stButton button[kind="primary"], .stDownloadButton button[kind="primary"],
 [data-testid="stPopover"] button[kind="primary"] {{
@@ -235,7 +250,7 @@ def titulo_tarjeta(titulo: str, sub: str = ""):
     )
 
 
-def barra_lateral(paginas: dict, n_lecturas: int):
+def barra_lateral(paginas: dict):
     sb = st.sidebar
     sb.markdown(
         f"""<div class="tp-logo">
@@ -251,7 +266,8 @@ def barra_lateral(paginas: dict, n_lecturas: int):
     )
     sb.page_link(paginas["vista"], label="Vista general", icon=":material/grid_view:")
     sb.page_link(paginas["lab"], label="Laboratorio 3D", icon=":material/view_in_ar:")
-    sb.page_link(paginas["datos"], label=f"Datos del experimento · {n_lecturas}",
+    sb.page_link(paginas["sim"], label="Simulador por ciudad", icon=":material/map:")
+    sb.page_link(paginas["datos"], label="Datos del experimento",
                  icon=":material/table_chart:")
     sb.page_link(paginas["economia"], label="Evaluación económica", icon=":material/payments:")
     sb.page_link(paginas["fisica"], label="Fundamento físico", icon=":material/science:")
@@ -260,5 +276,18 @@ def barra_lateral(paginas: dict, n_lecturas: int):
                alt="Logo Universidad Científica del Sur">
           <div><b>Universidad Científica del Sur</b><small>Física II · Grupo 3</small></div></div>
         <div class="tp-pie">INGENIERÍA EMPRESARIAL Y DE SISTEMAS</div>""",
+        unsafe_allow_html=True,
+    )
+
+
+def modo_publico():
+    """Página del público (votar desde el celular): sin barra lateral ni botón «Menú»."""
+    st.markdown(
+        """<style>
+        [data-testid="stSidebar"], [data-testid="stExpandSidebarButton"],
+        [data-testid="stSidebarCollapsedControl"] { display:none !important; }
+        .block-container { max-width: 560px; padding-top: 1.5rem !important; }
+        .stButton button { min-height: 3.1rem; font-size: 1.02rem; }
+        </style>""",
         unsafe_allow_html=True,
     )
