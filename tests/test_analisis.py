@@ -18,15 +18,15 @@ def _resumen():
 
 def test_carga_y_estructura():
     df = datos.cargar_csv(CSV)
-    assert len(df) == 156
+    assert len(df) == 52            # 4 configuraciones × 13 lecturas
     assert datos.lista_empaques(df) == [
         "Control (Sin empaque)",
         "Caja de Cartón",
         "Bolsa Térmica Aluminizada",
         "Recipiente Aislante (EPS)",
     ]
-    # Media de las 3 repeticiones del informe: (26,8 + 27,1 + 27,0) / 3
-    assert abs(datos.temperatura_ambiente(df) - 26.967) < 1e-3
+    # Ensayo real del grupo: ambiente constante de 24,0 °C
+    assert abs(datos.temperatura_ambiente(df) - 24.0) < 1e-9
 
 
 def test_params_empaque_eps():
@@ -36,19 +36,19 @@ def test_params_empaque_eps():
     assert p.conductividad_k_wmk == 0.038
     assert p.espesor_pared_mm == 15.0
     assert p.area_superficial_m2 == 0.04
-    assert p.masa_agua_kg == 0.5
+    assert p.masa_agua_kg == 0.6     # botella de 600 mL
     assert p.calor_especifico_j_kgk == 4186
 
 
 def test_resumen_termico_eps():
     _, res = _resumen()
     eps = res[res["empaque"] == "Recipiente Aislante (EPS)"].iloc[0]
-    # Valores de la tabla 8 del informe (tecnopor/EPS).
-    assert eps["t0_C"] == 5.0
-    assert eps["t60_C"] == 9.83
-    assert eps["delta_T"] == 4.83
-    # Q = 0.5 * 4186 * (9.8333 - 5.0) = 10116.2 J  (informe: 10,11 kJ)
-    assert abs(eps["q_absorbido_J"] - 10116.2) < 1.0
+    # Valores de la Tabla 8 de la parte experimental (tecnopor/EPS).
+    assert eps["t0_C"] == 12.5
+    assert eps["t60_C"] == 20.9
+    assert eps["delta_T"] == 8.4
+    # Q = 0.6 * 4186 * (20.9 - 12.5) = 21097.4 J  (informe: 21,10 kJ)
+    assert abs(eps["q_absorbido_J"] - 21097.4) < 1.0
     assert eps["r2"] > 0.99          # ajuste muy bueno
 
 
@@ -58,8 +58,8 @@ def test_ley_conduccion_eps():
     eps = res[res["empaque"] == "Recipiente Aislante (EPS)"].iloc[0]
     assert abs(eps["r_cond_KW"] - 9.868) < 0.01
     assert abs(eps["ua_cond_WK"] - 0.1013) < 1e-3
-    # Q̇ inicial = (26.967 - 5)/9.868 = 2.226 W
-    assert abs(eps["qdot_cond_W"] - 2.226) < 0.01
+    # Q̇ inicial = (24.0 - 12.5)/9.868 = 1.165 W
+    assert abs(eps["qdot_cond_W"] - 1.165) < 0.01
 
 
 def test_control_calienta_mas_rapido():

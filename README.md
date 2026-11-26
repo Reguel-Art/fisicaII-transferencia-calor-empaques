@@ -22,7 +22,7 @@ A partir de un CSV de mediciones de temperatura, la herramienta:
 - **Vista general:** indicadores clave, curvas de temperatura con bandas de
   desviación, recomendación y comparativo. «Configurar experimento» fija el
   límite de temperatura y el tiempo de entrega.
-- **Laboratorio 3D:** las cuatro botellas de 500 mL dentro de sus empaques, en 3D y a
+- **Laboratorio 3D:** las cuatro botellas de 600 mL dentro de sus empaques, en 3D y a
   la misma escala. El agua cambia de color con su temperatura minuto a minuto
   (control deslizante o «Reproducir»), y unas flechas muestran el calor que entra
   (largo proporcional a Q̇ = U·A·(T ambiente − T agua)). Vista en corte o completa.
@@ -91,5 +91,7 @@ python tests/test_escenarios.py
 
 ---
 
-> Los datos incluidos son **simulados**. Reemplázalos con mediciones reales
-> antes de informar resultados experimentales.
+> Los datos incluidos son las **mediciones reales del grupo** (Tabla 7 de la parte
+> experimental): gaseosa de 600 mL, T₀ = 12,5 °C, ambiente 24,0 °C, una lectura cada
+> 5 min durante 60 min. Precios cotizados: cartón S/ 0,80, bolsa térmica S/ 40,00 y
+> tecnopor S/ 30,00. Conductividad, espesor y área no se midieron: son valores de referencia.

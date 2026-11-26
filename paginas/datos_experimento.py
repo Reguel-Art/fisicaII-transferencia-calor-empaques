@@ -53,8 +53,8 @@ def render():
             if ss.fuente_modo != "Ejemplo":
                 ej = estado.cargar_ejemplo()
                 estado.fijar_base(ej, estado.CSV_DEFECTO.name, "Ejemplo", estado.CSV_DEFECTO.name)
-            st.caption("Escenario simulado del informe EC3: 4 empaques × 3 repeticiones × "
-                       "13 instantes (0–60 min).")
+            st.caption("Mediciones reales del grupo: 4 configuraciones × 13 lecturas (0–60 min), "
+                       "gaseosa de 600 mL, T₀ = 12,5 °C, ambiente 24,0 °C.")
 
         elif modo == MODOS[1]:
             c1, c2 = st.columns([3, 1], vertical_alignment="bottom")

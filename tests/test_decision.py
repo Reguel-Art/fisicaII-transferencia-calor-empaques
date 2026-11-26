@@ -31,12 +31,12 @@ def test_costo_uso_total():
 
 def test_cumple_en_cada_lectura_con_datos_del_informe():
     df = datos.cargar_csv(CSV)
-    # EPS: la repetición 2 llega exactamente a 10,0 °C al minuto 60.
-    assert decision.cumple_en_cada_lectura(df, "Recipiente Aislante (EPS)", 10.0, 60)
-    assert not decision.cumple_en_cada_lectura(df, "Recipiente Aislante (EPS)", 9.9, 60)
-    # La bolsa supera 10 °C antes del minuto 60, pero no a los 30.
-    assert not decision.cumple_en_cada_lectura(df, "Bolsa Térmica Aluminizada", 10.0, 60)
-    assert decision.cumple_en_cada_lectura(df, "Bolsa Térmica Aluminizada", 10.0, 30)
+    # EPS: llega exactamente a 16,6 °C al minuto 20.
+    assert decision.cumple_en_cada_lectura(df, "Recipiente Aislante (EPS)", 16.6, 20)
+    assert not decision.cumple_en_cada_lectura(df, "Recipiente Aislante (EPS)", 16.5, 20)
+    # La bolsa supera 18 °C antes del minuto 60, pero no a los 20.
+    assert not decision.cumple_en_cada_lectura(df, "Bolsa Térmica Aluminizada", 18.0, 60)
+    assert decision.cumple_en_cada_lectura(df, "Bolsa Térmica Aluminizada", 18.0, 20)
 
 
 def test_viabilidad_y_motivos():
@@ -80,9 +80,9 @@ def test_entrega_entre_lecturas_incluye_la_siguiente():
     df = datos.cargar_csv(CSV)
     cada10 = df[df["tiempo_min"] % 10 == 0]
     bolsa = "Bolsa Térmica Aluminizada"
-    # A los 45 min la bolsa (interpolada) ya supera 10 °C: la lectura de 50 min cuenta.
-    assert not decision.cumple_en_cada_lectura(cada10, bolsa, 10.0, 45)
-    assert decision.cumple_en_cada_lectura(cada10, bolsa, 10.0, 30)
+    # Entrega a los 25 min: la lectura de 30 min (18,7 °C) cuenta y supera 18 °C.
+    assert not decision.cumple_en_cada_lectura(cada10, bolsa, 18.0, 25)
+    assert decision.cumple_en_cada_lectura(cada10, bolsa, 18.0, 20)
 
 
 def test_costo_registrado_por_costo_de_uso_y_nan():

@@ -1,4 +1,4 @@
-"""Modelos 3D (Plotly) de la botella de 500 mL dentro de cada empaque.
+"""Modelos 3D (Plotly) de la botella de 600 mL dentro de cada empaque.
 
 Cada muestra se dibuja a la MISMA escala (mismos rangos de ejes), así las cuatro
 se comparan a simple vista. El agua se colorea con su temperatura en el minuto
@@ -111,7 +111,7 @@ def aristas(cx, cy, z0, w, d, h, color=CONTORNO, ancho=3, sin_frente=False) -> g
 # Botella y empaques
 # --------------------------------------------------------------------------- #
 def botella(color_agua: str, z0: float = 0.12) -> list:
-    """Botella de 500 mL: cuerpo con agua, hombro, cuello y tapa."""
+    """Botella de 600 mL: cuerpo con agua, hombro, cuello y tapa."""
     return [
         cilindro(0.30, z0, z0 + 1.05, color_agua),
         cilindro(0.30, z0 + 1.05, z0 + 1.30, color_agua, r1=0.13),

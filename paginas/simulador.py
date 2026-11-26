@@ -23,7 +23,7 @@ from ui.estilo import AZUL, TENUE, TEXTO, barra_superior, e, encabezado, titulo_
 ss = st.session_state
 RAIZ = Path(__file__).resolve().parents[1]
 CSV_CIUDADES = RAIZ / "data" / "ciudades_peru.csv"
-MASA_KG, C_AGUA = 0.5, 4186.0
+MASA_KG, C_AGUA = 0.6, 4186.0   # botella de 600 mL del ensayo
 ESCALA_LO, ESCALA_HI = 0.0, 35.0     # escala de color fija: compara ciudades entre sí
 
 
@@ -276,7 +276,7 @@ def render():
     with st.container(key="card_sim_res"):
         titulo_tarjeta(f"Resultado en {ss.sim_ciudad} · {ta:.1f} °C · entrega de {t_ent} min",
                        "Predicción con T(t) = Tₐ + (T₀ − Tₐ)·e^(−k·t) y Q = m·c·ΔT "
-                       f"(500 mL de agua). {ss.sim_viento}.")
+                       f"(gaseosa de 600 mL). {ss.sim_viento}.")
         tabla = pd.DataFrame({
             "Empaque": res["empaque"],
             "Llega a (°C)": res["t_entrega_c"].round(2),

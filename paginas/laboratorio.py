@@ -101,7 +101,7 @@ def render():
     with st.container(key="card_lab"):
         titulo_tarjeta(
             "Las cuatro muestras" if len(muestras) == 4 else "Las muestras",
-            "El informe usa 500 mL de agua por botella. Arrastra para girar cada muestra; "
+            "Botellas de gaseosa de 600 mL. Arrastra para girar cada muestra; "
             "todas están a la misma escala. Entre lecturas (cada 5 min) la temperatura se "
             "interpola.")
         st.iframe(visor3d.html_visor(muestras, tmax, lo, hi, qmax), height="content",

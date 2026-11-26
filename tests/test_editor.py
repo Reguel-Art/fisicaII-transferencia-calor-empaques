@@ -25,16 +25,16 @@ def _ida_y_vuelta():
 
 def test_tablas_editables():
     _, _, params, reps, ancha, origen = _ida_y_vuelta()
-    assert reps == 3
-    assert origen == "Simulado"
+    assert reps == 1
+    assert origen == "Medición real"
     assert len(params) == 4
     assert params["control"].tolist() == [True, False, False, False]
-    assert ancha.shape == (13, 1 + 4 * 3)        # tiempo + 4 empaques × 3 reps
+    assert ancha.shape == (13, 1 + 4 * 1)        # tiempo + 4 empaques × 1 rep
 
 
 def test_ida_y_vuelta_conserva_resultados():
     df, df2, *_ = _ida_y_vuelta()
-    assert len(df2) == len(df) == 156
+    assert len(df2) == len(df) == 52
     r1 = analisis.analizar(df).set_index("empaque")
     r2 = analisis.analizar(df2).set_index("empaque")
     for col in ["t0_C", "t60_C", "q_absorbido_J", "k_fit_min", "r_cond_KW", "costo_empaque"]:
@@ -51,7 +51,7 @@ def test_celdas_vacias_y_empaque_nuevo():
     params.loc[len(params)] = {"empaque": "Bolsa de tela"}  # sin temperaturas aún
     crudo = editor.editables_a_csv(params, ancha, reps, "Medición real")
     df = datos.validar(crudo)
-    assert len(df) == 155
+    assert len(df) == 51
     assert "Bolsa de tela" not in datos.lista_empaques(df)
     assert set(df["tipo_dato"]) == {"Medicion_Real_Editada_En_App"}
 

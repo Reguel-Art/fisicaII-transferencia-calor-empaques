@@ -33,11 +33,13 @@ def _fila(R, emp):
     return R.res.set_index("empaque").loc[emp]
 
 
-def test_escenario_base_recomienda_eps():
+def test_escenario_base_recomienda_bolsa():
+    # Límite 18 °C a los 20 min: bolsa y EPS cumplen, el cartón no (19,5 °C).
+    # Con 40 % conservación / 60 % costo gana la bolsa (S/ 0,67 vs S/ 3,00 por uso).
     _reiniciar()
     R = estado.calcular()
-    assert R.reco["empaque"] == EPS
-    assert (R.n_viables, R.n_alternativas) == (1, 3)
+    assert R.reco["empaque"] == BOLSA
+    assert (R.n_viables, R.n_alternativas) == (2, 3)
     assert np.isinf(_fila(R, "Control (Sin empaque)")["spc_t"])
 
 
@@ -46,6 +48,7 @@ def test_sin_lecturas_hasta_entrega_no_se_extrapola():
     df = ss.df_actual
     ss.df_actual = df[~((df["empaque"] == EPS) & (df["tiempo_min"] > 30))]
     ss.cfg_umbral = 8.0
+    ss.cfg_t = 60          # entrega después de la última lectura del EPS (30 min)
     R = estado.calcular()
     f = _fila(R, EPS)
     assert not f["viable"]
@@ -59,7 +62,7 @@ def test_usos_vacio_usa_supuesto_por_defecto():
     t.loc[t["material"] == BOLSA, "usos"] = np.nan
     ss.eco_tabla_ult = t
     R = estado.calcular()
-    assert abs(_fila(R, BOLSA)["costo_uso"] - 25 / 60) < 1e-9
+    assert abs(_fila(R, BOLSA)["costo_uso"] - 40 / 60) < 1e-9
 
 
 def test_sin_costo_no_muestra_soles_por_grado():

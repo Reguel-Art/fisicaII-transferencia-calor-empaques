@@ -1,157 +1,53 @@
 id_registro,codigo_empaque,empaque,repeticion,tiempo_min,temp_agua_c,temp_ambiente_c,delta_t_c,costo_empaque_pen,conductividad_k_wmk,espesor_pared_mm,masa_agua_kg,calor_especifico_j_kgk,area_superficial_m2,umbral_calidad_c,estado_calidad,tipo_dato
-1,CTRL,Control (Sin empaque),1,0,4.9,26.8,0.0,0.0,0.026,0.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-2,CTRL,Control (Sin empaque),1,5,6.6,26.8,1.7,0.0,0.026,0.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-3,CTRL,Control (Sin empaque),1,10,7.9,26.8,3.0,0.0,0.026,0.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-4,CTRL,Control (Sin empaque),1,15,9.3,26.8,4.4,0.0,0.026,0.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-5,CTRL,Control (Sin empaque),1,20,10.5,26.8,5.6,0.0,0.026,0.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-6,CTRL,Control (Sin empaque),1,25,11.7,26.8,6.8,0.0,0.026,0.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-7,CTRL,Control (Sin empaque),1,30,12.9,26.8,8.0,0.0,0.026,0.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-8,CTRL,Control (Sin empaque),1,35,13.8,26.8,8.9,0.0,0.026,0.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-9,CTRL,Control (Sin empaque),1,40,14.8,26.8,9.9,0.0,0.026,0.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-10,CTRL,Control (Sin empaque),1,45,15.7,26.8,10.8,0.0,0.026,0.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-11,CTRL,Control (Sin empaque),1,50,16.6,26.8,11.7,0.0,0.026,0.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-12,CTRL,Control (Sin empaque),1,55,17.2,26.8,12.3,0.0,0.026,0.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-13,CTRL,Control (Sin empaque),1,60,18.0,26.8,13.1,0.0,0.026,0.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-14,CTRL,Control (Sin empaque),2,0,5.1,27.1,0.0,0.0,0.026,0.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-15,CTRL,Control (Sin empaque),2,5,6.7,27.1,1.6,0.0,0.026,0.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-16,CTRL,Control (Sin empaque),2,10,8.2,27.1,3.1,0.0,0.026,0.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-17,CTRL,Control (Sin empaque),2,15,9.7,27.1,4.6,0.0,0.026,0.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-18,CTRL,Control (Sin empaque),2,20,11.0,27.1,5.9,0.0,0.026,0.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-19,CTRL,Control (Sin empaque),2,25,12.3,27.1,7.2,0.0,0.026,0.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-20,CTRL,Control (Sin empaque),2,30,13.4,27.1,8.3,0.0,0.026,0.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-21,CTRL,Control (Sin empaque),2,35,14.5,27.1,9.4,0.0,0.026,0.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-22,CTRL,Control (Sin empaque),2,40,15.4,27.1,10.3,0.0,0.026,0.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-23,CTRL,Control (Sin empaque),2,45,16.2,27.1,11.1,0.0,0.026,0.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-24,CTRL,Control (Sin empaque),2,50,17.1,27.1,12.0,0.0,0.026,0.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-25,CTRL,Control (Sin empaque),2,55,17.8,27.1,12.7,0.0,0.026,0.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-26,CTRL,Control (Sin empaque),2,60,18.6,27.1,13.5,0.0,0.026,0.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-27,CTRL,Control (Sin empaque),3,0,5.0,27.0,0.0,0.0,0.026,0.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-28,CTRL,Control (Sin empaque),3,5,6.7,27.0,1.7,0.0,0.026,0.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-29,CTRL,Control (Sin empaque),3,10,8.3,27.0,3.3,0.0,0.026,0.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-30,CTRL,Control (Sin empaque),3,15,9.7,27.0,4.7,0.0,0.026,0.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-31,CTRL,Control (Sin empaque),3,20,10.9,27.0,5.9,0.0,0.026,0.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-32,CTRL,Control (Sin empaque),3,25,12.2,27.0,7.2,0.0,0.026,0.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-33,CTRL,Control (Sin empaque),3,30,13.2,27.0,8.2,0.0,0.026,0.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-34,CTRL,Control (Sin empaque),3,35,14.3,27.0,9.3,0.0,0.026,0.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-35,CTRL,Control (Sin empaque),3,40,15.2,27.0,10.2,0.0,0.026,0.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-36,CTRL,Control (Sin empaque),3,45,16.2,27.0,11.2,0.0,0.026,0.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-37,CTRL,Control (Sin empaque),3,50,17.0,27.0,12.0,0.0,0.026,0.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-38,CTRL,Control (Sin empaque),3,55,17.7,27.0,12.7,0.0,0.026,0.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-39,CTRL,Control (Sin empaque),3,60,18.4,27.0,13.4,0.0,0.026,0.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-40,CART,Caja de Cartón,1,0,4.9,26.8,0.0,1.8,0.065,3.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-41,CART,Caja de Cartón,1,5,5.9,26.8,1.0,1.8,0.065,3.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-42,CART,Caja de Cartón,1,10,6.9,26.8,2.0,1.8,0.065,3.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-43,CART,Caja de Cartón,1,15,7.9,26.8,3.0,1.8,0.065,3.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-44,CART,Caja de Cartón,1,20,8.8,26.8,3.9,1.8,0.065,3.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-45,CART,Caja de Cartón,1,25,9.6,26.8,4.7,1.8,0.065,3.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-46,CART,Caja de Cartón,1,30,10.4,26.8,5.5,1.8,0.065,3.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-47,CART,Caja de Cartón,1,35,11.1,26.8,6.2,1.8,0.065,3.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-48,CART,Caja de Cartón,1,40,11.9,26.8,7.0,1.8,0.065,3.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-49,CART,Caja de Cartón,1,45,12.6,26.8,7.7,1.8,0.065,3.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-50,CART,Caja de Cartón,1,50,13.2,26.8,8.3,1.8,0.065,3.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-51,CART,Caja de Cartón,1,55,14.0,26.8,9.1,1.8,0.065,3.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-52,CART,Caja de Cartón,1,60,14.5,26.8,9.6,1.8,0.065,3.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-53,CART,Caja de Cartón,2,0,5.1,27.1,0.0,1.8,0.065,3.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-54,CART,Caja de Cartón,2,5,6.2,27.1,1.1,1.8,0.065,3.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-55,CART,Caja de Cartón,2,10,7.2,27.1,2.1,1.8,0.065,3.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-56,CART,Caja de Cartón,2,15,8.2,27.1,3.1,1.8,0.065,3.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-57,CART,Caja de Cartón,2,20,9.2,27.1,4.1,1.8,0.065,3.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-58,CART,Caja de Cartón,2,25,10.0,27.1,4.9,1.8,0.065,3.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-59,CART,Caja de Cartón,2,30,10.9,27.1,5.8,1.8,0.065,3.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-60,CART,Caja de Cartón,2,35,11.8,27.1,6.7,1.8,0.065,3.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-61,CART,Caja de Cartón,2,40,12.5,27.1,7.4,1.8,0.065,3.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-62,CART,Caja de Cartón,2,45,13.1,27.1,8.0,1.8,0.065,3.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-63,CART,Caja de Cartón,2,50,13.8,27.1,8.7,1.8,0.065,3.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-64,CART,Caja de Cartón,2,55,14.5,27.1,9.4,1.8,0.065,3.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-65,CART,Caja de Cartón,2,60,15.1,27.1,10.0,1.8,0.065,3.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-66,CART,Caja de Cartón,3,0,5.0,27.0,0.0,1.8,0.065,3.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-67,CART,Caja de Cartón,3,5,6.0,27.0,1.0,1.8,0.065,3.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-68,CART,Caja de Cartón,3,10,7.1,27.0,2.1,1.8,0.065,3.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-69,CART,Caja de Cartón,3,15,8.0,27.0,3.0,1.8,0.065,3.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-70,CART,Caja de Cartón,3,20,9.0,27.0,4.0,1.8,0.065,3.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-71,CART,Caja de Cartón,3,25,9.9,27.0,4.9,1.8,0.065,3.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-72,CART,Caja de Cartón,3,30,10.6,27.0,5.6,1.8,0.065,3.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-73,CART,Caja de Cartón,3,35,11.5,27.0,6.5,1.8,0.065,3.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-74,CART,Caja de Cartón,3,40,12.3,27.0,7.3,1.8,0.065,3.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-75,CART,Caja de Cartón,3,45,12.9,27.0,7.9,1.8,0.065,3.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-76,CART,Caja de Cartón,3,50,13.7,27.0,8.7,1.8,0.065,3.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-77,CART,Caja de Cartón,3,55,14.3,27.0,9.3,1.8,0.065,3.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-78,CART,Caja de Cartón,3,60,15.0,27.0,10.0,1.8,0.065,3.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-79,BOLS,Bolsa Térmica Aluminizada,1,0,4.9,26.8,0.0,25.0,0.045,5.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-80,BOLS,Bolsa Térmica Aluminizada,1,5,5.6,26.8,0.7,25.0,0.045,5.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-81,BOLS,Bolsa Térmica Aluminizada,1,10,6.1,26.8,1.2,25.0,0.045,5.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-82,BOLS,Bolsa Térmica Aluminizada,1,15,6.9,26.8,2.0,25.0,0.045,5.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-83,BOLS,Bolsa Térmica Aluminizada,1,20,7.3,26.8,2.4,25.0,0.045,5.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-84,BOLS,Bolsa Térmica Aluminizada,1,25,8.0,26.8,3.1,25.0,0.045,5.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-85,BOLS,Bolsa Térmica Aluminizada,1,30,8.5,26.8,3.6,25.0,0.045,5.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-86,BOLS,Bolsa Térmica Aluminizada,1,35,9.1,26.8,4.2,25.0,0.045,5.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-87,BOLS,Bolsa Térmica Aluminizada,1,40,9.6,26.8,4.7,25.0,0.045,5.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-88,BOLS,Bolsa Térmica Aluminizada,1,45,10.1,26.8,5.2,25.0,0.045,5.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-89,BOLS,Bolsa Térmica Aluminizada,1,50,10.6,26.8,5.7,25.0,0.045,5.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-90,BOLS,Bolsa Térmica Aluminizada,1,55,11.1,26.8,6.2,25.0,0.045,5.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-91,BOLS,Bolsa Térmica Aluminizada,1,60,11.6,26.8,6.7,25.0,0.045,5.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-92,BOLS,Bolsa Térmica Aluminizada,2,0,5.1,27.1,0.0,25.0,0.045,5.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-93,BOLS,Bolsa Térmica Aluminizada,2,5,5.8,27.1,0.7,25.0,0.045,5.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-94,BOLS,Bolsa Térmica Aluminizada,2,10,6.5,27.1,1.4,25.0,0.045,5.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-95,BOLS,Bolsa Térmica Aluminizada,2,15,7.1,27.1,2.0,25.0,0.045,5.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-96,BOLS,Bolsa Térmica Aluminizada,2,20,7.7,27.1,2.6,25.0,0.045,5.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-97,BOLS,Bolsa Térmica Aluminizada,2,25,8.4,27.1,3.3,25.0,0.045,5.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-98,BOLS,Bolsa Térmica Aluminizada,2,30,8.9,27.1,3.8,25.0,0.045,5.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-99,BOLS,Bolsa Térmica Aluminizada,2,35,9.4,27.1,4.3,25.0,0.045,5.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-100,BOLS,Bolsa Térmica Aluminizada,2,40,10.0,27.1,4.9,25.0,0.045,5.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-101,BOLS,Bolsa Térmica Aluminizada,2,45,10.5,27.1,5.4,25.0,0.045,5.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-102,BOLS,Bolsa Térmica Aluminizada,2,50,11.1,27.1,6.0,25.0,0.045,5.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-103,BOLS,Bolsa Térmica Aluminizada,2,55,11.6,27.1,6.5,25.0,0.045,5.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-104,BOLS,Bolsa Térmica Aluminizada,2,60,12.1,27.1,7.0,25.0,0.045,5.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-105,BOLS,Bolsa Térmica Aluminizada,3,0,5.0,27.0,0.0,25.0,0.045,5.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-106,BOLS,Bolsa Térmica Aluminizada,3,5,5.7,27.0,0.7,25.0,0.045,5.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-107,BOLS,Bolsa Térmica Aluminizada,3,10,6.3,27.0,1.3,25.0,0.045,5.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-108,BOLS,Bolsa Térmica Aluminizada,3,15,7.0,27.0,2.0,25.0,0.045,5.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-109,BOLS,Bolsa Térmica Aluminizada,3,20,7.7,27.0,2.7,25.0,0.045,5.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-110,BOLS,Bolsa Térmica Aluminizada,3,25,8.2,27.0,3.2,25.0,0.045,5.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-111,BOLS,Bolsa Térmica Aluminizada,3,30,8.8,27.0,3.8,25.0,0.045,5.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-112,BOLS,Bolsa Térmica Aluminizada,3,35,9.3,27.0,4.3,25.0,0.045,5.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-113,BOLS,Bolsa Térmica Aluminizada,3,40,9.9,27.0,4.9,25.0,0.045,5.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-114,BOLS,Bolsa Térmica Aluminizada,3,45,10.4,27.0,5.4,25.0,0.045,5.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-115,BOLS,Bolsa Térmica Aluminizada,3,50,10.8,27.0,5.8,25.0,0.045,5.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-116,BOLS,Bolsa Térmica Aluminizada,3,55,11.4,27.0,6.4,25.0,0.045,5.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-117,BOLS,Bolsa Térmica Aluminizada,3,60,11.9,27.0,6.9,25.0,0.045,5.0,0.5,4186,0.04,10.0,Fuera de Rango,Simulacion_Informe_EC3_No_Experimental
-118,EPS,Recipiente Aislante (EPS),1,0,4.9,26.8,0.0,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-119,EPS,Recipiente Aislante (EPS),1,5,5.3,26.8,0.4,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-120,EPS,Recipiente Aislante (EPS),1,10,5.8,26.8,0.9,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-121,EPS,Recipiente Aislante (EPS),1,15,6.2,26.8,1.3,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-122,EPS,Recipiente Aislante (EPS),1,20,6.5,26.8,1.6,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-123,EPS,Recipiente Aislante (EPS),1,25,7.0,26.8,2.1,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-124,EPS,Recipiente Aislante (EPS),1,30,7.4,26.8,2.5,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-125,EPS,Recipiente Aislante (EPS),1,35,7.8,26.8,2.9,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-126,EPS,Recipiente Aislante (EPS),1,40,8.1,26.8,3.2,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-127,EPS,Recipiente Aislante (EPS),1,45,8.5,26.8,3.6,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-128,EPS,Recipiente Aislante (EPS),1,50,8.9,26.8,4.0,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-129,EPS,Recipiente Aislante (EPS),1,55,9.2,26.8,4.3,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-130,EPS,Recipiente Aislante (EPS),1,60,9.6,26.8,4.7,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-131,EPS,Recipiente Aislante (EPS),2,0,5.1,27.1,0.0,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-132,EPS,Recipiente Aislante (EPS),2,5,5.5,27.1,0.4,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-133,EPS,Recipiente Aislante (EPS),2,10,5.9,27.1,0.8,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-134,EPS,Recipiente Aislante (EPS),2,15,6.4,27.1,1.3,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-135,EPS,Recipiente Aislante (EPS),2,20,6.8,27.1,1.7,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-136,EPS,Recipiente Aislante (EPS),2,25,7.3,27.1,2.2,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-137,EPS,Recipiente Aislante (EPS),2,30,7.7,27.1,2.6,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-138,EPS,Recipiente Aislante (EPS),2,35,8.0,27.1,2.9,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-139,EPS,Recipiente Aislante (EPS),2,40,8.5,27.1,3.4,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-140,EPS,Recipiente Aislante (EPS),2,45,9.0,27.1,3.9,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-141,EPS,Recipiente Aislante (EPS),2,50,9.2,27.1,4.1,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-142,EPS,Recipiente Aislante (EPS),2,55,9.6,27.1,4.5,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-143,EPS,Recipiente Aislante (EPS),2,60,10.0,27.1,4.9,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-144,EPS,Recipiente Aislante (EPS),3,0,5.0,27.0,0.0,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-145,EPS,Recipiente Aislante (EPS),3,5,5.5,27.0,0.5,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-146,EPS,Recipiente Aislante (EPS),3,10,5.9,27.0,0.9,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-147,EPS,Recipiente Aislante (EPS),3,15,6.4,27.0,1.4,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-148,EPS,Recipiente Aislante (EPS),3,20,6.8,27.0,1.8,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-149,EPS,Recipiente Aislante (EPS),3,25,7.2,27.0,2.2,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-150,EPS,Recipiente Aislante (EPS),3,30,7.6,27.0,2.6,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-151,EPS,Recipiente Aislante (EPS),3,35,7.9,27.0,2.9,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-152,EPS,Recipiente Aislante (EPS),3,40,8.2,27.0,3.2,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-153,EPS,Recipiente Aislante (EPS),3,45,8.8,27.0,3.8,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-154,EPS,Recipiente Aislante (EPS),3,50,9.1,27.0,4.1,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-155,EPS,Recipiente Aislante (EPS),3,55,9.4,27.0,4.4,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
-156,EPS,Recipiente Aislante (EPS),3,60,9.9,27.0,4.9,6.5,0.038,15.0,0.5,4186,0.04,10.0,Optimo,Simulacion_Informe_EC3_No_Experimental
+1,CTRL,Control (Sin empaque),1,0,12.5,24.0,0.0,0.0,0.026,0.0,0.6,4186,0.04,18.0,Optimo,Experimental_Grupo_3_600mL
+2,CTRL,Control (Sin empaque),1,5,15.5,24.0,3.0,0.0,0.026,0.0,0.6,4186,0.04,18.0,Optimo,Experimental_Grupo_3_600mL
+3,CTRL,Control (Sin empaque),1,10,17.7,24.0,5.2,0.0,0.026,0.0,0.6,4186,0.04,18.0,Optimo,Experimental_Grupo_3_600mL
+4,CTRL,Control (Sin empaque),1,15,19.9,24.0,7.4,0.0,0.026,0.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+5,CTRL,Control (Sin empaque),1,20,21.7,24.0,9.2,0.0,0.026,0.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+6,CTRL,Control (Sin empaque),1,25,22.5,24.0,10.0,0.0,0.026,0.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+7,CTRL,Control (Sin empaque),1,30,23.0,24.0,10.5,0.0,0.026,0.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+8,CTRL,Control (Sin empaque),1,35,23.3,24.0,10.8,0.0,0.026,0.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+9,CTRL,Control (Sin empaque),1,40,23.5,24.0,11.0,0.0,0.026,0.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+10,CTRL,Control (Sin empaque),1,45,23.7,24.0,11.2,0.0,0.026,0.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+11,CTRL,Control (Sin empaque),1,50,23.8,24.0,11.3,0.0,0.026,0.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+12,CTRL,Control (Sin empaque),1,55,23.9,24.0,11.4,0.0,0.026,0.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+13,CTRL,Control (Sin empaque),1,60,23.9,24.0,11.4,0.0,0.026,0.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+14,CART,Caja de Cartón,1,0,12.5,24.0,0.0,0.8,0.065,3.0,0.6,4186,0.04,18.0,Optimo,Experimental_Grupo_3_600mL
+15,CART,Caja de Cartón,1,5,15.7,24.0,3.2,0.8,0.065,3.0,0.6,4186,0.04,18.0,Optimo,Experimental_Grupo_3_600mL
+16,CART,Caja de Cartón,1,10,16.3,24.0,3.8,0.8,0.065,3.0,0.6,4186,0.04,18.0,Optimo,Experimental_Grupo_3_600mL
+17,CART,Caja de Cartón,1,15,18.2,24.0,5.7,0.8,0.065,3.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+18,CART,Caja de Cartón,1,20,19.5,24.0,7.0,0.8,0.065,3.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+19,CART,Caja de Cartón,1,25,20.4,24.0,7.9,0.8,0.065,3.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+20,CART,Caja de Cartón,1,30,21.2,24.0,8.7,0.8,0.065,3.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+21,CART,Caja de Cartón,1,35,21.8,24.0,9.3,0.8,0.065,3.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+22,CART,Caja de Cartón,1,40,22.2,24.0,9.7,0.8,0.065,3.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+23,CART,Caja de Cartón,1,45,22.6,24.0,10.1,0.8,0.065,3.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+24,CART,Caja de Cartón,1,50,22.9,24.0,10.4,0.8,0.065,3.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+25,CART,Caja de Cartón,1,55,23.1,24.0,10.6,0.8,0.065,3.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+26,CART,Caja de Cartón,1,60,23.3,24.0,10.8,0.8,0.065,3.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+27,BOLS,Bolsa Térmica Aluminizada,1,0,12.5,24.0,0.0,40.0,0.045,5.0,0.6,4186,0.04,18.0,Optimo,Experimental_Grupo_3_600mL
+28,BOLS,Bolsa Térmica Aluminizada,1,5,12.9,24.0,0.4,40.0,0.045,5.0,0.6,4186,0.04,18.0,Optimo,Experimental_Grupo_3_600mL
+29,BOLS,Bolsa Térmica Aluminizada,1,10,16.2,24.0,3.7,40.0,0.045,5.0,0.6,4186,0.04,18.0,Optimo,Experimental_Grupo_3_600mL
+30,BOLS,Bolsa Térmica Aluminizada,1,15,16.4,24.0,3.9,40.0,0.045,5.0,0.6,4186,0.04,18.0,Optimo,Experimental_Grupo_3_600mL
+31,BOLS,Bolsa Térmica Aluminizada,1,20,17.1,24.0,4.6,40.0,0.045,5.0,0.6,4186,0.04,18.0,Optimo,Experimental_Grupo_3_600mL
+32,BOLS,Bolsa Térmica Aluminizada,1,25,17.9,24.0,5.4,40.0,0.045,5.0,0.6,4186,0.04,18.0,Optimo,Experimental_Grupo_3_600mL
+33,BOLS,Bolsa Térmica Aluminizada,1,30,18.7,24.0,6.2,40.0,0.045,5.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+34,BOLS,Bolsa Térmica Aluminizada,1,35,19.3,24.0,6.8,40.0,0.045,5.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+35,BOLS,Bolsa Térmica Aluminizada,1,40,19.9,24.0,7.4,40.0,0.045,5.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+36,BOLS,Bolsa Térmica Aluminizada,1,45,20.4,24.0,7.9,40.0,0.045,5.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+37,BOLS,Bolsa Térmica Aluminizada,1,50,20.8,24.0,8.3,40.0,0.045,5.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+38,BOLS,Bolsa Térmica Aluminizada,1,55,21.2,24.0,8.7,40.0,0.045,5.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+39,BOLS,Bolsa Térmica Aluminizada,1,60,21.5,24.0,9.0,40.0,0.045,5.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+40,EPS,Recipiente Aislante (EPS),1,0,12.5,24.0,0.0,30.0,0.038,15.0,0.6,4186,0.04,18.0,Optimo,Experimental_Grupo_3_600mL
+41,EPS,Recipiente Aislante (EPS),1,5,13.9,24.0,1.4,30.0,0.038,15.0,0.6,4186,0.04,18.0,Optimo,Experimental_Grupo_3_600mL
+42,EPS,Recipiente Aislante (EPS),1,10,14.4,24.0,1.9,30.0,0.038,15.0,0.6,4186,0.04,18.0,Optimo,Experimental_Grupo_3_600mL
+43,EPS,Recipiente Aislante (EPS),1,15,15.4,24.0,2.9,30.0,0.038,15.0,0.6,4186,0.04,18.0,Optimo,Experimental_Grupo_3_600mL
+44,EPS,Recipiente Aislante (EPS),1,20,16.6,24.0,4.1,30.0,0.038,15.0,0.6,4186,0.04,18.0,Optimo,Experimental_Grupo_3_600mL
+45,EPS,Recipiente Aislante (EPS),1,25,17.4,24.0,4.9,30.0,0.038,15.0,0.6,4186,0.04,18.0,Optimo,Experimental_Grupo_3_600mL
+46,EPS,Recipiente Aislante (EPS),1,30,18.1,24.0,5.6,30.0,0.038,15.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+47,EPS,Recipiente Aislante (EPS),1,35,18.7,24.0,6.2,30.0,0.038,15.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+48,EPS,Recipiente Aislante (EPS),1,40,19.2,24.0,6.7,30.0,0.038,15.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+49,EPS,Recipiente Aislante (EPS),1,45,19.7,24.0,7.2,30.0,0.038,15.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+50,EPS,Recipiente Aislante (EPS),1,50,20.2,24.0,7.7,30.0,0.038,15.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+51,EPS,Recipiente Aislante (EPS),1,55,20.6,24.0,8.1,30.0,0.038,15.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL
+52,EPS,Recipiente Aislante (EPS),1,60,20.9,24.0,8.4,30.0,0.038,15.0,0.6,4186,0.04,18.0,Fuera de Rango,Experimental_Grupo_3_600mL

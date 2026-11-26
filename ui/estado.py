@@ -51,13 +51,13 @@ def inicializar():
     if "df_actual" not in ss:
         ej = cargar_ejemplo()
         fijar_base(ej, CSV_DEFECTO.name, "Ejemplo", CSV_DEFECTO.name)
-    ss.setdefault("cfg_umbral", 10.0)
-    ss.setdefault("cfg_t", 60)
+    ss.setdefault("cfg_umbral", 18.0)   # bebidas a 12,5 °C en el ensayo real
+    ss.setdefault("cfg_t", 20)
     ss.setdefault("eco_pedidos", 100)
     ss.setdefault("eco_empaques", 1)
     ss.setdefault("eco_max", 0.0)
-    ss.setdefault("eco_fuente", "Precios supuestos para demostración")
-    ss.setdefault("eco_peso", 60)
+    ss.setdefault("eco_fuente", "Precios cotizados por el grupo en el mercado local")
+    ss.setdefault("eco_peso", 40)   # 40 % conservación / 60 % costo: criterio del informe
     ss.setdefault("eco_ver", 0)
     ss.setdefault("ver_desv", True)
     ss.setdefault("ver_modelo", False)

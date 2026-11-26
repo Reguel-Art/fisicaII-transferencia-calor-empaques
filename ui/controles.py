@@ -19,7 +19,7 @@ def configurar_experimento():
     else:
         ss.cfg_t = tope
     with st.popover("Configurar experimento", icon=":material/tune:", type="tertiary"):
-        st.slider("Límite de temperatura (°C)", min_value=6.0, max_value=16.0, step=0.5,
+        st.slider("Límite de temperatura (°C)", min_value=6.0, max_value=24.0, step=0.5,
                   key="cfg_umbral", persist_state="session",
                   help="Temperatura máxima aceptable de la bebida al entregarla.")
         if tope >= 10:
