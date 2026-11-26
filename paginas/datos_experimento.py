@@ -51,8 +51,7 @@ def render():
 
         if modo == MODOS[0]:
             if ss.fuente_modo != "Ejemplo":
-                ej = estado.cargar_ejemplo()
-                estado.fijar_base(ej, estado.CSV_DEFECTO.name, "Ejemplo", estado.CSV_DEFECTO.name)
+                estado.usar_ejemplo()
             st.caption("Mediciones reales del grupo: 4 configuraciones × 13 lecturas (0–60 min), "
                        "gaseosa de 600 mL, T₀ = 12,5 °C, ambiente 24,0 °C.")
 

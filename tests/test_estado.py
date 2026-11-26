@@ -109,6 +109,20 @@ def test_tope_con_datos_cortos():
     assert estado.calcular().t == 5
 
 
+def test_csv_de_ejemplo_actualizado_se_recarga():
+    # Pestaña abierta con datos viejos: al cambiar el archivo se toman los nuevos.
+    _reiniciar()
+    ss.df_actual = ss.df_actual.head(13)
+    ss.ident_base = "Grupo_3_Datos_Termicos_Web.csv:viejo"
+    estado.inicializar()
+    assert len(ss.df_actual) == 52 and ss.ident_base == estado.ident_ejemplo()
+    # Datos propios (CSV subido) no se tocan.
+    ss.fuente_modo, ss.ident_base = "CSV", "mio.csv:1"
+    ss.df_actual = ss.df_actual.head(13)
+    estado.inicializar()
+    assert len(ss.df_actual) == 13
+
+
 if __name__ == "__main__":
     import traceback
 

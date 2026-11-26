@@ -26,9 +26,21 @@ ss = st.session_state
 COLUMNAS_COSTOS = ["material", "precio", "usos", "limpieza", "otros", "control"]
 
 
+def ident_ejemplo() -> str:
+    """Nombre + fecha de modificación del CSV de ejemplo: cambia si se reemplazan los datos."""
+    return f"{CSV_DEFECTO.name}:{CSV_DEFECTO.stat().st_mtime_ns}"
+
+
 @st.cache_data(show_spinner=False)
-def cargar_ejemplo() -> pd.DataFrame:
+def cargar_ejemplo(ident: str = "") -> pd.DataFrame:
+    # `ident` solo sirve de llave de caché: si el archivo cambia, se vuelve a leer
+    # (antes la app seguía mostrando el CSV viejo hasta reiniciar el servidor).
     return datos.cargar_csv(CSV_DEFECTO)
+
+
+def usar_ejemplo():
+    ident = ident_ejemplo()
+    fijar_base(cargar_ejemplo(ident), CSV_DEFECTO.name, "Ejemplo", ident)
 
 
 def _precios_de(df: pd.DataFrame) -> dict[str, float]:
@@ -48,9 +60,11 @@ def usos_defecto(emp: str) -> int:
 # Inicialización y origen de datos
 # --------------------------------------------------------------------------- #
 def inicializar():
-    if "df_actual" not in ss:
-        ej = cargar_ejemplo()
-        fijar_base(ej, CSV_DEFECTO.name, "Ejemplo", CSV_DEFECTO.name)
+    # Primera visita, o el CSV de ejemplo cambió mientras la pestaña estaba abierta
+    # (si el usuario subió o editó sus datos, se respetan).
+    if "df_actual" not in ss or (ss.get("fuente_modo") == "Ejemplo"
+                                 and ss.get("ident_base") != ident_ejemplo()):
+        usar_ejemplo()
     ss.setdefault("cfg_umbral", 18.0)   # bebidas a 12,5 °C en el ensayo real
     ss.setdefault("cfg_t", 20)
     ss.setdefault("eco_pedidos", 100)
